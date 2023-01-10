@@ -1,20 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{#    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">#}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+{#<div class="pic-ctn">#}
+{#    <img src="{{ asset('images/Moins11.jpg') }}" class="pic" alt="Moins11">#}
+{#    <img src="{{ asset('images/Loisirs.jpg') }}" class="pic" alt="Loisirs">#}
+{#    <img src="{{ asset('images/Moins9.jpg') }}" class="pic" alt="Moins9">#}
+{#    <img src="{{ asset('images/Moins13.jpg') }}" class="pic" alt="Moins13">#}
+{#    <img src="{{ asset('images/Moins15.jpg') }}" class="pic" alt="Moins15">#}
+{#    <img src="{{ asset('images/Moins17.jpg') }}" class="pic" alt="Moins17">#}
+{#    <img src="{{ asset('images/Moins18.jpg') }}" class="pic" alt="Moins18">#}
+{#    <img src="{{ asset('images/Seniors1et2.jpg') }}" class="pic" alt="Seniors1et2">#}
+{#    <img src="{{ asset('images/SF1.jpg') }}" class="pic" alt="SF1">#}
+{#    <img src="{{ asset('images/SF2.jpg') }}" class="pic" alt="SF2">#}
+{#</div>#}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/handball-project/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/handball-project/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+
+    <div class="sidebar">
+        <div class="tiers">
+            <h2>Mon compte</h2>
+            <ul>
+                <li><a href="#">Connexion</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+        <h2>Équipes</h2>
+            <ul>
+                <li><a href="#">Afficher une équipe</a></li>
+                <li><a href="#">Modifier une équipe</a></li>
+                <li><a href="#">Ajouter une équipe</a></li>
+                <li><a href="#">Supprimer une équipe</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            <h2>Matches</h2>
+            <ul>
+                <li><a href="#">Afficher un match</a></li>
+                <li><a href="#">Modifier un match</a></li>
+                <li><a href="#">Ajouter un match</a></li>
+                <li><a href="#">Supprimer une match</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            <h2>Plannings</h2>
+            <ul>
+                <li><a href="#">Voir le planning</a></li>
+            </ul>
+        </div>
+    </div>
+
 {% endblock %}
