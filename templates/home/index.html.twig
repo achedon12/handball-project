@@ -23,14 +23,23 @@
 
 
 {% block sidebar %}
+<div class="header">
+{#    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">#}
 
-    <div class="sidebar">
-        <div class="tiers">
-            <h2>Mon compte</h2>
-            <ul>
-                <li><a href="#">Connexion</a></li>
-            </ul>
-        </div>
+{#    <div class="pic-ctn">#}
+{#        <img src="{{ asset('images/Moins11.jpg') }}" class="pic" alt="Moins11">#}
+{#        <img src="{{ asset('images/Loisirs.jpg') }}" class="pic" alt="Loisirs">#}
+{#        <img src="{{ asset('images/Moins9.jpg') }}" class="pic" alt="Moins9">#}
+{#        <img src="{{ asset('images/Moins13.jpg') }}" class="pic" alt="Moins13">#}
+{#        <img src="{{ asset('images/Moins15.jpg') }}" class="pic" alt="Moins15">#}
+{#        <img src="{{ asset('images/Moins17.jpg') }}" class="pic" alt="Moins17">#}
+{#        <img src="{{ asset('images/Moins18.jpg') }}" class="pic" alt="Moins18">#}
+{#        <img src="{{ asset('images/Seniors1et2.jpg') }}" class="pic" alt="Seniors1et2">#}
+{#        <img src="{{ asset('images/SF1.jpg') }}" class="pic" alt="SF1">#}
+{#        <img src="{{ asset('images/SF2.jpg') }}" class="pic" alt="SF2">#}
+{#    </div>#}
+   <div class="sidebar">
+
         <div class="tiers">
         <h2>Équipes</h2>
             <ul>
@@ -55,6 +64,12 @@
                 <li><a href="#">Voir le planning</a></li>
             </ul>
         </div>
+        <div class="tiers">
+            <h2>Mon compte</h2>
+            <ul>
+                <li><a href="{{ path("app_register") }}">Connexion</a></li>
+            </ul>
+        </div>
     </div>
-
+</div>
 {% endblock %}
