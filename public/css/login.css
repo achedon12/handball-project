@@ -1,0 +1,148 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header
+{
+    background-color: #333333;
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+}
+
+header img
+{
+    width: 5%;
+    min-width: 70px;
+}
+
+.banner
+{
+    width: 100%;
+    height: auto;
+}
+
+form
+{
+    margin-top: 2%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 500px;
+    min-width: 315px;
+    height: 50vh;
+    border-radius: 15px;
+}
+
+form:hover
+{
+    box-shadow: 0 0 0.75rem #000000;
+    transition-duration: 0.8s;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+    height: 40vh;
+    justify-content: space-evenly;
+    width: 80%;
+}
+
+article
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 2%;
+    height: 10vh;
+}
+
+input[type=email], input[type=password]
+
+{
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #767C85;
+    padding-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.required::after
+{
+    content: "*";
+    color: #ea3949;
+}
+
+.h3::after
+{
+    position: relative;
+    content: "";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 10px;
+    border: 2px solid #151e2d;
+    display: block;
+}
+
+.mb-3
+{
+    width: 80%;
+    align-self: end;
+}
+
+.mb-3
+{
+
+}
+
+
+label
+{
+    font-weight: bold;
+}
+
+.btn
+{
+    width: 100%;
+    padding: 4%;
+    color: white;
+    background-color: #ff1541;
+    border: none;
+    border-radius: 2px;
+}
+
+.btn:hover
+{
+    background-color: #d23342;
+    color: white;
+}
+
+.back::before
+{
+    content: "<";
+    margin-right: 7px;
+    color: #ea3949;
+}
+
+.back
+{
+    color: black;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.back:hover
+{
+    color: #ea3949;
+}
