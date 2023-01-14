@@ -1,4 +1,6 @@
-
+html{
+    background-color: beige;
+}
 
 /*-------Animation of the images's header-------*/
 .pic-ctn {
@@ -62,50 +64,93 @@ img:nth-child(5) {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
+    text-align: center;
+    width: 100%;
     margin-top: 50px;
-    height: auto;
-    width: 75%;
-    margin-left: auto;
-    margin-right:auto ;
+    height: 100px;
 }
 
 .tiers{
-    width: 25%;
-    text-align: center;
+    width: 15%;
+    height: 25%;
 }
 
 .tiers>ul{
     display: none;
-    width: 100%;
-
 }
 
-h2{
-    color: #666;display:inline-block; margin:0;text-transform:uppercase;
+
+.tiers:hover >ul{
+    display: block;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: #FFFFFF;
+}
+
+
+
+
+.tiers:hover li{
+    margin-bottom: 5px;
+    background-color: white;
+    color: black;
+    width: 100%;
+}
+
+.tiers h2{
+    text-transform:uppercase;
+
 }
 
 .tiers h2:after{
     display:block;
     content: '';
-    border-bottom: solid 2px grey;
+    border-bottom: solid 3px gray;
     transform: scaleX(0);
-    transition: transform 1s ease-in-out;
+    transition: transform 250ms ease-in-out;
 }
 
-.tiers:hover >ul{
-    display: block;
-    position: relative;
-    margin-top:auto;
-}
+.tiers h2:hover:after { transform: scaleX(1); }
 
-.tiers:hover h2:after{
-    transform: scaleX(1);
-}
+/*.separatorRigth{*/
+/*    width: 100%;*/
+/*    background-color: red;*/
+/*    border-left: 100vh;*/
+/*    -webkit-clip-path: polygon(100% 17%, 0 0, 100% 0);*/
+/*    clip-path: polygon(0 12%, 0 0, 100% 0);*/
+/*    border-bottom: 13.9vh solid transparent;*/
+/*    margin-top: 13.9vh;*/
+/*    z-index: 1;*/
 
-/*.sidebar{*/
-/*    background-image: url("../images/banniere_2.png");*/
+/*}*/
+
+
+/*.separatorLeft{*/
+/*    z-index: 1;*/
+/*    width: 100%;*/
+/*    background-color: red;*/
+/*    border-left: 100vh;*/
+
+/*    border-bottom: 13.9vh solid transparent;*/
+/*    margin-top: -13.9vh;*/
 /*}*/
 
 
 
+.main{
+    height: 500px;
+}
+
+.sectionMain1{
+    height: 40%;
+    background-color: red;
+    clip-path: polygon(0 17%, 100% 0, 100% 82%, 0% 100%);
+}
+.sectionMain2{
+    height: 40%;
+    background-color: green;
+    clip-path: polygon(0 17%, 100% 0, 100% 82%, 0% 100%);
+}
 
