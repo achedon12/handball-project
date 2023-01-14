@@ -2,7 +2,7 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block body %}
+{% block carroussel %}
 {#    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">#}
 
 {#<div class="pic-ctn">#}
@@ -25,12 +25,7 @@
 {% block sidebar %}
 
     <div class="sidebar">
-        <div class="tiers">
-            <h2>Mon compte</h2>
-            <ul>
-                <li><a href="#">Connexion</a></li>
-            </ul>
-        </div>
+
         <div class="tiers">
         <h2>Équipes</h2>
             <ul>
@@ -55,6 +50,36 @@
                 <li><a href="#">Voir le planning</a></li>
             </ul>
         </div>
+        <div class="tiers">
+            <h2>Mon compte</h2>
+            <ul>
+                <li><a href="{{ path('app_register') }}">Connexion</a></li>
+            </ul>
+        </div>
     </div>
+
+{% endblock %}
+
+{% block divMain %}
+
+    <div class="main">
+        <div class="separatorLeft">
+
+        </div>
+        <div class="sectionMain1">
+            <p>first div</p>
+        </div>
+       <div class="separatorRigth">
+
+        </div>
+        <div class="sectionMain2">
+            <p>second div</p>
+        </div>
+
+
+
+
+    </div>
+
 
 {% endblock %}
