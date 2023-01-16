@@ -2,7 +2,7 @@
 <html>
     <head >
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('node_modules/bootstrap-icons/font/bootstrap-icons.css') }}">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -10,6 +10,7 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+
         {% endblock %}
         {% block sidebar %}
             {{ encore_entry_link_tags('app') }}
@@ -21,5 +22,6 @@
     </head >
     <body>
         {% block body %}{% endblock %}
+        {% block divMain %}{% endblock %}
     </body>
 </html>
