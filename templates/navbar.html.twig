@@ -1,0 +1,43 @@
+{% block navbar %}
+<section class="sidebar">
+    <div class="tiers">
+        <h2>Équipes</h2>
+        <ul>
+            <li><a href="#">Afficher une équipe</a></li>
+            <li><a href="#">Modifier une équipe</a></li>
+            <li><a href="#">Ajouter une équipe</a></li>
+            <li><a href="#">Supprimer une équipe</a></li>
+        </ul>
+    </div>
+    <div class="tiers">
+        <h2>Matches</h2>
+        <ul>
+            <li><a href="#">Afficher un match</a></li>
+            <li><a href="#">Modifier un match</a></li>
+            <li><a href="#">Ajouter un match</a></li>
+            <li><a href="#">Supprimer une match</a></li>
+        </ul>
+    </div>
+    <div class="tiers">
+        <h2>Plannings</h2>
+        <ul>
+            <li><a href="#">Voir le planning</a></li>
+        </ul>
+    </div>
+    <div class="tiers">
+        {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+            <h2>{{ user.pseudo }}</h2>
+            <ul>
+                <li><a href="#">Mon compte</a></li>
+                <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+            </ul>
+        {% else %}
+            <h2>Mon compte</h2>
+            <ul>
+                <li><a href="{{ path("app_login")}}">Connexion</a></li>
+            </ul>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}

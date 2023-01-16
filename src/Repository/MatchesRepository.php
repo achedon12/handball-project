@@ -39,6 +39,114 @@ class MatchesRepository extends ServiceEntityRepository
         }
     }
 
+    public function getAllMatchs(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->orderBy('m.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getNextMatch(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure > :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('m.date_heure', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getAllAfterMatch(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure < :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('m.date_heure', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getAllBeforeMatch(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure > :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('m.date_heure', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getMatchById(int $id): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getMatchByDate(\DateTime $date): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure = :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getMatchByDateAfter(\DateTime $date): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure > :date')
+            ->setParameter('date', $date)
+            ->orderBy('m.date_heure', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getMatchByDateBefore(\DateTime $date): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure < :date')
+            ->setParameter('date', $date)
+            ->orderBy('m.date_heure', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getMatchByDateBetween(\DateTime $date1, \DateTime $date2): array
+    {
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure BETWEEN :date1 AND :date2')
+            ->setParameter('date1', $date1)
+            ->setParameter('date2', $date2)
+            ->orderBy('m.date_heure', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getAllOpponents(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m.equipe_adverse')
+            ->distinct()
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
 //    /**
 //     * @return Matches[] Returns an array of Matches objects
 //     */

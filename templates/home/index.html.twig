@@ -2,9 +2,11 @@
 
 {% block title %}Accueil{% endblock %}
 
-{% block body %}
-{#    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">#}
 
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
+    
 {#<div class="pic-ctn">#}
 {#    <img src="{{ asset('images/Moins11.jpg') }}" class="pic" alt="Moins11">#}
 {#    <img src="{{ asset('images/Loisirs.jpg') }}" class="pic" alt="Loisirs">#}
@@ -17,59 +19,150 @@
 {#    <img src="{{ asset('images/SF1.jpg') }}" class="pic" alt="SF1">#}
 {#    <img src="{{ asset('images/SF2.jpg') }}" class="pic" alt="SF2">#}
 {#</div>#}
+    <main>
+    <header>
+        <img src="{{ asset('images/logo.png') }}" alt="logo">
+    </header>
+        <section class="sidebar">
+            <div class="tiers">
+                <h2>Équipes</h2>
+                <ul>
+                    <li><a href="#">Afficher une équipe</a></li>
+                    <li><a href="#">Modifier une équipe</a></li>
+                    <li><a href="#">Ajouter une équipe</a></li>
+                    <li><a href="#">Supprimer une équipe</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                <h2>Matches</h2>
+                <ul>
+                    <li><a href="#">Afficher un match</a></li>
+                    <li><a href="#">Modifier un match</a></li>
+                    <li><a href="#">Ajouter un match</a></li>
+                    <li><a href="#">Supprimer une match</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                <h2>Plannings</h2>
+                <ul>
+                    <li><a href="#">Voir le planning</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                    <h2>{{ user.pseudo }}</h2>
+                    <ul>
+                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                    </ul>
+                {% else %}
+                    <h2>Mon compte</h2>
+                    <ul>
+                        <li><a href="{{ path("app_login")}}">Connexion</a></li>
+                    </ul>
+                {% endif %}
 
+            </div>
+        </section>
+        <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
+        <section class="pic-ctn">
+            <img src="{{ asset('images/Loisirs.jpg') }}" alt="img" class="img">
+        </section>
 
+        <section class="about">
+
+        </section>
+        <section class="news">
+           <section class="news-content">
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+               <article class="news-element">
+                   <p class="name">Lorem ipsum</p>
+                   <h1 class="title">My title</h1>
+                   <p class="content">Lorem ipsum</p>
+                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
+               </article>
+           </section>
+            <ul class="page">
+                <li class="page-link-li"><a href="#" class="page-link-a"><</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">1</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">2</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">3</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">4</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">5</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">6</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">7</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">8</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">9</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">10</a></li>
+                <li class="page-link-li"><a href="#" class="page-link-a">></a></li>
+            </ul>
+        </section>
+        <section class="contact">
+            <section class="contact-container">
+                <h1>NOUS CONTACTER</h1>
+                <article class="infos">
+                    <h2>Guilherand-Granges Ardèche Handball</h2>
+                    <a href="#" class="contact-element">
+                        <i class="bi bi-geo-alt"></i>
+                        <p> Espace Rémy Roure - 07500 Guilherand-Granges</p>
+                    </a>
+                    <a href="#" class="contact-element">
+                        <i class="bi bi-facebook"></i>
+                        <p> @GGAhandball</p>
+                    </a>
+                    <a href="mailto:5107009@ffhandball.net" class="contact-element">
+                        <i class="bi bi-envelope-check"></i>
+                        <p> 5107009@ffhandball.net</p>
+                    </a>
+
+                </article>
+            </section>
+        </section>
+    </main>
+    <script src="{{ asset('js/index.js') }}"></script>
 {% endblock %}
 
-
-{% block sidebar %}
-<div class="header">
-{#    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">#}
-
-{#    <div class="pic-ctn">#}
-{#        <img src="{{ asset('images/Moins11.jpg') }}" class="pic" alt="Moins11">#}
-{#        <img src="{{ asset('images/Loisirs.jpg') }}" class="pic" alt="Loisirs">#}
-{#        <img src="{{ asset('images/Moins9.jpg') }}" class="pic" alt="Moins9">#}
-{#        <img src="{{ asset('images/Moins13.jpg') }}" class="pic" alt="Moins13">#}
-{#        <img src="{{ asset('images/Moins15.jpg') }}" class="pic" alt="Moins15">#}
-{#        <img src="{{ asset('images/Moins17.jpg') }}" class="pic" alt="Moins17">#}
-{#        <img src="{{ asset('images/Moins18.jpg') }}" class="pic" alt="Moins18">#}
-{#        <img src="{{ asset('images/Seniors1et2.jpg') }}" class="pic" alt="Seniors1et2">#}
-{#        <img src="{{ asset('images/SF1.jpg') }}" class="pic" alt="SF1">#}
-{#        <img src="{{ asset('images/SF2.jpg') }}" class="pic" alt="SF2">#}
-{#    </div>#}
-   <div class="sidebar">
-
-        <div class="tiers">
-        <h2>Équipes</h2>
-            <ul>
-                <li><a href="#">Afficher une équipe</a></li>
-                <li><a href="#">Modifier une équipe</a></li>
-                <li><a href="#">Ajouter une équipe</a></li>
-                <li><a href="#">Supprimer une équipe</a></li>
-            </ul>
-        </div>
-        <div class="tiers">
-            <h2>Matches</h2>
-            <ul>
-                <li><a href="#">Afficher un match</a></li>
-                <li><a href="#">Modifier un match</a></li>
-                <li><a href="#">Ajouter un match</a></li>
-                <li><a href="#">Supprimer une match</a></li>
-            </ul>
-        </div>
-        <div class="tiers">
-            <h2>Plannings</h2>
-            <ul>
-                <li><a href="#">Voir le planning</a></li>
-            </ul>
-        </div>
-        <div class="tiers">
-            <h2>Mon compte</h2>
-            <ul>
-                <li><a href="{{ path("app_register") }}">Connexion</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
+{% block javascripts %}
+    {{ parent() }}
 {% endblock %}
