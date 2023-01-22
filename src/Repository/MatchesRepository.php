@@ -60,6 +60,17 @@ class MatchesRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getLastMatch(): array{
+        return $this->createQueryBuilder('m')
+            ->where('m.date_heure < :date')
+            ->setParameter('date', new \DateTime())
+            ->orderBy('m.date_heure', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function getAllAfterMatch(): array
     {
         return $this->createQueryBuilder('m')
