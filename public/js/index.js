@@ -98,7 +98,7 @@ fetch("/api/lastmatch")
         })
     .then((data) => {
         data = data[0];
-        date = new Date(data.dateHeure);
+        let date = new Date(data.dateHeure);
         let dateElement = document.querySelector(".last-match-date");
         let timeElement = document.querySelector(".last-match-time");
         let opponentElement = document.querySelector(".last-match-team2");
