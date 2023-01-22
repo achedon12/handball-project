@@ -26,6 +26,7 @@ setInterval(() => {
 let newElement = document.querySelectorAll(".news-element");
 newElement.forEach((element) => {
     element.addEventListener("mouseout", () => {
+        element.classList.remove("hover");
         newElement.forEach((element2) => {
            if(element !== element2){
                element2.classList.remove("notHover");
@@ -34,6 +35,7 @@ newElement.forEach((element) => {
     });
 
     element.addEventListener("mouseover", () => {
+        element.classList.add("hover");
         newElement.forEach((element2) => {
             if(element !== element2){
                 element2.classList.add("notHover");
