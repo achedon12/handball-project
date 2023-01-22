@@ -42,7 +42,7 @@ class MatchesRepository extends ServiceEntityRepository
     public function getAllMatchs(): array
     {
         return $this->createQueryBuilder('m')
-            ->orderBy('m.id', 'ASC')
+            ->orderBy('m.id_match', 'ASC')
             ->getQuery()
             ->getResult()
         ;
@@ -85,7 +85,7 @@ class MatchesRepository extends ServiceEntityRepository
     public function getMatchById(int $id): array
     {
         return $this->createQueryBuilder('m')
-            ->where('m.id = :id')
+            ->where('m.id_match = :id')
             ->setParameter('id', $id)
             ->getQuery()
             ->getResult()

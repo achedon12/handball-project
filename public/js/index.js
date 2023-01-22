@@ -22,3 +22,22 @@ setInterval(() => {
     img.src = "images/" + images[imgCount - 1];
     img.alt = images[imgCount - 1];
 },10000);
+
+let newElement = document.querySelectorAll(".news-element");
+newElement.forEach((element) => {
+    element.addEventListener("mouseout", () => {
+        newElement.forEach((element2) => {
+           if(element !== element2){
+               element2.classList.remove("notHover");
+           }
+        });
+    });
+
+    element.addEventListener("mouseover", () => {
+        newElement.forEach((element2) => {
+            if(element !== element2){
+                element2.classList.add("notHover");
+            }
+        });
+    });
+});
