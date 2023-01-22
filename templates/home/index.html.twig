@@ -5,7 +5,7 @@
 
 {% block body %}
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
-    
+    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
 {#<div class="pic-ctn">#}
 {#    <img src="{{ asset('images/Moins11.jpg') }}" class="pic" alt="Moins11">#}
 {#    <img src="{{ asset('images/Loisirs.jpg') }}" class="pic" alt="Loisirs">#}
@@ -64,7 +64,26 @@
             </div>
         </section>
         <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
-        <section class="pic-ctn">
+        <section class="pic-ctn reveal_bottom">
+            <section class="aboutOur">
+                <h1>A propos de nous</h1>
+                <p>Uxor mortalis acerbitati quaedam regni nihil
+                    qui nocendum turgida germanitate per quaedam
+                    acerbitati conpertis avida Constantinus nocendum
+                    male nihil maritus falsa regi eruditiores nihil
+                    grave suetos addere germanitate quaedam male
+                    calumnias adsidua quam artium regi inflammatrix
+                    fratris male nefandarum et nocendum calumnias
+                    mortalis turgida mitius turgida nihil Augusti
+                    temporis versutosque eruditiores quaedam paulatim
+                    modum humani sibi germanitate sibi cruoris placentia
+                    quaedam saevientis cruoris conpertis avida fratris
+                    clandestinos fratris quaedam temporis nihil versutosque et
+                    versutosque acerbitati turgida cruoris regni discentes nefandarum
+                    nocendum maritus saevientis male grave falsa supra ad conpertis regni
+                    grave Constantinus paulatim quaedam Hannibaliano Hannibaliano
+                    avida eruditiores regni turgida.</p>
+            </section>
             <img src="{{ asset('images/Loisirs.jpg') }}" alt="img" class="img">
         </section>
         <section class="match">
@@ -72,7 +91,7 @@
         <section class="about">
         <!-- insert all informations about the club -->
         </section>
-        <section class="news">
+        <section class="news reveal_bottom">
            <section class="news-content">
                <article class="news-element">
                    <p class="name">Lorem ipsum</p>
@@ -138,7 +157,7 @@
                 <li class="page-link-li"><a href="#" class="page-link-a">></a></li>
             </ul>
         </section>
-        <section class="contact">
+        <section class="contact reveal_bottom">
             <section class="contact-container">
                 <h1>NOUS CONTACTER</h1>
                 <article class="infos">
@@ -161,4 +180,5 @@
         </section>
     </main>
     <script src="{{ asset('js/index.js') }}"></script>
+    <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
 {% endblock %}
