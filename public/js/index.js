@@ -23,6 +23,8 @@ setInterval(() => {
     img.alt = images[imgCount - 1];
 },10000);
 
+/*--------------Matches table-----------------*/
+
 let newElement = document.querySelectorAll(".news-element");
 newElement.forEach((element) => {
     element.addEventListener("mouseout", () => {
@@ -45,6 +47,7 @@ newElement.forEach((element) => {
 });
 
 let date;
+
 let remainingTime = document.querySelector(".next-match-remaining-time");
 setInterval(() => {
     let remaining = getRemainingTime(date);
@@ -79,6 +82,7 @@ function getNextMatch(){
             })
         .then((data) => {
             data = data[0];
+            console.log(data);
             date = new Date(data.dateHeure);
             let dateElement = document.querySelector(".next-match-date");
             let timeElement = document.querySelector(".next-match-time");
@@ -88,11 +92,11 @@ function getNextMatch(){
             dateElement.innerHTML = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
             timeElement.innerHTML = date.getHours() + ":" + date.getMinutes();
             if(data.domicileExterieur === 0){
-                us.innerHTML = "GGAHB";
+                us.innerHTML = data.equipeLocale;
                 opponentElement.innerHTML = data.equipeAdverse;
             }else{
                 us.innerHTML = data.equipeAdverse;
-                opponentElement.innerHTML = "US";
+                opponentElement.innerHTML = data.equipeLocale;
             }
             locationElement.innerHTML = data.gymnase;
         });
