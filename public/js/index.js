@@ -23,6 +23,10 @@ setInterval(() => {
     img.alt = images[imgCount - 1];
 },10000);
 
+
+/*--------------Matches table-----------------*/
+
+
 let newElement = document.querySelectorAll(".news-element");
 newElement.forEach((element) => {
     element.addEventListener("mouseout", () => {
@@ -63,8 +67,8 @@ fetch("/api/nextmatch")
         let locationElement = document.querySelector(".next-match-location");
         dateElement.innerHTML = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
         timeElement.innerHTML = date.getHours() + ":" + date.getMinutes();
-        if(data.domicileExterieur === 0){
-            us.innerHTML = "GGAHB";
+        if(data.domicileExterieur === 1){
+            us.innerHTML = "GGAHB - " + data.equipe_locale;
             opponentElement.innerHTML = data.equipeAdverse;
         }else{
             us.innerHTML = data.equipeAdverse;
@@ -106,8 +110,8 @@ fetch("/api/lastmatch")
         let locationElement = document.querySelector(".last-match-location");
         dateElement.innerHTML = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
         timeElement.innerHTML = date.getHours() + ":" + date.getMinutes();
-        if(data.domicileExterieur === 0){
-            us.innerHTML = "GGAHB";
+        if(data.domicileExterieur === 1){
+            us.innerHTML = "GGAHB - " + data.equipe_locale;
             opponentElement.innerHTML = data.equipeAdverse;
         }else{
             us.innerHTML = data.equipeAdverse;
