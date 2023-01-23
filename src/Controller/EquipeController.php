@@ -18,45 +18,24 @@ class EquipeController extends AbstractController
         ]);
     }
 
-    #[Route('/equipe/show/{id}', name: 'app_equipe_show')]
-    public function show(int $id, ManagerRegistry $doctrine): Response
+    #[Route('/equipe/show', name: 'app_equipe_show')]
+    public function show(): Response
     {
-        $equipe = $doctrine->getRepository(Equipes::class)->find($id);
-        if(!$equipe) {
-            return $this->render('equipe/error.html.twig', [
-                'id' => $id,
-            ]);
-        }
         return $this->render('equipe/show.html.twig', [
-            'id' => $id,
         ]);
     }
 
-    #[Route('/equipe/edit/{id}', name: 'app_equipe_edit')]
-    public function edit(int $id, ManagerRegistry $doctrine): Response
+    #[Route('/equipe/edit', name: 'app_equipe_edit')]
+    public function edit(): Response
     {
-        $equipe = $doctrine->getRepository(Equipes::class)->find($id);
-        if(!$equipe) {
-            return $this->render('equipe/error.html.twig', [
-                'id' => $id,
-            ]);
-        }
         return $this->render('equipe/edit.html.twig', [
-            'id' => $id,
         ]);
     }
 
-    #[Route('/equipe/delete/{id}', name: 'app_equipe_delete')]
-    public function delete(int $id, ManagerRegistry $doctrine): Response
+    #[Route('/equipe/delete', name: 'app_equipe_delete')]
+    public function delete(): Response
     {
-        $equipe = $doctrine->getRepository(Equipes::class)->find($id);
-        if(!$equipe) {
-            return $this->render('equipe/error.html.twig', [
-                'id' => $id,
-            ]);
-        }
         return $this->render('equipe/delete.html.twig', [
-            'id' => $id,
         ]);
     }
 

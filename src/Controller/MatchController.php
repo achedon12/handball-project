@@ -18,45 +18,24 @@ class MatchController extends AbstractController
         ]);
     }
 
-    #[Route('/match/{id}', name: 'app_match_show')]
-    public function show(int $id,ManagerRegistry $doctrine): Response
+    #[Route('/match/show', name: 'app_match_show')]
+    public function show(): Response
     {
-        $match = $doctrine->getRepository(Matches::class)->find($id);
-        if(!$match) {
-            return $this->render('match/error.html.twig', [
-                'id' => $id,
-            ]);
-        }
         return $this->render('match/show.html.twig', [
-            'id' => $id,
         ]);
     }
 
-    #[Route('/match/edit/{id}', name: 'app_match_edit')]
-    public function edit(int $id,ManagerRegistry $doctrine): Response
+    #[Route('/match/edit', name: 'app_match_edit')]
+    public function edit(): Response
     {
-        $match = $doctrine->getRepository(Matches::class)->find($id);
-        if(!$match) {
-            return $this->render('match/error.html.twig', [
-                'id' => $id,
-            ]);
-        }
         return $this->render('match/edit.html.twig', [
-            'id' => $id,
         ]);
     }
 
-    #[Route('/match/delete/{id}', name: 'app_match_delete')]
-    public function delete(int $id,ManagerRegistry $doctrine): Response
+    #[Route('/match/delete', name: 'app_match_delete')]
+    public function delete(): Response
     {
-        $match = $doctrine->getRepository(Matches::class)->find($id);
-        if(!$match) {
-            return $this->render('match/error.html.twig', [
-                'id' => $id,
-            ]);
-        }
         return $this->render('match/delete.html.twig', [
-            'id' => $id,
         ]);
     }
 
