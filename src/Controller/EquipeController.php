@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Equipes;
+use App\Form\CreateEquipeType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -40,9 +42,20 @@ class EquipeController extends AbstractController
     }
 
     #[Route('/equipe/create', name: 'app_equipe_add')]
-    public function add(): Response
+    public function add(Request $request, ManagerRegistry $doctrine): Response
     {
+        $equipe = new Equipes();
+        $form = $this->createForm(CreateEquipeType::class, $equipe);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $equipe = $form->getData();
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($equipe);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_equipe_show');
+        }
         return $this->render('equipe/create.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }

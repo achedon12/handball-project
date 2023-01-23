@@ -1,10 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-
-{% endblock %}
+{% block title %}Créer une équipe{% endblock %}
 
 {% block body %}
-
+    <h1>Création d'équipe</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.libelle) }}
+    {{ form_row(form.entraineur) }}
+    {{ form_row(form.creneaux) }}
+    {{ form_row(form.url_photo) }}
+    {{ form_row(form.url_result_calendrier) }}
+    {{ form_row(form.commentaire) }}
+    <button type="submit" class="btn btn-primary">Créer</button>
+    {{ form_end(form) }}
 {% endblock %}
 
