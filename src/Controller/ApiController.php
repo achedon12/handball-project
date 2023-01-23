@@ -36,4 +36,16 @@ class ApiController extends AbstractController
         $lastMatch = $doctrine->getRepository(Matches::class)->getLastMatch();
         return $this->json($lastMatch);
     }
+
+    /**
+     * @Route("/", name="api", methods={"GET"})
+     * @param ManagerRegistry $doctrine
+     * @return JsonResponse
+     */
+    public function getAllAPI(ManagerRegistry $doctrine): JsonResponse{
+        $array = [];
+        $array['nextMatch'] = $this->getNextMatch($doctrine);
+        $array['lastMatch'] = $this->getLastMatch($doctrine);
+        return $this->json($array);
+    }
 }
