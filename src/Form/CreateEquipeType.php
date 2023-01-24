@@ -17,7 +17,6 @@ class CreateEquipeType extends AbstractType
             ->add('libelle')
             ->add('entraineur')
             ->add('creneaux')
-            //TODO: download the image and put it in the public folder
             ->add('url_photo', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
@@ -26,9 +25,9 @@ class CreateEquipeType extends AbstractType
                     new File([
                         'maxSize' => '1024k',
                         'mimeTypes' => [
-                            'image/jpeg',
+                            'image/*',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid JPG document',
+                        'mimeTypesMessage' => 'Please upload a valid image document',
                     ])
                 ],
             ])

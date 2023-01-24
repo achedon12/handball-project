@@ -20,11 +20,16 @@ class EquipeController extends AbstractController
         ]);
     }
 
-    #[Route('/equipe/show', name: 'app_equipe_show')]
-    public function show(): Response
+    #[Route('/equipe/show/{id}', name: 'app_equipe_show')]
+    public function show(int $id,ManagerRegistry $doctrine): Response
     {
-        return $this->render('equipe/show.html.twig', [
-        ]);
+        $equipe = $doctrine->getRepository(Equipes::class)->find($id);
+        if($equipe) {
+            return $this->render('equipe/show.html.twig', [
+                'equipe' => $equipe,
+            ]);
+        }
+        return $this->redirectToRoute('app_equipe');
     }
 
     #[Route('/equipe/edit', name: 'app_equipe_edit')]
@@ -49,10 +54,18 @@ class EquipeController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $equipe = $form->getData();
+            $image = $form->get('url_photo')->getData();
+            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+            $image->move(
+                $this->getParameter('image_directory'),
+                $imageName
+            );
+            $equipe->setUrlPhoto($imageName);
+
             $entityManager = $doctrine->getManager();
             $entityManager->persist($equipe);
             $entityManager->flush();
-            return $this->redirectToRoute('app_equipe_show');
+            return $this->redirectToRoute('app_equipe_show', ['id' => $equipe->getId()]);
         }
         return $this->render('equipe/create.html.twig', [
             'form' => $form->createView(),

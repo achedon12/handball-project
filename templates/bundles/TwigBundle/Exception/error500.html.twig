@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}500 Erreur{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/error500.css') }}">
+    <div>
+        <span class='error-num'>5</span>
+        <div class='eye'></div>
+        <div class='eye'></div>
+        <p class='sub-text'>Oh eyeballs! Something went wrong. We're <i>looking</i> to see what happened.</p>
+        <a href=''>Go back</a>
+    </div>
+
+    <script src="{{ asset('js/error500.js') }}"></script>
+{% endblock %}
