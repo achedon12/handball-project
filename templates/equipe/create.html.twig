@@ -3,15 +3,92 @@
 {% block title %}Créer une équipe{% endblock %}
 
 {% block body %}
-    <h1>Création d'équipe</h1>
-    {{ form_start(form) }}
-    {{ form_row(form.libelle) }}
-    {{ form_row(form.entraineur) }}
-    {{ form_row(form.creneaux) }}
-    {{ form_row(form.url_photo) }}
-    {{ form_row(form.url_result_calendrier) }}
-    {{ form_row(form.commentaire) }}
-    <button type="submit" class="btn btn-primary">Créer</button>
-    {{ form_end(form) }}
+    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/FormTeam.css") }}">
+    <main>
+        <header>
+            <img src="{{ asset('images/logo.png') }}" alt="logo">
+        </header>
+        <section class="sidebar">
+            <div class="tiers">
+                <h2>Équipes</h2>
+                <ul>
+                    <li><a href="{{ path('app_equipe') }}">Afficher une équipe</a></li>
+                    <li><a href="{{ path('app_equipe_edit') }}">Modifier une équipe</a></li>
+                    <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
+                    <li><a href="{{ path('app_equipe_delete') }}">Supprimer une équipe</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                <h2>Matches</h2>
+                <ul>
+                    <li><a href="#">Afficher un match</a></li>
+                    <li><a href="#">Modifier un match</a></li>
+                    <li><a href="#">Ajouter un match</a></li>
+                    <li><a href="#">Supprimer une match</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                <h2>Plannings</h2>
+                <ul>
+                    <li><a href="#">Voir le planning</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                    <h2>{{ user.pseudo }}</h2>
+                    <ul>
+                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                    </ul>
+                {% else %}
+                    <h2>Mon compte</h2>
+                    <ul>
+                        <li><a href="{{ path("app_login")}}">Connexion</a></li>
+                    </ul>
+                {% endif %}
+
+            </div>
+        </section>
+        <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
+
+
+    <section class="main">
+        <section class="formCreateTeam">
+            <h1>Création d'équipe</h1>
+            {{ form_start(form) }}
+            {{ form_row(form.libelle) }}
+            {{ form_row(form.entraineur) }}
+            {{ form_row(form.creneaux) }}
+            {{ form_row(form.url_photo) }}
+            {{ form_row(form.url_result_calendrier) }}
+            {{ form_row(form.commentaire) }}
+            <button type="submit" class="btn btn-primary">Créer</button>
+            {{ form_end(form) }}
+        </section>
+    </section>
+    </main>
+    <section class="contact ">
+        <section class="contact-container">
+            <h1>NOUS CONTACTER</h1>
+            <article class="infos">
+                <h2>Guilherand-Granges Ardèche Handball</h2>
+                <a href="#" class="contact-element">
+                    <i class="bi bi-geo-alt"></i>
+                    <p> Espace Rémy Roure - 07500 Guilherand-Granges</p>
+                </a>
+                <a href="#" class="contact-element">
+                    <i class="bi bi-facebook"></i>
+                    <p> @GGAhandball</p>
+                </a>
+                <a href="mailto:5107009@ffhandball.net" class="contact-element">
+                    <i class="bi bi-envelope-check"></i>
+                    <p> 5107009@ffhandball.net</p>
+                </a>
+
+            </article>
+        </section>
+    </section>
 {% endblock %}
 
