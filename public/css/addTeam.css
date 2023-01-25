@@ -1,0 +1,139 @@
+
+.inputCreateTeam{
+    width: 400px;
+    height: 35px;
+    border-radius: 8px;
+}
+
+
+
+.formCreateTeam{
+
+    background-color: rgba(255,255,255,0.7);
+    border: solid 1px black;
+    width: 75%;
+    height: 450px;
+    text-align: center;
+    border-radius: 25px;
+    margin: auto;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.formCreateTeam h1{
+    text-align: center;
+    font-size: 50px;
+    margin-top: 50px;
+    color: black;
+}
+.logAndTitle{
+    display: flex;
+    flex-direction: column;
+}
+
+.logAndTitle img{
+    width: 50%;
+    min-width: 70px;
+    margin: auto;
+}
+
+.formCreateTeam .fullForm{
+    display: flex;
+    height: 90%;
+}
+
+.formCreateTeam form{
+    height: 90%;
+    width: 80%;
+    margin-top: 25px;
+}
+
+.labelForm{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 35%;
+    /* background: blue; */
+    justify-content: space-around;
+}
+.labelForm label{
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: 25px;
+    height: 40px;
+}
+
+.inputForm{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: auto;
+    /* background: blue; */
+    justify-content: space-around;
+}
+
+.inputForm input,textarea{
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-bottom: 3px solid black;
+    font-size: 25px;
+    width: 100%;
+}
+
+
+
+.formCreateTeam button{
+    width: 25%;
+}
+
+
+.main{
+    display: flex;
+    justify-content: center;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="olivedrab"></circle></g></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="forestgreen"></circle></g></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="limegreen"></circle></g></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="black"></circle></g></svg>'),
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="DimGray"></circle></g></svg>');
+    background-size: 30%, 18%, 15%, 14%, 10%;
+    background-repeat: no-repeat;
+    background-position: -10% -20%, 85% 15%, 20% 100%, 70% 110%,100% 0%;
+    background-color: darkgrey;
+    height: 800px;
+    color: grey;
+    background-attachment: fixed;
+}
+
+/*.formCreateTeam div{*/
+/*    display: flex;*/
+/*    width: 50%;*/
+/*    margin-left: auto;*/
+/*    margin-right: auto;*/
+/*    justify-content: space-between;*/
+/*}*/
+
+/*.formCreateTeam label{*/
+/*    font-size: 20px;*/
+/*}*/
+
+
+/*.formCreateTeam form{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 10px;*/
+/*}*/
+
+
+/*.formCreateTeam form input{*/
+/*    width: 300px;*/
+/*}*/
+
+/*.formCreateTeam button{*/
+/*    width: 25%;*/
+/*    margin-right: auto;*/
+/*    margin-left: auto;*/
+/*}*/

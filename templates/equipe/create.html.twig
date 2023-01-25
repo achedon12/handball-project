@@ -5,7 +5,8 @@
 {% block body %}
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/FormTeam.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/addTeam.css") }}">
+
     <main>
         <header>
             <img src="{{ asset('images/logo.png') }}" alt="logo">
@@ -56,14 +57,30 @@
 
     <section class="main">
         <section class="formCreateTeam">
-            <h1>Création d'équipe</h1>
+            <section class="logAndTitle">
+                <h1> Création d'équipe</h1>
+                <img src="{{ asset('images/logo.png') }}" alt="test">
+            </section>
             {{ form_start(form) }}
-            {{ form_row(form.libelle) }}
-            {{ form_row(form.entraineur) }}
-            {{ form_row(form.creneaux) }}
-            {{ form_row(form.url_photo) }}
-            {{ form_row(form.url_result_calendrier) }}
-            {{ form_row(form.commentaire) }}
+            <section class="fullForm">
+                <section class="labelForm">
+
+                    {{ form_label(form.libelle)}}
+                    {{ form_label(form.entraineur)}}
+                    {{ form_label(form.creneaux)}}
+                    {{ form_label(form.url_photo)}}
+                    {{ form_label(form.url_result_calendrier)}}
+                    {{ form_label(form.commentaire)}}
+                </section>
+                <section class="inputForm">
+                    {{ form_widget(form.libelle, {'attr' : {'class':'inputCreateTeam'}}) }}
+                    {{ form_widget(form.entraineur, {'attr' : {'class':'inputCreateTeam'}}) }}
+                    {{ form_widget(form.creneaux, {'attr' : {'class':'inputCreateTeam'}}) }}
+                    {{ form_widget(form.url_photo, {'attr' : {'class':'inputCreateTeam'}}) }}
+                    {{ form_widget(form.url_result_calendrier, {'attr' : {'class':'inputCreateTeam'}}) }}
+                    {{ form_widget(form.commentaire, {'attr' : {'class':'inputCreateTeam'}}) }}
+                </section>
+            </section>
             <button type="submit" class="btn btn-primary">Créer</button>
             {{ form_end(form) }}
         </section>
