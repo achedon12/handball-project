@@ -39,7 +39,7 @@
                 {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
                     <h2>{{ user.pseudo }}</h2>
                     <ul>
-                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="{{ path('app_account') }}">Mon compte</a></li>
                         <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
                     </ul>
                 {% else %}
@@ -103,54 +103,15 @@
 
         <section class="news reveal_bottom">
            <section class="news-content">
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
-               <article class="news-element">
-                   <p class="name">Lorem ipsum</p>
-                   <h1 class="title">My title</h1>
-                   <p class="content">Lorem ipsum</p>
-                   <img src="{{ asset('images/Affiche-FLuo-2022-300x150.png') }}" alt="news-img" class="news-element-img">
-               </article>
+               {% for post in posts %}
+                   {% set url = path('app_post_show',{'id': post.id}) %}
+                   <a class="news-element" id="{{ post.id }}" href="{{ url}}">
+                       <h3 class="name">{{ post.autor }}</h3>
+                       <p class="content">{{ post.libelle }}</p>
+                       {% set src = '/posts/images/' ~ post.urlPhoto %}
+                       <img src="{{ asset(src) }}" alt="news-img" class="news-element-img">
+                   </a>
+               {% endfor %}
            </section>
             <ul class="page">
                 <li class="page-link-li"><a href="#" class="page-link-a"><</a></li>

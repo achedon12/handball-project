@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('css/account-home.css') }}">
+    <main>
+        <aside class="select">
+            <section class="content">
+                <h2>Notre club</h2>
+                <a class="element" href="{{ path('app_equipe') }}">
+                    <article class="equipe">
+                        <i class="bi bi-person-lines-fill "></i>
+                    </article>
+                   <h1>Equipes</h1>
+                </a>
+                <a class="element" href="{{ path('app_match') }}">
+                    <article class="match">
+                        <i class="bi bi-list-task"></i>
+                    </article>
+                    <h1>Matchs</h1>
+                </a>
+                <a class="element" href="{{ path('app_planning')  }}">
+                    <article class="planning">
+                        <i class="bi bi-calendar-event"></i>
+                    </article>
+                    <h1>Planning</h1>
+                </a>
+            </section>
+        </aside>
+        <section class="main">
+            {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                <section class="post">
+                    <aside class="about">
+                        <h2>A propos</h2>
+                        <p>Créer de nouveaux posts afin de tenir vos
+                            joueurs informés de l'actualité du club.</p>
+                    </aside>
+                    <section class="post-create">
+                        <h2>Créer un post</h2>
+                        {{ form_start(form) }}
+                        {{ form_row(form.libelle) }}
+                        {{ form_row(form.url_photo) }}
+                        <button type="submit" class="btn btn-primary">Créer</button>
+                        {{ form_end(form) }}
+                    </section>
+                </section>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}
