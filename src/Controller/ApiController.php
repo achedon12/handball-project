@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Equipes;
 use App\Entity\Matches;
 use Doctrine\Persistence\ManagerRegistry;
+use PHPUnit\Util\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,6 +48,19 @@ class ApiController extends AbstractController
         $array = [];
         $array['nextMatch'] = $this->getNextMatch($doctrine);
         $array['lastMatch'] = $this->getLastMatch($doctrine);
+        $array['allTeam'] = $this->getAllTeam($doctrine);
         return $this->json($array);
     }
+
+    /**
+     * @Route("/allTeam", name="api_allTeam", methods={"GET"})
+     * @param ManagerRegistry $doctrine
+     * @return JsonResponse
+     */
+
+    public function getAllTeam(ManagerRegistry $doctrine):JsonResponse{
+        $array=$doctrine->getRepository(Equipes::class)->findAll();
+        return $this->json($array);
+    }
+
 }

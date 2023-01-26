@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
+
+
 {% block title %}Accueil{% endblock %}
 {% block body %}
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
     <main>
     <header>
-        <img src="{{ asset('images/logo.png') }}" alt="logo">
+        <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
     </header>
         <section class="sidebar">
             <div class="tiers">

@@ -62,6 +62,8 @@ setInterval(() => {
 getNextMatch();
 getLastMatch();
 
+
+
 function getRemainingTime(date){
     let now = new Date();
     let diff = date - now;
@@ -101,6 +103,9 @@ function getNextMatch(){
             locationElement.innerHTML = data.gymnase;
         });
 }
+
+
+
 
 function getLastMatch(){
     fetch("/api/lastmatch")

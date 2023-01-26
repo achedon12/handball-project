@@ -9,7 +9,7 @@
 
     <main>
         <header>
-            <img src="{{ asset('images/logo.png') }}" alt="logo">
+            <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
         </header>
         <section class="sidebar">
             <div class="tiers">
@@ -55,8 +55,8 @@
         <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
 
 
-    <section class="main">
-        <section class="formCreateTeam">
+    <section class="main ">
+        <section class="formCreateTeam reveal_bottom">
             <section class="logAndTitle">
                 <h1> Création d'équipe</h1>
                 <img src="{{ asset('images/logo.png') }}" alt="test">
@@ -65,11 +65,14 @@
             <section class="fullForm">
                 <section class="labelForm">
 
-                    {{ form_label(form.libelle)}}
+
+                    <label>Nom d'équipe</label>
                     {{ form_label(form.entraineur)}}
                     {{ form_label(form.creneaux)}}
                     {{ form_label(form.url_photo)}}
-                    {{ form_label(form.url_result_calendrier)}}
+
+                    <label> lien Résultats</label>
+
                     {{ form_label(form.commentaire)}}
                 </section>
                 <section class="inputForm">
@@ -86,7 +89,7 @@
         </section>
     </section>
     </main>
-    <section class="contact ">
+    <section class="contact reveal_bottom">
         <section class="contact-container">
             <h1>NOUS CONTACTER</h1>
             <article class="infos">
@@ -107,5 +110,7 @@
             </article>
         </section>
     </section>
+
+    <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
 {% endblock %}
 

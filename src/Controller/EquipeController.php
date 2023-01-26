@@ -13,8 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class EquipeController extends AbstractController
 {
     #[Route('/equipe', name: 'app_equipe')]
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
+
         return $this->render('equipe/index.html.twig', [
             'controller_name' => 'EquipeController',
         ]);
