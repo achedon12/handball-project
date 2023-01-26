@@ -80,6 +80,12 @@
     transition-duration: 0.5s;
 }
 
+.news-element, .news-element:hover, .news-element:focus, .news-element:active
+{
+    text-decoration: none;
+    color: black;
+}
+
 .news-element:hover
 {
     background-color: #e6e6e6;
@@ -91,7 +97,7 @@
 
 .notHover
 {
-    filter: blur(0px);
+    filter: blur(2px);
 }
 
 .hover .news-element-img
@@ -106,11 +112,13 @@
 .news-element-img
 {
     filter: blur(2px);
+    max-width: 300px;
+    max-height: 200px;
 }
 
 .news-content:hover > :not(:hover)
 {
-    filter: blur(2px);
+   /* filter: blur(2px);*/
     transition-duration: 0.8s;
 }
 
@@ -118,11 +126,6 @@
 {
     filter: blur(0px);
     transition-duration: 0.8s;
-}
-
-.news-element-img
-{
-    width: 90%;
 }
 
 .page
