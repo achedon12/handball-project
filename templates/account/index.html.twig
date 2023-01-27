@@ -39,7 +39,8 @@
                     <section class="post-create">
                         <h2>Créer un post</h2>
                         {{ form_start(form) }}
-                        {{ form_row(form.libelle) }}
+                        {{ form_row(form.title) }}
+                        {{ form_row(form.content) }}
                         {{ form_row(form.url_photo) }}
                         <button type="submit" class="btn btn-primary">Créer</button>
                         {{ form_end(form) }}

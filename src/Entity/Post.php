@@ -8,7 +8,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
 #[ORM\Table(name: '`post`')]
-#[UniqueEntity(fields: ['libelle'], message: 'There is already an post with this libelle')]
+#[UniqueEntity(fields: ['title'], message: 'There is already an post with this title')]
 class Post
 {
     #[ORM\Id]
@@ -17,40 +17,56 @@ class Post
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $libelle = null;
+    private ?string $title = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $content = null;
 
     #[ORM\Column(length: 255)]
     #[ORM\JoinColumn(name: "user", referencedColumnName: "id")]
-    private ?string $autor = null;
+    private ?string $author = null;
 
     #[ORM\Column(length: 255)]
     private ?string $url_photo = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $date = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLibelle(): ?string
+    public function getTitle(): ?string
     {
-        return $this->libelle;
+        return $this->title;
     }
 
-    public function setLibelle(string $libelle): self
+    public function setTitle(string $title): self
     {
-        $this->libelle = $libelle;
-
+        $this->title = $title;
         return $this;
     }
 
-    public function getAutor(): ?string
+    public function getContent(): ?string
     {
-        return $this->autor;
+        return $this->content;
     }
 
-    public function setAutor(string $autor): self
+    public function setContent(string $content): self
     {
-        $this->autor = $autor;
+        $this->content = $content;
+        return $this;
+    }
+
+    public function getAuthor(): ?string
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(string $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }
@@ -64,6 +80,17 @@ class Post
     {
         $this->url_photo = $url_photo;
 
+        return $this;
+    }
+
+    public function getDate(): ?string
+    {
+        return $this->date;
+    }
+
+    public function setDate(string $date): self
+    {
+        $this->date = $date;
         return $this;
     }
 }

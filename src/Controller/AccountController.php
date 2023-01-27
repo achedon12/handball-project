@@ -23,7 +23,6 @@ class AccountController extends AbstractController
         $form = $this->createForm(PostType::class,$post);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
-            $post = $form->getData();
             $image = $form->get('url_photo')->getData();
             $imageName = md5(uniqid()).'.'.$image->guessExtension();
             $image->move(
@@ -31,7 +30,10 @@ class AccountController extends AbstractController
                 $imageName
             );
             $post->setUrlPhoto($imageName);
-            $post->setAutor($this->getUser());
+            $post->setAuthor($this->getUser());
+            $post->setTitle($form->get('title')->getData());
+            $post->setContent($form->get('content')->getData());
+            $post->setDate(date("Y-m-d/H:i:s"));
             $doctrine->getManager()->persist($post);
             $doctrine->getManager()->flush();
             return $this->redirectToRoute('app_account');

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,11 +19,15 @@ class PostController extends AbstractController
     }
 
     #[Route('/post/{id}', name: 'app_post_show')]
-    public function show(int $id): Response
+    public function show(int $id, ManagerRegistry $doctrine): Response
     {
+        $post = $doctrine->getRepository(Post::class)->find($id);
+        if(!$post) {
+            return $this->render('post/error.html.twig');
+        }
         return $this->render('post/show.html.twig', [
             'controller_name' => 'PostController',
-            'id' => $id
+            'post' => $post
         ]);
     }
 

@@ -106,8 +106,8 @@
                {% for post in posts %}
                    {% set url = path('app_post_show',{'id': post.id}) %}
                    <a class="news-element" id="{{ post.id }}" href="{{ url}}">
-                       <h3 class="name">{{ post.autor }}</h3>
-                       <p class="content">{{ post.libelle }}</p>
+                       <h3 class="name">{{ post.author }}</h3>
+                       <p class="content">{{ post.title }}</p>
                        {% set src = '/posts/images/' ~ post.urlPhoto %}
                        <img src="{{ asset(src) }}" alt="news-img" class="news-element-img">
                    </a>
