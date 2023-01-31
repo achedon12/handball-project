@@ -49,6 +49,7 @@ class ApiController extends AbstractController
         $array['nextMatch'] = $this->getNextMatch($doctrine);
         $array['lastMatch'] = $this->getLastMatch($doctrine);
         $array['allTeam'] = $this->getAllTeam($doctrine);
+        $array['api_allMatches'] = $this->getAllTeam($doctrine);
         return $this->json($array);
     }
 
@@ -60,6 +61,18 @@ class ApiController extends AbstractController
 
     public function getAllTeam(ManagerRegistry $doctrine):JsonResponse{
         $array=$doctrine->getRepository(Equipes::class)->findAll();
+        return $this->json($array);
+    }
+
+    /**
+     * @Route("/allMatches", name="api_allMatches", methods={"GET"})
+     * @param ManagerRegistry $doctrine
+     * @return JsonResponse
+     */
+
+
+    public function getAllMatches(ManagerRegistry $doctrine):JsonResponse{
+        $array=$doctrine->getRepository(Matches::class)->findAll();
         return $this->json($array);
     }
 
