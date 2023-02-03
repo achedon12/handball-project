@@ -94,15 +94,14 @@
 .main{
     display: flex;
     justify-content: center;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="olivedrab"></circle></g></svg>'),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="forestgreen"></circle></g></svg>'),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="limegreen"></circle></g></svg>'),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="black"></circle></g></svg>'),
-    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" ><g><circle cx="50" cy="50" r="50" fill="DimGray"></circle></g></svg>');
-    background-size: 30%, 18%, 15%, 14%, 10%;
+    background: url('../images/handball.png'),
+    url('../images/logo.png'),
+    url('../images/handballPlayer.png'),
+    url('../images/trophee.png');
+    background-size: 30%, 18%, 15%, 14%;
     background-repeat: no-repeat;
     background-position: -10% -20%, 85% 15%, 20% 100%, 70% 110%,100% 0%;
-    background-color: darkgrey;
+    background-color: rgb(60,60,60);
 
     color: grey;
     background-attachment: fixed;

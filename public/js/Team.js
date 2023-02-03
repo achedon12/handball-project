@@ -16,7 +16,8 @@ function getAllTeam(){
             if (element.creneaux===""){
                 teamSchedules.innerText = "Pas de créneau prévue";
             }else{
-            teamSchedules.innerText = element.creneaux;}
+            teamSchedules.innerText = element.creneaux;
+            }
             teamSection.appendChild(teamImg);
             teamSection.appendChild(teamName);
             teamSection.href= "/equipe/show/"+element.id
@@ -24,8 +25,11 @@ function getAllTeam(){
             teamSection.appendChild(teamSchedules);
             teamSection.classList.add("teamArticle")
 
+
             sectionallTeam.appendChild(teamSection);
         })
+        let load = document.getElementById("loader");
+        load.remove();
 
     })
 }
