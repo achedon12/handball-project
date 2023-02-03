@@ -21,7 +21,7 @@
 
 .teamArticle{
     width: 35%;
-    height: 300px;
+    height: 350px;
     margin: 5px 0 5px 0;
     text-align: center;
     display: flex;
@@ -35,8 +35,8 @@
 }
 
 .teamArticle img{
-    max-height: 180px;
-    max-width: 280px;
+    max-height: 300px;
+    max-width: 350px;
     margin-left: auto;
     margin-right: auto;
 }

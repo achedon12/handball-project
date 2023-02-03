@@ -9,7 +9,8 @@ function getAllTeam(){
             let sectionallTeam = document.querySelector(".allTeam")
             let teamSection = document.createElement("a");
             let teamImg = document.createElement('img');
-            teamImg.src = "images/" + element.urlPhoto;
+            teamImg.src = "/images/" + element.urlPhoto;
+
             let teamName = document.createElement('h2');
             teamName.innerText = element.libelle;
             let teamSchedules = document.createElement("p");
