@@ -49,6 +49,7 @@ main
     justify-content: left;
     align-items: center;
     width: 70%;
+    padding: 3%;
 }
 
 .element:hover, .element:active, .element:focus
@@ -61,33 +62,20 @@ main
 {
     font-size: 1.5em;
     text-align: center;
-    margin-left: 5%;
+    margin: 0 0 0 5%;
 }
 
 .element i
 {
     font-size: 1.5em;
+    padding: 25%;
+    border-radius: 50%;
+    color: white;
 }
 
-
-.equipe i
+.element article
 {
-    padding: 25%;
-    border-radius: 50%;
-    background-color: lightblue;
-}
-
-.match i{
-    padding: 25%;
-    border-radius: 50%;
-    background-color: lightgreen;
-}
-
-.planning i
-{
-    padding: 25%;
-    border-radius: 50%;
-    background-color: lightpink;
+    padding: 1%;
 }
 
 .main
