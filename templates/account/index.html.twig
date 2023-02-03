@@ -7,6 +7,40 @@
     <main>
         <aside class="select">
             <section class="content">
+                <h2>Mon compte</h2>
+                <a href="#" class="element">
+                    <article>
+                        <i class="bi bi-person-circle"></i>
+                    </article>
+                    <h1>Profil</h1>
+                </a>
+                {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                    <a href="#" class="element">
+                        <article>
+                            <i class="bi bi-envelope"></i>
+                        </article>
+                        <h1>Mes posts</h1>
+                    </a>
+                {% endif %}
+            </section>
+            {% if is_granted('ROLE_USER') %}
+                <section class="content">
+                    <h2>Ma vie d'équipe</h2>
+                    <a href="#" class="element">
+                        <article>
+                            <i class="bi bi-person-lines-fill "></i>
+                        </article>
+                        <h1>Mon équipe</h1>
+                    </a>
+                    <a href="#" class="element">
+                        <article>
+                            <i class="bi bi-list-task"></i>
+                        </article>
+                        <h1>Mes matchs</h1>
+                    </a>
+                </section>
+            {% endif %}
+            <section class="content">
                 <h2>Notre club</h2>
                 <a class="element" href="{{ path('app_equipe') }}">
                     <article class="equipe">
@@ -49,4 +83,5 @@
             {% endif %}
         </section>
     </main>
+    <script src="{{ asset('js/account.js') }}"></script>
 {% endblock %}
