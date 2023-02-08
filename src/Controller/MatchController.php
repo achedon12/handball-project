@@ -13,10 +13,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class MatchController extends AbstractController
 {
     #[Route('/match', name: 'app_match')]
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine): Response
     {
+        $matches = $doctrine->getRepository(Matches::class)->findAll();
         return $this->render('match/index.html.twig', [
             'controller_name' => 'MatchController',
+            'matches' => $matches,
+            'user' => $this->getUser(),
         ]);
     }
 
