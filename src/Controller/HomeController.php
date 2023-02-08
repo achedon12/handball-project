@@ -21,7 +21,8 @@ class HomeController extends AbstractController
             ]);
         }
         return $this->render('home/index.html.twig', [
-            'posts' => $posts
+            'posts' => $posts,
+            "user" => $this->getUser(),
         ]);
     }
 }

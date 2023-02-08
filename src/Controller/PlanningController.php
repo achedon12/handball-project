@@ -13,6 +13,7 @@ class PlanningController extends AbstractController
     {
         return $this->render('planning/index.html.twig', [
             'controller_name' => 'PlanningController',
+            "user" => $this->getUser(),
         ]);
     }
 }

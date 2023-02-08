@@ -30,6 +30,7 @@ class MatchController extends AbstractController
         if($match) {
             return $this->render('match/show.html.twig', [
                 'match' => $match,
+                "user" => $this->getUser(),
             ]);
         }
         return $this->redirectToRoute('app_match');
@@ -39,6 +40,7 @@ class MatchController extends AbstractController
     public function edit(): Response
     {
         return $this->render('match/edit.html.twig', [
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -46,6 +48,7 @@ class MatchController extends AbstractController
     public function delete(): Response
     {
         return $this->render('match/delete.html.twig', [
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -59,11 +62,15 @@ class MatchController extends AbstractController
             $match = $form->getData();
             $doctrine->getManager()->persist($match);
             $doctrine->getManager()->flush();
-            return $this->redirectToRoute('app_match_show', ['id' => $match->getId()]);
+            return $this->redirectToRoute('app_match_show', [
+                'id' => $match->getId(),
+                "user" => $this->getUser(),
+                ]);
         }
         return $this->render('match/create.html.twig', [
             'form' => $form->createView(),
-        ]);
+            "user" => $this->getUser(),
+            ]);
 
     }
 }

@@ -18,6 +18,7 @@ class EquipeController extends AbstractController
 
         return $this->render('equipe/index.html.twig', [
             'controller_name' => 'EquipeController',
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -28,6 +29,7 @@ class EquipeController extends AbstractController
         if($equipe) {
             return $this->render('equipe/show.html.twig', [
                 'equipe' => $equipe,
+                "user" => $this->getUser(),
             ]);
         }
         return $this->redirectToRoute('app_equipe');
@@ -37,6 +39,7 @@ class EquipeController extends AbstractController
     public function edit(): Response
     {
         return $this->render('equipe/edit.html.twig', [
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -44,6 +47,7 @@ class EquipeController extends AbstractController
     public function delete(): Response
     {
         return $this->render('equipe/delete.html.twig', [
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -70,6 +74,7 @@ class EquipeController extends AbstractController
         }
         return $this->render('equipe/create.html.twig', [
             'form' => $form->createView(),
+            "user" => $this->getUser(),
         ]);
     }
 }

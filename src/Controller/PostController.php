@@ -15,6 +15,7 @@ class PostController extends AbstractController
     {
         return $this->render('post/index.html.twig', [
             'controller_name' => 'PostController',
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -27,7 +28,8 @@ class PostController extends AbstractController
         }
         return $this->render('post/show.html.twig', [
             'controller_name' => 'PostController',
-            'post' => $post
+            'post' => $post,
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -36,7 +38,8 @@ class PostController extends AbstractController
     {
         return $this->render('post/edit.html.twig', [
             'controller_name' => 'PostController',
-            'id' => $id
+            'id' => $id,
+            "user" => $this->getUser(),
         ]);
     }
 
@@ -45,7 +48,8 @@ class PostController extends AbstractController
     {
         return $this->render('post/delete.html.twig', [
             'controller_name' => 'PostController',
-            'id' => $id
+            'id' => $id,
+            "user" => $this->getUser(),
         ]);
     }
 }
