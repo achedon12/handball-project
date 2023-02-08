@@ -6,7 +6,6 @@
 {% block body %}
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/addTeam.css") }}">
     <link rel="stylesheet" href="{{ asset('css/allTeam.css') }}">
     <main>
         <header>
@@ -54,11 +53,44 @@
             </div>
         </section>
         <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
-
-
         <section class="main">
-            <section class="allMatches">
-                <h1 style="width: 100%; text-align: center">Nos prochain matchs</h1>
+            <aside>
+                <article>
+                    <label for="mounths">Par mois</label>
+                    <select name="mounths" id="mounths">
+                        <option value="all" selected disabled>Tous les mois</option>
+                        <option value="january">Janvier</option>
+                        <option value="february">Février</option>
+                        <option value="march">Mars</option>
+                        <option value="april">Avril</option>
+                        <option value="may">Mai</option>
+                        <option value="june">Juin</option>
+                        <option value="july">Juillet</option>
+                        <option value="august">Août</option>
+                        <option value="september">Septembre</option>
+                        <option value="october">Octobre</option>
+                        <option value="november">Novembre</option>
+                        <option value="december">Décembre</option>
+                    </select>
+                </article>
+                <article>
+                    <label for="category">Par catégorie</label>
+                    <select name="category" id="category">
+                        <option value="all" selected disabled>Toutes les catégories</option>
+                    </select>
+                </article>
+                <article>
+                    <label for="gymnase">Par gymnase</label>
+                    <select name="gymnase" id="gymnase">
+                        <option value="all" selected disabled>Tous les gymnases</option>
+                    </select>
+                </article>
+                <article>
+                    <label for="domicile">Domicile</label>
+                    <input type="checkbox" id="domicile" name="domicile" value="true">
+                </article>
+            </aside>
+            <section class="content">
 
             </section>
         </section>
@@ -80,13 +112,11 @@
                     <i class="bi bi-envelope-check"></i>
                     <p> 5107009@ffhandball.net</p>
                 </a>
-
             </article>
         </section>
     </section>
-
     <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
-    <script src="{{ asset('js/Matches.js') }}"></script>
+    <script src="{{ asset('js/matchs.js') }}"></script>
 {% endblock %}
 
 

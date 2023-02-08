@@ -157,6 +157,26 @@ class MatchesRepository extends ServiceEntityRepository
         ;
     }
 
+    public function getAllCategories(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m.equipe_locale')
+            ->distinct()
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getAllGymnases(): array
+    {
+        return $this->createQueryBuilder('m')
+            ->select('m.gymnase')
+            ->distinct()
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 
 //    /**
 //     * @return Matches[] Returns an array of Matches objects
