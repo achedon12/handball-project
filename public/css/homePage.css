@@ -2,6 +2,10 @@
     scroll-behavior: smooth;
 }
 
+p {
+    text-align: center;
+}
+
 /*---------------------About section------------------*/
 
 .pic-ctn{
@@ -199,17 +203,48 @@ h2 {
     color: white;
 }
 
-.matchSection>legend{
+.matchSection > legend{
     border: none;
 }
 
 legend>h2{
     background-color: #333333;
     box-shadow: 0 -2px 5px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    border: 1px solid #222222;
+    border-radius: 7px;
+    border: 1px solid #333333;
     padding: 0 0.3em 0 0.3em;
     color: white;
+}
+
+.matchSection article {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.matchSection p {
+    font-size: 1.5em;
+}
+
+.matchSection article > p , .matchSection article > section {
+    flex-basis: 100%;
+}
+
+.vsMatchSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+.vsMatchSection > p:nth-child(2n+1) {
+    border: 2px solid #085827;
+    flex-basis: 40%;
+}
+
+.vsMatchSection > p:nth-child(2n) {
+    border-bottom: 2px solid #085827;
+    border-top: 2px solid #085827;
+    flex-basis: 20%;
 }
 
 
@@ -281,8 +316,7 @@ i{
     transition-duration: 0.5s;
 }
 
-p{
-    text-align: center;
+.contact-element p{
     margin: 0 0 0 1%;
 }
 
