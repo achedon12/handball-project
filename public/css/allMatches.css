@@ -1,0 +1,23 @@
+main
+{
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+main>aside
+{
+    flex-basis: 20%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content{
+    flex-basis: 80%;
+}
+
+article select
+{
+    max-width: 200px;
+}
