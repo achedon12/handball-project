@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
     <link rel="stylesheet" href="{{ asset('css/allTeam.css') }}">
+    <link rel="stylesheet" href="{{ asset("css/backgroundIcons.css") }}">
     <main>
         <header>
             <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
@@ -23,10 +24,9 @@
             <div class="tiers">
                 <h2>Matches</h2>
                 <ul>
-                    <li><a href="#">Afficher un match</a></li>
-                    <li><a href="#">Modifier un match</a></li>
-                    <li><a href="#">Ajouter un match</a></li>
-                    <li><a href="#">Supprimer une match</a></li>
+                    <li><a href="{{ path('app_match') }}">Afficher un match</a></li>
+                    <li><a href="{{ path('app_equipe_edit') }}">Modifier un match</a></li>
+                    <li><a href="{{ path('app_equipe_add') }}">Ajouter un match</a></li>
                 </ul>
             </div>
             <div class="tiers">

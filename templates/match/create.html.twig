@@ -3,21 +3,113 @@
 {% block title %}Créer un match{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/addMatch.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/backgroundIcons.css") }}">
+    <header>
+        <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+    </header>
+    <section class="sidebar">
+        <div class="tiers">
+            <h2>Équipes</h2>
+            <ul>
+                <li><a href="{{ path('app_equipe') }}">Afficher une équipe</a></li>
+                <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
+                <li><a href="{{ path('app_equipe_delete') }}">Supprimer une équipe</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            <h2>Matches</h2>
+            <ul>
+                <li><a href="{{ path('app_match') }}">Afficher un match</a></li>
+                <li><a href="{{ path('app_match_edit') }}">Modifier un match</a></li>
+                <li><a href="{{ path('app_match_create') }}">Ajouter un match</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            <h2>Plannings</h2>
+            <ul>
+                <li><a href="#">Voir le planning</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                <h2>{{ user.pseudo }}</h2>
+                <ul>
+                    <li><a href="#">Mon compte</a></li>
+                    <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                </ul>
+            {% else %}
+                <h2>Mon compte</h2>
+                <ul>
+                    <li><a href="{{ path("app_login")}}">Connexion</a></li>
+                </ul>
+            {% endif %}
+
+        </div>
+    </section>
+
+
+
+
     <section class="main">
-        <section class="formCreateTeam">
-            <h1>Création d'équipe</h1>
+        <section class="formCreateMatch">
+            <h1 style="color: black; text-align: center">Création d'un match</h1>
             {{ form_start(form) }}
-            {{ form_row(form.equipe_locale) }}
-            {{ form_row(form.domicile_exterieur) }}
-            {{ form_row(form.equipe_adverse) }}
-            {{ form_row(form.hote) }}
-            {{ form_row(form.date_heure) }}
-            {{ form_row(form.num_semaine) }}
-            {{ form_row(form.num_journee) }}
-            {{ form_row(form.gymnase) }}
+            <section class="equipeAccueil">
+                <section class="equipe">
+                    <label>Equipe GGHB</label>
+                    {{ form_widget(form.equipe_locale, {'attr': {'placeholder': 'équipe local'}}) }}
+                </section>
+                <h2 class="contre">Contre</h2>
+                <section class="equipe">
+                    {{ form_label(form.equipe_adverse) }}
+                    {{ form_widget(form.equipe_adverse, {'attr': {'placeholder': 'équipe adverse'}}) }}
+                </section>
+            </section>
+            <section class="infoSpace">
+                <section class="localisation">
+                    <section class="gymnase">
+                        {{ form_label(form.hote) }}
+                        {{ form_widget(form.hote, {'attr': {'placeholder': 'gymnase Hote'}}) }}
+                    </section>
+                        {{ form_row(form.gymnase) }}
+                    {{ form_row(form.domicile_exterieur) }}
+                </section>
+                <section class="date">
+                    {{ form_row(form.date_heure) }}
+                    {{ form_row(form.num_semaine) }}
+                    {{ form_widget(form.num_journee, {'attr':{'max':1}}) }}
+                </section>
+            </section>
             <button type="submit" class="btn btn-primary">Créer</button>
             {{ form_end(form) }}
         </section>
     </section>
+    <section class="contact reveal_bottom">
+        <section class="contact-container">
+            <h1>NOUS CONTACTER</h1>
+            <article class="infos">
+                <h2>Guilherand-Granges Ardèche Handball</h2>
+                <a href="#" class="contact-element">
+                    <i class="bi bi-geo-alt"></i>
+                    <p> Espace Rémy Roure - 07500 Guilherand-Granges</p>
+                </a>
+                <a href="#" class="contact-element">
+                    <i class="bi bi-facebook"></i>
+                    <p> @GGAhandball</p>
+                </a>
+                <a href="mailto:5107009@ffhandball.net" class="contact-element">
+                    <i class="bi bi-envelope-check"></i>
+                    <p> 5107009@ffhandball.net</p>
+                </a>
+
+            </article>
+        </section>
+    </section>
+
+    <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
 {% endblock %}
+
 

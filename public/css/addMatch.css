@@ -1,0 +1,87 @@
+*{
+    color: black;
+}
+.formCreateMatch{
+    background-color: rgba(255,255,255,0.7);
+    border: solid 1px black;
+    width: 80%;
+    height: 600px;
+    margin:  25px auto 25px auto;
+    border-radius: 12px;
+}
+
+
+.formCreateMatch div{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.equipeAccueil{
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 12px;
+    height: 100px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.equipe{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+.equipe input,select{
+    height: 35px;
+    text-align: center;
+    width: 100%;
+    border-radius: 8px;
+    border: none ;
+    background-color: rgba(255,255,255,0);
+    border-bottom: solid 1px black;
+}
+
+.contre{
+    color: black;
+}
+
+
+.infoSpace{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    height: 250px;
+}
+
+
+
+.localisation{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+.create_match_domicile_exterieur label{
+    margin-bottom: -5px ;
+}
+
+.gymnase{
+    height: 25px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.gymnase:nth-child(1){
+    background-color: green;
+}
