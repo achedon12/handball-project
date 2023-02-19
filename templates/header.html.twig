@@ -5,6 +5,7 @@
 
         <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
     </header>
+
     <section class="sidebar">
         <div class="tiers">
             <a href="{{ path('app_home') }}"><h2>Accueil</h2></a>
@@ -47,5 +48,7 @@
             {% endif %}
         </div>
     </section>
-    <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
+    {% if app.request.attributes.get('_route') != 'app_account' %}
+        <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
+    {% endif %}
 {% endblock %}

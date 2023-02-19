@@ -5,13 +5,13 @@ html, body
 
 body
 {
-    height: 100vh;
+    overflow-y: hidden;
 }
 
 main
 {
     display: flex;
-    height: auto;
+    height: 80vh;
 }
 
 .select
@@ -21,9 +21,10 @@ main
     flex-direction: column;
     align-items: center;
     background-color: #cccccc;
-    margin: auto;
+    padding: 1%;
+    margin: 0;
     overflow-y: scroll;
-    height: 100vh;
+    height: 76vh;
 }
 
 .content
@@ -82,7 +83,9 @@ main
 {
     flex-basis: 80%;
     background-color: #cccccc;
-
+    overflow-y: scroll;
+    height: auto;
+    margin-bottom: 1%;
 }
 
 .post
@@ -90,6 +93,13 @@ main
     display: flex;
     padding: 2%;
     margin: 2%;
+}
+
+#post_content
+{
+    max-height: 100px;
+    overflow-y: scroll;
+    max-width: 300px;
 }
 
 .about
@@ -130,4 +140,44 @@ main
 form input
 {
     margin-left: 5px;
+}
+
+.last-post-content
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.last-post-element
+{
+    margin: 1%;
+    min-width: 300px;
+    width: 20%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid #cccccc;
+    padding: 1%;
+    transition-duration: 0.5s;
+}
+
+.last-post-element, .last-post-element:hover, .last-post-element:focus, .last-post-element:active
+{
+    text-decoration: none;
+    color: black;
+}
+
+.last-post-element:hover
+{
+    background-color: #e6e6e6;
+    cursor: pointer;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.1);
+    transform: scale(1.1);
 }

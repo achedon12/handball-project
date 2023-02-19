@@ -4,6 +4,7 @@
 
 {% block body %}
     <link rel="stylesheet" href="{{ asset('css/account.css') }}">
+    {% include 'header.html.twig' %}
     <main>
         <aside class="select">
             <section class="content">
@@ -13,6 +14,12 @@
                         <i class="bi bi-person-circle"></i>
                     </article>
                     <h1>Profil</h1>
+                </a>
+                <a href="{{ path('app_logout') }}" class="element">
+                    <article>
+                        <i class="bi bi-box-arrow-right"></i>
+                    </article>
+                    <h1>Déconnexion</h1>
                 </a>
                 {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
                     <a href="#" class="element">
@@ -26,13 +33,7 @@
             {% if is_granted('ROLE_USER') %}
                 <section class="content">
                     <h2>Ma vie d'équipe</h2>
-                    <a href="#" class="element">
-                        <article>
-                            <i class="bi bi-person-lines-fill "></i>
-                        </article>
-                        <h1>Mon équipe</h1>
-                    </a>
-                    <a href="#" class="element">
+                    <a href="{{ path('app_match') }}" class="element">
                         <article>
                             <i class="bi bi-list-task"></i>
                         </article>
@@ -61,6 +62,23 @@
                     <h1>Planning</h1>
                 </a>
             </section>
+            {% if is_granted('ROLE_ADMIN') %}
+                <section class="content">
+                    <h2>Comptes</h2>
+                    <a href="{{ path('app_register') }}" class="element">
+                        <article>
+                            <i class="bi bi-person-plus"></i>
+                        </article>
+                        <h1>Créer un compte</h1>
+                    </a>
+                    <a href="#" class="element">
+                        <article>
+                            <i class="bi bi-person-check"></i>
+                        </article>
+                        <h1>Gérer les comptes</h1>
+                    </a>
+                </section>
+            {% endif %}
         </aside>
         <section class="main">
             {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
@@ -79,6 +97,18 @@
                         <button type="submit" class="btn btn-primary">Créer</button>
                         {{ form_end(form) }}
                     </section>
+                </section>
+                <section class="last-post-content">
+                    <h1>Dernier post de {{ post.author}}</h1>
+                    {% set url = path('app_post_show',{'id': post.id}) %}
+                    <a class="last-post-element" id="{{ post.id }}" href="{{ url}}">
+                        <p class="content">{{ post.title }}</p>
+                        {% set src = '/posts/images/' ~ post.urlPhoto %}
+                        <img src="{{ asset(src) }}" alt="news-img" class="last-post-element-img">
+                    </a>
+                </section>
+                <section class="nextMatch">
+                    <!-- TODO: mettre le prochain    match  -->
                 </section>
             {% endif %}
         </section>
