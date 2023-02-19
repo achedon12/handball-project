@@ -109,9 +109,9 @@
     filter: blur(0px);
 }
 
-:not(.news-element:hover){
-    transition-duration: 0.8s;
-}
+/*:not(.news-element:hover){*/
+/*    transition-duration: 0.8s;*/
+/*}*/
 
 .news-element-img
 {

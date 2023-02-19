@@ -6,13 +6,17 @@ use App\Entity\Equipes;
 use App\Entity\Matches;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\VarDumper\Cloner\Data;
+use Symfony\Config\Doctrine\Orm\EntityManagerConfig\EntityListeners\EntityConfig\ListenerConfig;
 use Symfony\Config\Security\ProviderConfig\EntityConfig;
+
 
 class CreateMatchType extends AbstractType
 {
@@ -22,6 +26,7 @@ class CreateMatchType extends AbstractType
             ->add('equipe_locale', EntityType::class,[
                 'class'=>Equipes::class,
                 'choice_label'=>'libelle',
+
             ])
             ->add('domicile_exterieur', ChoiceType::class,[
                     'choices'=>[
@@ -40,6 +45,10 @@ class CreateMatchType extends AbstractType
             ->add('num_journee')
             ->add('gymnase')
         ;
+
+
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void
