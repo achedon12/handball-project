@@ -7,9 +7,53 @@
     <link rel="stylesheet" href="{{ asset("css/addMatch.css") }}">
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
     <link rel="stylesheet" href="{{ asset("css/backgroundIcons.css") }}">
-    {% include 'header.html.twig' %}
-    <section class="main">
+    <header>
+        <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+    </header>
+    <section class="sidebar">
+        <div class="tiers">
+            <h2>Équipes</h2>
+            <ul>
+                <li><a href="{{ path('app_equipe') }}">Afficher une équipe</a></li>
+                <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
+                <li><a href="{{ path('app_equipe_delete') }}">Supprimer une équipe</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            <h2>Matches</h2>
+            <ul>
+                <li><a href="{{ path('app_match') }}">Afficher un match</a></li>
+                <li><a href="{{ path('app_match_edit') }}">Modifier un match</a></li>
+                <li><a href="{{ path('app_match_create') }}">Ajouter un match</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            <h2>Plannings</h2>
+            <ul>
+                <li><a href="#">Voir le planning</a></li>
+            </ul>
+        </div>
+        <div class="tiers">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                <h2>{{ user.pseudo }}</h2>
+                <ul>
+                    <li><a href="#">Mon compte</a></li>
+                    <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                </ul>
+            {% else %}
+                <h2>Mon compte</h2>
+                <ul>
+                    <li><a href="{{ path("app_login")}}">Connexion</a></li>
+                </ul>
+            {% endif %}
 
+        </div>
+    </section>
+
+
+
+
+    <section class="main">
         <section class="formCreateMatch">
             <h1 style="color: black; text-align: center">Création d'un match</h1>
             {{ form_start(form) }}
@@ -26,27 +70,24 @@
             </section>
             <section class="infoSpace">
                 <section class="localisation">
-
-                    {{ form_row(form.hote) }}
-                    {{ form_row(form.gymnase) }}
+                    <section class="gymnase">
+                        {{ form_label(form.hote) }}
+                        {{ form_widget(form.hote, {'attr': {'placeholder': 'gymnase Hote'}}) }}
+                    </section>
+                        {{ form_row(form.gymnase) }}
                     {{ form_row(form.domicile_exterieur) }}
                 </section>
-                <img src="{{ asset('images/logo.png') }}" alt="">
                 <section class="date">
-                    {{ form_widget(form.date_heure) }}
-                    <label>Numéro semaine championnat</label>
-                    {{ form_widget(form.num_semaine) }}
-                    <label>Numéro journée championnat</label>
-                    {{ form_widget(form.num_journee, {'attr':{'min':0}}) }}
+                    {{ form_row(form.date_heure) }}
+                    {{ form_row(form.num_semaine) }}
+                    {{ form_widget(form.num_journee, {'attr':{'max':1}}) }}
                 </section>
             </section>
-            <section class="btn">
-                <button type="submit" class="btn btn-primary">Créer</button>
-            </section>
+            <button type="submit" class="btn btn-primary">Créer</button>
             {{ form_end(form) }}
         </section>
     </section>
-    <section class="contact ">
+    <section class="contact reveal_bottom">
         <section class="contact-container">
             <h1>NOUS CONTACTER</h1>
             <article class="infos">

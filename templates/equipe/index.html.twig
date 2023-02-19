@@ -9,7 +9,52 @@
     <link rel="stylesheet" href="{{ asset("css/allTeam.css") }}">
     <link rel="stylesheet" href="{{ asset("css/loader.css") }}">
     <link rel="stylesheet" href="{{ asset("css/backgroundIcons.css") }}">
-    {% include 'header.html.twig' %}
+    <main>
+        <header>
+            <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+        </header>
+        <section class="sidebar">
+            <div class="tiers">
+                <h2>Équipes</h2>
+                <ul>
+                    <li><a href="{{ path('app_equipe') }}">Afficher une équipe</a></li>
+                    <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
+                    <li><a href="{{ path('app_equipe_delete') }}">Supprimer une équipe</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                <h2>Matches</h2>
+                <ul>
+                    <li><a href="{{ path('app_match') }}">Afficher un match</a></li>
+                    <li><a href="{{ path('app_match_edit') }}">Modifier un match</a></li>
+                    <li><a href="{{ path('app_match_create') }}">Ajouter un match</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                <h2>Plannings</h2>
+                <ul>
+                    <li><a href="#">Voir le planning</a></li>
+                </ul>
+            </div>
+            <div class="tiers">
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                    <h2>{{ user.pseudo }}</h2>
+                    <ul>
+                        <li><a href="#">Mon compte</a></li>
+                        <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                    </ul>
+                {% else %}
+                    <h2>Mon compte</h2>
+                    <ul>
+                        <li><a href="{{ path("app_login")}}">Connexion</a></li>
+                    </ul>
+                {% endif %}
+
+            </div>
+        </section>
+        <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
+
+
         <section class="main ">
             <section class="allTeam"></section>
         </section>

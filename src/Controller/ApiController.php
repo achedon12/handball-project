@@ -52,7 +52,6 @@ class ApiController extends AbstractController
         $array['allMatches'] = $this->getAllTeam($doctrine);
         $array['allCategories'] = $this->getAllCategories($doctrine);
         $array['allGymnases'] = $this->getAllGymnases($doctrine);
-        $array['OneTeam'] = $this->getTeamById($doctrine,10);
         return $this->json($array);
     }
 
@@ -111,17 +110,4 @@ class ApiController extends AbstractController
         $array=$doctrine->getRepository(Matches::class)->getAllGymnases();
         return $this->json($array);
     }
-
-
-    /**
-     * @Route("/OneTeam", name="api_OneTeam", methods={"GET"})
-     * @param ManagerRegistry $doctrine
-     * @param int $id
-     * @return JsonResponse
-     */
-
-    public function getTeamById(ManagerRegistry $doctrine, int $id):JsonResponse{
-        return $doctrine->getRepository(Equipes::class)->getTeamById($id);
-    }
-
 }

@@ -14,39 +14,25 @@ displayMatchtes();
 function displayMatchtes(){
     let caterogyValue = getSelectValue('category');
     let gymnaseValue = getSelectValue('gymnase');
-    let divLoader = document.createElement('div');
-    divLoader.className="loader"
+
     fetch('/api/allMatches?equipe_locale=' + caterogyValue + '&gymnase=' + gymnaseValue +  '&domicile_exterieur=' + domicileSelect.value)
         .then(response => response.json())
         .then(data => {
             data.forEach(match => {
-                let a = document.createElement('section');
+                let a = document.createElement('a');
+                a.href = '/match/show/' + match.id;
                 a.className = 'list-group-item list-group-item-action';
                 let h1 = document.createElement('h1');
                 h1.className = 'list-group-item-heading';
                 let date = new Date(match.dateHeure);
                 h1.innerHTML = match.equipeLocale + ' - ' + match.equipeAdverse;
-                let divInfo = document.createElement('section');
-                let dateText = document.createElement('p');
-                let lieuText = document.createElement('p');
-                let heureText = document.createElement('p');
-
-                dateText.innerHTML=new Date(match.dateHeure).toLocaleDateString();
-                lieuText.innerHTML=match.gymnase;
-                heureText.innerHTML=date.toLocaleTimeString();
-
-
-                divInfo.className = 'list-group-item-text';
-                divInfo.appendChild(dateText);
-                divInfo.appendChild(lieuText);
-                divInfo.appendChild(heureText);
+                let p = document.createElement('p');
+                p.className = 'list-group-item-text';
+                p.innerHTML = new Date(match.dateHeure).toLocaleDateString() + ' - ' + match.gymnase + ' - ' + date.toLocaleTimeString();
                 a.appendChild(h1);
-                a.appendChild(divInfo);
+                a.appendChild(p);
                 matchContent.appendChild(a);
-
             });
-            let load = document.getElementById("loader");
-            load.remove();
         })
         .catch(error => console.error(error)
         );

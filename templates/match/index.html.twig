@@ -1,42 +1,33 @@
 {% extends 'base.html.twig' %}
 
 
-{% block title %}Voir les matchs{% endblock %}
+{% block title %}Voir une équipe{% endblock %}
 
 {% block body %}
     <link rel="stylesheet" href="{{ asset('css/allMatches.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/backgroundIcons.css') }}">
-    <link rel="stylesheet" href="{{ asset("css/loader.css") }}">
     {% include 'header.html.twig' %}
 
     <main>
-        <section class="formGetMatches">
-            <h1>Calendrier des matchs</h1>
-            <section class="form">
-                <article>
-                    <label for="category">Par catégorie</label>
-                    <select name="category" id="category">
-                        <option value="all" selected>Toutes les catégories</option>
-                    </select>
-                </article>
-                <article>
-                    <label for="gymnase">Par gymnase</label>
-                    <select name="gymnase" id="gymnase">
-                        <option value="all" selected>Tous les gymnases</option>
-                    </select>
-                </article>
-                <article>
-                    <label for="domicile">Domicile</label>
-                    <input type="checkbox" id="domicile" name="domicile" value="true">
-                </article>
-            </section>
-        </section>
-        <section class="content">
-            <div class="loader" id="loader" style="margin: 12px auto;"></div>
-        </section>
-
+        <aside>
+            <article>
+                <label for="category">Par catégorie</label>
+                <select name="category" id="category">
+                    <option value="all" selected>Toutes les catégories</option>
+                </select>
+            </article>
+            <article>
+                <label for="gymnase">Par gymnase</label>
+                <select name="gymnase" id="gymnase">
+                    <option value="all" selected>Tous les gymnases</option>
+                </select>
+            </article>
+            <article>
+                <label for="domicile">Domicile</label>
+                <input type="checkbox" id="domicile" name="domicile" value="true">
+            </article>
+        </aside>
+        <section class="content"></section>
     </main>
-    {%  include 'footer.html.twig' %}
     <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
     <script src="{{ asset('js/matchs.js') }}"></script>
 {% endblock %}
