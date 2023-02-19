@@ -1,3 +1,9 @@
+body
+{
+    overflow-y: hidden;
+
+}
+
 main
 {
     display: flex;
@@ -15,6 +21,8 @@ main>aside
 
 .content{
     flex-basis: 80%;
+    overflow-y: scroll;
+    height: 55vh;
 }
 
 article select

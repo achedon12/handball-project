@@ -4,13 +4,12 @@
 
 {% block body %}
     <link rel="stylesheet" href="{{ asset('css/post.css') }}">
+    {% include 'header.html.twig' %}
     <main>
-        <section>
-            <aside>
-                {% set img = '/posts/images/'~ post.urlPhoto %}
-                <img src="{{ asset(img) }}" alt="post" class="post-image">
-            </aside>
-            <article>
+        <section class="post">
+            {% set img = '/posts/images/'~ post.urlPhoto %}
+            <img src="{{ asset(img) }}" alt="post" class="post-image">
+            <article class="post-article">
                 {% set date = post.date |split('/') %}
                 <h1>{{ post.title }}</h1>
                 <p>{{ post.content }}</p>
