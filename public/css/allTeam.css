@@ -11,33 +11,47 @@
     padding-bottom: 2%;
     text-transform: uppercase;
     border-radius: 25px;
+
 }
 
 .teamArticle:hover{
     text-decoration: none;
-    transform: scale(1.05);
+    background-color: rgba(255,255,255,0.8);
 }
 
 
 .teamArticle{
-    width: 35%;
+    width: 45%;
     height: 300px;
     margin: 5px 0 5px 0;
     text-align: center;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: rgba(255,255,255,0.6);
-    border: solid 1px black;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(255,255,255,0.5);
+    border: solid 1px forestgreen;
     border-radius: 8px;
     color: black !important;
     text-transform: uppercase;
+    transition: 0.8s;
 }
 
 .teamArticle img{
-    max-height: 180px;
-    max-width: 280px;
-    margin-left: auto;
-    margin-right: auto;
+    max-height: 205px;
+    max-width: 314px;
 }
 
+.infoSection{
+    display: flex;
+    flex-direction: column;
+    height: 32%;
+    justify-content: space-around;
+    width: 100%;
+    text-align: left;
+    margin-left: 25px;
+}
+
+
+.slotSection>p{
+    text-align: left;
+}
