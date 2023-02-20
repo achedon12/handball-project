@@ -39,6 +39,13 @@ class EquipesRepository extends ServiceEntityRepository
         }
     }
 
+    public function getTeamById(int $id){
+        return $this->createQueryBuilder('equipes')
+            ->where('equipes.id=:id')
+            ->setParameter('id',$id)
+            ->getQuery()
+            ->getResult();
+    }
 
 
 
