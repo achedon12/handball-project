@@ -1,0 +1,13 @@
+body{
+    background: url('../images/handball.png'),
+    url('../images/logo.png'),
+    url('../images/handballPlayer.png'),
+    url('../images/trophee.png');
+    background-size: 30%, 18%, 15%, 14%;
+    background-repeat: no-repeat;
+    background-position: -10% -20%, 85% 15%, 20% 100%, 70% 110%,100% 0%;
+    background-color: rgb(60,60,60) !important;
+
+    color: grey;
+    background-attachment: fixed;
+}

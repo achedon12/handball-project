@@ -1,31 +1,81 @@
-body
-{
-    overflow-y: hidden;
-
-}
-
 main
 {
     display: flex;
+    flex-direction: column;
     width: 100%;
     height: auto;
+    color: black;
 }
-
-main>aside
+.formGetMatches
 {
     flex-basis: 20%;
     padding: 1%;
     display: flex;
     flex-direction: column;
+    text-align: center;
+    background-color: rgba(255,255,255,0.7);
+    width: 60%;
+    margin: 10px auto 10px;
+    border: solid 1px forestgreen;
+    border-radius: 12px;
 }
+
+.form{
+    display: flex;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    gap: 15px;
+}
+
 
 .content{
     flex-basis: 80%;
-    overflow-y: scroll;
-    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
 article select
 {
+    min-width: 200px;
     max-width: 200px;
+}
+
+.list-group-item{
+    background-color: rgba(255,255,255,0.5);
+    width: 80%;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: row-reverse;
+    border: solid 1px forestgreen;
+}
+
+.list-group-item>section{
+    text-align: center;
+    display: flex;
+
+}
+
+.list-group-item:hover{
+    transition: 0.5s;
+    background-color: rgba(255,255,255,0.8);
+}
+
+.list-group-item-heading{
+    width: 80%;
+}
+.list-group-item-text{
+    width: 20%;
+    color: black;
+    border-right: solid 1px forestgreen;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }

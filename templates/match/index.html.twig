@@ -4,7 +4,13 @@
 {% block title %}Voir une équipe{% endblock %}
 
 {% block body %}
+
     <link rel="stylesheet" href="{{ asset('css/allMatches.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/allTeam.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/backgroundIcons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/goTopButton.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/homePage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     {% include 'header.html.twig' %}
 
     <main>
@@ -26,8 +32,12 @@
                 <input type="checkbox" id="domicile" name="domicile" value="true">
             </article>
         </aside>
-        <section class="content"></section>
+
+        <section class="content">
+            <section id="loader" style="margin-left: auto;margin-right: auto"></section>
+        </section>
     </main>
+    {% include 'footer.html.twig' %}
     <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
     <script src="{{ asset('js/matchs.js') }}"></script>
 {% endblock %}
