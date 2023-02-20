@@ -2,7 +2,6 @@
 .banner
 {
     width: 100%;
-    z-index: -1;
 }
 
 header
@@ -37,6 +36,7 @@ header>img
     position: absolute;
     filter: brightness(50%);
     width: 100%;
+    height: 15vh;
 }
 
 .sidebar
