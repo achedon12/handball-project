@@ -10,13 +10,15 @@ let selects = [
 ];
 
 
-
 function displayMatchtes(){
     let caterogyValue = getSelectValue('category');
     let gymnaseValue = getSelectValue('gymnase');
     let divLoader = document.createElement('div');
     divLoader.className="loader"
-    fetch('/api/allMatches?equipe_locale=' + caterogyValue + '&gymnase=' + gymnaseValue +  '&domicile_exterieur=' + domicileSelect.value)
+    let domicileValue = domicileSelect.checked;
+    domicileValue = domicileValue ? 1 : 0;
+
+    fetch('/api/allMatches?equipe_locale=' + caterogyValue + '&gymnase=' + gymnaseValue +  '&domicile_exterieur=' + domicileValue)
         .then(response => response.json())
         .then(data => {
             data.forEach(match => {
@@ -35,7 +37,6 @@ function displayMatchtes(){
                 lieuText.innerHTML=match.gymnase;
                 heureText.innerHTML=date.toLocaleTimeString();
 
-
                 divInfo.className = 'list-group-item-text';
                 divInfo.appendChild(dateText);
                 divInfo.appendChild(lieuText);
@@ -50,7 +51,6 @@ function displayMatchtes(){
         })
         .catch(error => console.error(error)
         )
-
 
 }
 
