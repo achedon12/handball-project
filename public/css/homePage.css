@@ -38,16 +38,6 @@ p {
 
 
 
-.reveal_bottom{
-    opacity: 0;
-    transform: translateY(+30px);
-}
-
-.reveal_bottom_visible{
-    opacity: 1;
-    transform: translateY(0);
-    transition: 1s;
-}
 
 
 /*--------------------- news -----------------------*/
@@ -260,65 +250,7 @@ legend>h2{
 
 
 /* -------------Contact----------------*/
-.contact
-{
-    background-color: #f8f9f9;
-    display: flex;
-    align-self: center;
-    justify-content: center;
-}
 
-.contact-container
-{
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.infos
-{
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    width: 100%;
-}
-
-
-
-.infos>*
-{
-    text-transform: uppercase;
-    color: #666;
-    padding-top: 2%;
-}
-
-i{
-    background-color: #aaaaaa;
-    padding: 5px;
-    border-radius: 50%;
-    color: white;
-}
-
-.contact-element
-{
-    text-decoration: none;
-    color: black;
-    display: inline-flex;
-    align-items: center;
-    flex-direction: row;
-    padding: 2%;
-}
-
-.contact-element:hover i {
-    color: forestgreen;
-    transition-duration: 0.5s;
-}
-
-.contact-element p{
-    margin: 0 0 0 1%;
-}
 
 
 

@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PostController!{% endblock %}
+{% block title %}Post n°{{ post.id}} - {{ post.author }}{% endblock %}
+
 
 {% block body %}
-    <link rel="stylesheet" href="{{ asset('css/post.css') }}">
+    <head>
+        <link rel="stylesheet" href="{{ asset('css/post.css') }}">
+    </head>
     {% include 'header.html.twig' %}
     <main>
         <section class="post">
@@ -17,4 +20,6 @@
             </article>
         </section>
     </main>
+    {% include 'footer.html.twig' %}
 {% endblock %}
+
