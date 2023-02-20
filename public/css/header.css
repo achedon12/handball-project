@@ -2,70 +2,82 @@
 .banner
 {
     width: 100%;
+    z-index: -1;
 }
 
 header
 {
-    background-color: #333333;
     color: #ffffff;
-    text-align: center;
     width: 100%;
-    height: 150px;
-    padding: 15px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+}
+
+.logo
+{
+    flex-basis: 10%;
+    text-align: center;
 }
 
 header img
 {
-
-    width: 7%;
     min-width: 70px;
+    width: 7%;
 }
-.img
+
+header>a, header>section
 {
-    width: 120%;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
+    position: relative;
 }
 
+header>img
+{
+    position: absolute;
+    filter: brightness(50%);
+    width: 100%;
+}
 
-.sidebar{
+.sidebar
+{
+    flex-basis: 90%;
     display: flex;
     justify-content: space-around;
     flex-direction: row;
     text-align: center;
     width: 100%;
     height: 50px;
-    background-color: #333333;
 }
 
-.tiers{
+.tiers
+{
     width: 15%;
 }
 
-.tiers>ul{
+.tiers>ul
+{
     display: none;
 }
 
-.tiers:hover{
+.tiers:hover
+{
     cursor: pointer;
 }
 
-
-
-.tiers:hover>ul{
+.tiers:hover>ul
+{
     display: block;
     position: relative;
     z-index: 2;
     width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     background-color: rgba(0,0,0,0.7);
     border-radius: 8px;
 }
 
-.tiers li{
+.tiers li
+{
     height: 50px;
     font-size: 1.5em;
     display: flex;
@@ -73,7 +85,8 @@ header img
     justify-content: center;
 }
 
-.tiers li a{
+.tiers li a
+{
     color: #ffffff;
     text-decoration: none;
     margin-top: auto;
@@ -81,7 +94,8 @@ header img
     width: 100%;
 }
 
-.tiers li:hover {
+.tiers li:hover
+{
     background-color: forestgreen;
     border-radius: 8px;
     text-decoration: none;
@@ -91,14 +105,16 @@ header img
     transition-property: background-color;
 }
 
-
-
-.tiers h2{
+.tiers h2
+{
     text-transform:uppercase;
+    display: inline-block;
+    margin: 0;
     color: #c9c9c1;
 }
 
-.tiers h2:after{
+.tiers h2:after
+{
     display:block;
     content: '';
     border-bottom: solid 3px gray;
@@ -106,8 +122,8 @@ header img
     transition: transform 250ms ease-in-out;
 }
 
-
-.tiers:hover>ul{
+.tiers:hover>ul
+{
     display: flex;
     flex-direction: column;
     position: relative;
@@ -116,4 +132,7 @@ header img
     width: auto;
 }
 
-.tiers:hover h2:after { transform: scaleX(1); }
+.tiers:hover h2:after
+{
+    transform: scaleX(1);
+}
