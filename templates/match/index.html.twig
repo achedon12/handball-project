@@ -4,116 +4,30 @@
 {% block title %}Voir une équipe{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
-    <link rel="stylesheet" href="{{ asset('css/allTeam.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/allMatches.css') }}">
+    {% include 'header.html.twig' %}
+
     <main>
-        <header>
-            <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
-        </header>
-        <section class="sidebar">
-            <div class="tiers">
-                <h2>Équipes</h2>
-                <ul>
-                    <li><a href="{{ path('app_equipe') }}">Afficher une équipe</a></li>
-                    <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
-                    <li><a href="{{ path('app_equipe_delete') }}">Supprimer une équipe</a></li>
-                </ul>
-            </div>
-            <div class="tiers">
-                <h2>Matches</h2>
-                <ul>
-                    <li><a href="#">Afficher un match</a></li>
-                    <li><a href="#">Modifier un match</a></li>
-                    <li><a href="#">Ajouter un match</a></li>
-                    <li><a href="#">Supprimer une match</a></li>
-                </ul>
-            </div>
-            <div class="tiers">
-                <h2>Plannings</h2>
-                <ul>
-                    <li><a href="#">Voir le planning</a></li>
-                </ul>
-            </div>
-            <div class="tiers">
-                {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
-                    <h2>{{ user.pseudo }}</h2>
-                    <ul>
-                        <li><a href="#">Mon compte</a></li>
-                        <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
-                    </ul>
-                {% else %}
-                    <h2>Mon compte</h2>
-                    <ul>
-                        <li><a href="{{ path("app_login")}}">Connexion</a></li>
-                    </ul>
-                {% endif %}
-
-            </div>
-        </section>
-        <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
-        <section class="main">
-            <aside>
-                <article>
-                    <label for="mounths">Par mois</label>
-                    <select name="mounths" id="mounths">
-                        <option value="all" selected disabled>Tous les mois</option>
-                        <option value="january">Janvier</option>
-                        <option value="february">Février</option>
-                        <option value="march">Mars</option>
-                        <option value="april">Avril</option>
-                        <option value="may">Mai</option>
-                        <option value="june">Juin</option>
-                        <option value="july">Juillet</option>
-                        <option value="august">Août</option>
-                        <option value="september">Septembre</option>
-                        <option value="october">Octobre</option>
-                        <option value="november">Novembre</option>
-                        <option value="december">Décembre</option>
-                    </select>
-                </article>
-                <article>
-                    <label for="category">Par catégorie</label>
-                    <select name="category" id="category">
-                        <option value="all" selected disabled>Toutes les catégories</option>
-                    </select>
-                </article>
-                <article>
-                    <label for="gymnase">Par gymnase</label>
-                    <select name="gymnase" id="gymnase">
-                        <option value="all" selected disabled>Tous les gymnases</option>
-                    </select>
-                </article>
-                <article>
-                    <label for="domicile">Domicile</label>
-                    <input type="checkbox" id="domicile" name="domicile" value="true">
-                </article>
-            </aside>
-            <section class="content">
-
-            </section>
-        </section>
-    </main>
-    <section class="contact reveal_bottom">
-        <section class="contact-container">
-            <h1>NOUS CONTACTER</h1>
-            <article class="infos">
-                <h2>Guilherand-Granges Ardèche Handball</h2>
-                <a href="#" class="contact-element">
-                    <i class="bi bi-geo-alt"></i>
-                    <p> Espace Rémy Roure - 07500 Guilherand-Granges</p>
-                </a>
-                <a href="#" class="contact-element">
-                    <i class="bi bi-facebook"></i>
-                    <p> @GGAhandball</p>
-                </a>
-                <a href="mailto:5107009@ffhandball.net" class="contact-element">
-                    <i class="bi bi-envelope-check"></i>
-                    <p> 5107009@ffhandball.net</p>
-                </a>
+        <aside>
+            <article>
+                <label for="category">Par catégorie</label>
+                <select name="category" id="category">
+                    <option value="all" selected>Toutes les catégories</option>
+                </select>
             </article>
-        </section>
-    </section>
+            <article>
+                <label for="gymnase">Par gymnase</label>
+                <select name="gymnase" id="gymnase">
+                    <option value="all" selected>Tous les gymnases</option>
+                </select>
+            </article>
+            <article>
+                <label for="domicile">Domicile</label>
+                <input type="checkbox" id="domicile" name="domicile" value="true">
+            </article>
+        </aside>
+        <section class="content"></section>
+    </main>
     <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
     <script src="{{ asset('js/matchs.js') }}"></script>
 {% endblock %}

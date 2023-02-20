@@ -60,7 +60,7 @@ class ApiController extends AbstractController
      * @param ManagerRegistry $doctrine
      * @return JsonResponse
      */
-    public function getAllTeam(ManagerRegistry $doctrine):JsonResponse{
+    public function getAllTeam(ManagerRegistry $doctrine): JsonResponse{
         $array=$doctrine->getRepository(Equipes::class)->findAll();
         return $this->json($array);
     }
@@ -70,8 +70,24 @@ class ApiController extends AbstractController
      * @param ManagerRegistry $doctrine
      * @return JsonResponse
      */
-    public function getAllMatches(ManagerRegistry $doctrine):JsonResponse{
-        $array=$doctrine->getRepository(Matches::class)->findAll();
+    public function getAllMatches(ManagerRegistry $doctrine): JsonResponse{
+
+        $localTeam = $_GET['equipe_locale'];
+        $gymnase = $_GET['gymnase'];
+        $domicile_exterieur = $_GET['domicile_exterieur'];
+
+        $criteria = [];
+        if ($localTeam != 'all') {
+            $criteria['equipe_locale'] = $localTeam;
+        }
+        if ($gymnase != 'all') {
+            $criteria['gymnase'] = $gymnase;
+        }
+        if ($domicile_exterieur != 'all') {
+            $criteria['domicile_exterieur'] = $domicile_exterieur;
+        }
+
+        $array = $doctrine->getRepository(Matches::class)->findBy($criteria);
         return $this->json($array);
     }
 

@@ -42,6 +42,7 @@ class AccountController extends AbstractController
         return $this->render('account/index.html.twig', [
             "user" => $this->getUser(),
             'form' => $form->createView(),
+            'post' => $doctrine->getRepository(Post::class)->getLastPost($this->getUser())
         ]);
     }
 }

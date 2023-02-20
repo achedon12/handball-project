@@ -1,0 +1,52 @@
+{% block header %}
+    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
+    <header>
+        <a href="{{ path('app_home') }}"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
+    </header>
+
+    <section class="sidebar">
+        <div class="tiers">
+            <a href="{{ path('app_home') }}"><h2>Accueil</h2></a>
+        </div>
+        <div class="tiers">
+            <a href="{{ path('app_equipe') }}"><h2>Équipes</h2></a>
+            {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                <ul>
+                    <li><a href="{{ path('app_equipe') }}">Afficher les équipes</a></li>
+                    <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
+                    <li><a href="{{ path('app_equipe_delete') }}">Supprimer une équipe</a></li>
+                </ul>
+            {% endif %}
+        </div>
+        <div class="tiers">
+            <a href="{{ path('app_match') }}"><h2>Matches</h2></a>
+            {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                <ul>
+                    <li><a href="{{ path('app_match') }}">Afficher les matchs</a></li>
+                    <li><a href="{{ path('app_match_create') }}">Ajouter un match</a></li>
+                    <li><a href="{{ path('app_match_delete') }}">Supprimer un match</a></li>
+                </ul>
+            {% endif %}
+        </div>
+        <div class="tiers">
+            <a href="{{ path('app_planning') }}"><h2>Planning</h2></a>
+        </div>
+        <div class="tiers">
+            {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                <h2>{{ user.pseudo }}</h2>
+                <ul>
+                    <li><a href="{{ path('app_account') }}">Mon compte</a></li>
+                    <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                </ul>
+            {% else %}
+                <h2>Mon compte</h2>
+                <ul>
+                    <li><a href="{{ path("app_login")}}">Connexion</a></li>
+                </ul>
+            {% endif %}
+        </div>
+    </section>
+    {% if app.request.attributes.get('_route') != 'app_account' %}
+        <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
+    {% endif %}
+{% endblock %}

@@ -3,10 +3,17 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
@@ -48,6 +55,16 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])
+            ->add('roles', ChoiceType::class, [
+                'label' => 'Rôle',
+                'choices' => [
+                    'Administrateur' => 'ROLE_ADMIN',
+                    'Utilisateur' => 'ROLE_USER',
+                    'Coach' => 'ROLE_COACH',
+                ],
+                'multiple' => true,
+                'expanded' => false,
             ])
         ;
     }
