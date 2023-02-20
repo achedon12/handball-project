@@ -52,13 +52,10 @@ let remainingTime = document.querySelector(".next-match-remaining-time");
 setInterval(() => {
 
     let remaining = getRemainingTime(date);
-    if(remaining === "NaNj NaNh NaNm NaNs"){
-        remainingTime.hidden = true;
-    } else {
-        remainingTime.hidden = false;
-    }
-    if(remaining !== "0j 0h 0m 0s"){
-        remainingTime.innerHTML = remaining;
+    console.log(remaining)
+    remainingTime.hidden = isNaN(remaining[0]);
+    if(remaining !== [0, 0, 0, 0]){
+        remainingTime.innerHTML = remaining[0]+"j "+remaining[1]+"h "+remaining[2]+"m "+remaining[3]+"s";
 
     }
 },1000);
@@ -76,7 +73,7 @@ function getRemainingTime(date){
     let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((diff % (1000 * 60)) / 1000);
-    return days + "j " + hours + "h " + minutes + "m " + seconds + "s";
+    return [days, hours, minutes, seconds];
 }
 
 function getNextMatch(){
@@ -96,10 +93,7 @@ function getNextMatch(){
             let opponentElement = document.querySelector(".next-match-team2");
             let us = document.querySelector(".next-match-team1");
             let locationElement = document.querySelector(".next-match-location");
-            dateElement.innerHTML = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +
-                "/" + ((date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1)) +
-                "/" + date.getFullYear();
-            timeElement.innerHTML = date.getHours() + ":" + (date.getMinutes() === 0 ? "00" : date.getMinutes());
+            dateTimeToString(date, dateElement, timeElement);
             if(data.domicileExterieur === 0){
                 us.innerHTML = data.equipeLocale;
                 opponentElement.innerHTML = data.equipeAdverse;
@@ -130,10 +124,7 @@ function getLastMatch(){
             let opponentElement = document.querySelector(".last-match-team2");
             let us = document.querySelector(".last-match-team1");
             let locationElement = document.querySelector(".last-match-location");
-            dateElement.innerHTML = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +
-                "/" + ((date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1)) +
-                "/" + date.getFullYear();
-            timeElement.innerHTML = date.getHours() + ":" + (date.getMinutes() === 0 ? "00" : date.getMinutes());
+            dateTimeToString(date, dateElement, timeElement);
             if(data.domicileExterieur === 0){
                 us.innerHTML = "GGAHB";
                 opponentElement.innerHTML = data.equipeAdverse;
@@ -143,4 +134,11 @@ function getLastMatch(){
             }
             locationElement.innerHTML = data.gymnase;
         });
+}
+
+function dateTimeToString(date, dateElement, timeElement){
+    dateElement.innerHTML = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +
+        "/" + ((date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1)) +
+        "/" + date.getFullYear();
+    timeElement.innerHTML = date.getHours() + ":" + (date.getMinutes() === 0 ? "00" : date.getMinutes());
 }
