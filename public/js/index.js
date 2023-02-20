@@ -93,7 +93,7 @@ function getNextMatch(){
             let opponentElement = document.querySelector(".next-match-team2");
             let us = document.querySelector(".next-match-team1");
             let locationElement = document.querySelector(".next-match-location");
-            dateTimeToString(date, dateElement, timeElement);
+            dateTimeComponentsToInnerHTML(date, dateElement, timeElement);
             if(data.domicileExterieur === 0){
                 us.innerHTML = data.equipeLocale;
                 opponentElement.innerHTML = data.equipeAdverse;
@@ -124,7 +124,7 @@ function getLastMatch(){
             let opponentElement = document.querySelector(".last-match-team2");
             let us = document.querySelector(".last-match-team1");
             let locationElement = document.querySelector(".last-match-location");
-            dateTimeToString(date, dateElement, timeElement);
+            dateTimeComponentsToInnerHTML(date, dateElement, timeElement);
             if(data.domicileExterieur === 0){
                 us.innerHTML = "GGAHB";
                 opponentElement.innerHTML = data.equipeAdverse;
@@ -136,9 +136,9 @@ function getLastMatch(){
         });
 }
 
-function dateTimeToString(date, dateElement, timeElement){
-    dateElement.innerHTML = (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) +
-        "/" + ((date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1)) +
-        "/" + date.getFullYear();
+function dateTimeComponentsToInnerHTML(date, dateElement, timeElement){
+    dateElement.innerHTML = new Intl.DateTimeFormat("fr-FR", {weekday : "long"}).format(date.getDay()) + " " +
+        (date.getDate() < 10 ? "0" + date.getDate() : date.getDate()) + " " +
+        new Intl.DateTimeFormat("fr-FR", {month : "long"}).format(date.getMonth()) + " " + date.getFullYear();
     timeElement.innerHTML = date.getHours() + ":" + (date.getMinutes() === 0 ? "00" : date.getMinutes());
 }
