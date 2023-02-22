@@ -206,36 +206,41 @@ legend>h2{
     color: white;
 }
 
-.matchSection article {
-    display: flex;
-    flex-wrap: wrap;
+.matchSection table, .matchSection tbody {
+    width: 100%;
 }
 
-.matchSection p {
+.matchSection td {
+    text-align: center;
+}
+
+.next-match-team1, .next-match-team2 {
+    font-size: 1.5em;
+    width: 35%;
+    padding: 0.2em;
+}
+
+.matchContent > tr:nth-child(2) > td:nth-child(2n+1) {
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+}
+
+.next-match-time {
+    border: 1px solid #000000;
+    background-color: #DDDDDD;
+    font-size: 3em;
+    color: #1b1b1b;
+    box-shadow: inset 0 7px 15px 1px #1b1b1b;
+}
+
+.matchContent > tr {
+    height: 4em;
+}
+
+.next-match-date, .next-match-location, .next-match-remaining-time {
     font-size: 1.5em;
 }
 
-.matchSection article > p , .matchSection article > section {
-    flex-basis: 100%;
-}
-
-.vsMatchSection {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    vertical-align: middle;
-}
-
-.vsMatchSection > p:nth-child(2n+1) {
-    border: 2px solid #085827;
-    flex-basis: 40%;
-}
-
-.vsMatchSection > p:nth-child(2n) {
-    border-bottom: 2px solid #085827;
-    border-top: 2px solid #085827;
-    flex-basis: 20%;
-}
 
 
 /*.separatorRigth{*/
