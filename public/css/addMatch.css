@@ -54,7 +54,7 @@
 
 
 .infoSpace{
-    width: 80%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     margin-left: auto;
@@ -70,6 +70,7 @@
     flex-direction: column;
     justify-content: space-around;
     width: 35%;
+
 }
 
 .localisation>div{
@@ -78,6 +79,8 @@
     flex-direction: row;
     margin-left: 30px;
     margin-right: 30px;
+    justify-content: space-between;
+    width: 100%;
 }
 
 
@@ -137,3 +140,29 @@
 
 }
 
+.img img {
+
+    width: 100%;
+
+}
+
+.img{
+    width: 100px;
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (min-width: 726px) and (max-width: 1024px) {
+
+
+
+
+    .formCreateMatch{
+        width: 100%;
+        margin: 0;
+    }
+
+
+
+}

@@ -6,19 +6,19 @@
 {% block body %}
 
     <link rel="stylesheet" href="{{ asset('css/allMatches.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/allTeam.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/backgroundIcons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/goTopButton.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/homePage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     {% include 'header.html.twig' %}
 
     <main>
-        <aside>
+        <aside class="form formGetMatches">
             <article>
-                <label for="category">Par catégorie</label>
+                <h2>FILTRE</h2>
+                <label for="category">Par équipe</label>
                 <select name="category" id="category">
-                    <option value="all" selected>Toutes les catégories</option>
+                    <option value="all" selected>Toutes les équipes</option>
                 </select>
             </article>
             <article>

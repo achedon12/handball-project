@@ -72,6 +72,7 @@
     height: 80%;
     width: auto;
     /* background: blue; */
+
     justify-content: space-around;
 }
 
@@ -94,7 +95,7 @@
 .main{
     display: flex;
     justify-content: center;
-
+    margin-top: 10px;
 }
 
 /*.formCreateTeam div{*/
@@ -126,3 +127,16 @@
 /*    margin-right: auto;*/
 /*    margin-left: auto;*/
 /*}*/
+
+@media screen and (min-width: 726px) and (max-width: 1024px) {
+
+    .main{
+        height: 90vh;
+    }
+
+    .formCreateTeam{
+        margin: auto 0 auto 0;
+        width: 100%;
+    }
+
+}

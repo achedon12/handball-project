@@ -3,17 +3,53 @@
 {% block title %}Création de compte{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     {% include 'header.html.twig' %}
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.pseudo) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword, {
-        label: 'Password'
-    }) }}
-    {{ form_row(registrationForm.roles) }}
-    {{ form_row(registrationForm.agreeTerms) }}
+    <main>
+        <link rel="stylesheet" href="{{ asset('css/addTeam.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/backgroundIcons.css') }}">
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+
+
+        <section class="registrateForm formCreateTeam">
+            <h2>Nouveau utilisateur</h2>
+            <section class="left">
+            {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.pseudo, {label: 'Nom Utilisateur'}) }}
+            {{ form_row(registrationForm.email, {label: 'Email'}) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            </section>
+
+            <section class="rigth">
+            {{ form_row(registrationForm.roles, {label: 'Rôle'}) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+            </section>
+                <button type="submit" class="btn">Register</button>
+            {{ form_end(registrationForm) }}
+        </section>
+    </main>
+    <section class="contact">
+        <section class="contact-container">
+            <h1>NOUS CONTACTER</h1>
+            <article class="infos">
+                <h2>Guilherand-Granges Ardèche Handball</h2>
+                <a href="#" class="contact-element">
+                    <i class="bi bi-geo-alt"></i>
+                    <p> Espace Rémy Roure - 07500 Guilherand-Granges</p>
+                </a>
+                <a href="#" class="contact-element">
+                    <i class="bi bi-facebook"></i>
+                    <p> @GGAhandball</p>
+                </a>
+                <a href="mailto:5107009@ffhandball.net" class="contact-element">
+                    <i class="bi bi-envelope-check"></i>
+                    <p> 5107009@ffhandball.net</p>
+                </a>
+
+            </article>
+        </section>
+    </section>
 {% endblock %}
