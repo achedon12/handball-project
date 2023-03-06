@@ -22,35 +22,6 @@ class EquipeController extends AbstractController
         ]);
     }
 
-    #[Route('/equipe/show/{id}', name: 'app_equipe_show')]
-    public function show(int $id,ManagerRegistry $doctrine): Response
-    {
-        $equipe = $doctrine->getRepository(Equipes::class)->find($id);
-        if($equipe) {
-            return $this->render('equipe/show.html.twig', [
-                'equipe' => $equipe,
-                "user" => $this->getUser(),
-            ]);
-        }
-        return $this->redirectToRoute('app_equipe');
-    }
-
-    #[Route('/equipe/edit', name: 'app_equipe_edit')]
-    public function edit(): Response
-    {
-        return $this->render('equipe/edit.html.twig', [
-            "user" => $this->getUser(),
-        ]);
-    }
-
-    #[Route('/equipe/delete', name: 'app_equipe_delete')]
-    public function delete(): Response
-    {
-        return $this->render('equipe/delete.html.twig', [
-            "user" => $this->getUser(),
-        ]);
-    }
-
     #[Route('/equipe/create', name: 'app_equipe_add')]
     public function add(Request $request, ManagerRegistry $doctrine): Response
     {

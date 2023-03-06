@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Equipes;
 use App\Entity\Matches;
 use App\Form\CreateMatchType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -26,7 +27,7 @@ class MatchController extends AbstractController
     #[Route('/match/show/{id}', name: 'app_match_show')]
     public function show(int $id,ManagerRegistry $doctrine): Response
     {
-        $match = $doctrine->getRepository(Matches::class)->find($id);
+        $match = $doctrine->getRepository(Equipes::class)->find($id);
         if($match) {
             return $this->render('match/show.html.twig', [
                 'match' => $match,
@@ -34,22 +35,6 @@ class MatchController extends AbstractController
             ]);
         }
         return $this->redirectToRoute('app_match');
-    }
-
-    #[Route('/match/edit', name: 'app_match_edit')]
-    public function edit(): Response
-    {
-        return $this->render('match/edit.html.twig', [
-            "user" => $this->getUser(),
-        ]);
-    }
-
-    #[Route('/match/delete', name: 'app_match_delete')]
-    public function delete(): Response
-    {
-        return $this->render('match/delete.html.twig', [
-            "user" => $this->getUser(),
-        ]);
     }
 
     #[Route('/match/create', name: 'app_match_create')]
@@ -71,6 +56,5 @@ class MatchController extends AbstractController
             'form' => $form->createView(),
             "user" => $this->getUser(),
             ]);
-
     }
 }
