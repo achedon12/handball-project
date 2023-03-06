@@ -76,6 +76,24 @@ header>img
     border-radius: 8px;
 }
 
+.tiers:focus
+{
+    cursor: pointer;
+}
+
+.tiers:focus>ul
+{
+    display: block;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 8px;
+}
+
+
+
 .tiers li
 {
     height: 50px;
@@ -105,6 +123,18 @@ header>img
     transition-property: background-color;
 }
 
+.tiers li:focus
+{
+    background-color: forestgreen;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    transition: transform 500ms ease;
+    transition-property: background-color;
+}
+
+
 .tiers h2
 {
     text-transform:uppercase;
@@ -132,7 +162,36 @@ header>img
     width: auto;
 }
 
+.tiers:focus>ul
+{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top:auto;
+    width: auto;
+}
+
+
 .tiers:hover h2:after
 {
     transform: scaleX(1);
+}
+
+
+@media screen and (min-width: 726px) and (max-width: 1024px) {
+    .logo{
+        display: none;
+    }
+    .sidebar{
+        flex-basis: 100%;
+    }
+    .tiers ul{
+        width: 200% !important;
+    }
+
+    .connexion ul{
+        width: 110% !important;
+    }
+
 }

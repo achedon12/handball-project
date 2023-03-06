@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset("css/addMatch.css") }}">
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
     <link rel="stylesheet" href="{{ asset("css/backgroundIcons.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/footer.css") }}">
     {% include 'header.html.twig' %}
 
     <section class="main">
@@ -33,7 +34,7 @@
                         {{ form_row(form.domicile_exterieur) }}
 
                 </section>
-                <img src="{{ asset('images/logo.png') }}" alt="">
+                <section class="img"><img src="{{ asset('images/logo.png') }}" alt=""></section>
                 <section class="date">
                     {{ form_row(form.date_heure) }}
                     {{ form_row(form.num_semaine) }}

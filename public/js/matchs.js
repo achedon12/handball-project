@@ -27,7 +27,7 @@ function displayMatchtes(){
                 let h1 = document.createElement('h1');
                 h1.className = 'list-group-item-heading';
                 let date = new Date(match.dateHeure);
-                h1.innerHTML = match.equipeLocale + ' - ' + match.equipeAdverse;
+                h1.innerHTML = match.equipeLocale + ' contre ' + match.equipeAdverse;
                 let divInfo = document.createElement('section');
                 let dateText = document.createElement('p');
                 let lieuText = document.createElement('p');

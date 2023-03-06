@@ -1,11 +1,15 @@
 main
 {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     height: auto;
     color: black;
+    margin: 10px 0 10px 0;
 }
+
+
+
 .formGetMatches
 {
     flex-basis: 20%;
@@ -14,14 +18,17 @@ main
     flex-direction: column;
     text-align: center;
     background-color: rgba(255,255,255,0.7);
-    width: 60%;
+    width: 25%;
     margin: 10px auto 10px;
     border: solid 1px forestgreen;
     border-radius: 12px;
 }
 
 .form{
+
+    width: 20%;
     display: flex;
+    flex-direction: column;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
@@ -34,19 +41,21 @@ main
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-bottom: 10px;
+    align-items: center;
+    height: 80vh;
+    overflow-y: scroll;
 }
 
 article select
 {
-    min-width: 200px;
-    max-width: 200px;
+    min-width: 100% ;
+    max-width: 100% ;
 }
 
 .list-group-item{
-    background-color: rgba(255,255,255,0.5);
-    width: 80%;
-    height: 100px;
+    background-color: rgba(255,255,255,0.8);
+    width: 95%;
+    height: 140px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 8px;
@@ -69,6 +78,7 @@ article select
 
 .list-group-item-heading{
     width: 80%;
+    align-self: center;
 }
 .list-group-item-text{
     width: 20%;
@@ -78,4 +88,12 @@ article select
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+@media screen and (min-width: 726px) and (max-width: 1024px) {
+    .formGetMatches select{
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+
 }
