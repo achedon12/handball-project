@@ -8,19 +8,6 @@
     <main>
         <aside class="select">
             <section class="content">
-                <h2>Mon compte</h2>
-                <a href="#" class="element">
-                    <article>
-                        <i class="bi bi-person-circle"></i>
-                    </article>
-                    <h1>Profil</h1>
-                </a>
-                <a href="{{ path('app_logout') }}" class="element">
-                    <article>
-                        <i class="bi bi-box-arrow-right"></i>
-                    </article>
-                    <h1>Déconnexion</h1>
-                </a>
                 {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
                     <a href="#" class="element">
                         <article>
@@ -29,6 +16,12 @@
                         <h1>Mes posts</h1>
                     </a>
                 {% endif %}
+                <a href="{{ path('app_logout') }}" class="element">
+                    <article>
+                        <i class="bi bi-box-arrow-right"></i>
+                    </article>
+                    <h1>Déconnexion</h1>
+                </a>
             </section>
             <section class="content">
                 <h2>Notre club</h2>
