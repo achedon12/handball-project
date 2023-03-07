@@ -4,11 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Equipes;
 use App\Entity\Matches;
+use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Util\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @package App\Controller
@@ -52,6 +54,7 @@ class ApiController extends AbstractController
         $array['allMatches'] = $this->getAllTeam($doctrine);
         $array['allCategories'] = $this->getAllCategories($doctrine);
         $array['allGymnases'] = $this->getAllGymnases($doctrine);
+        $array['allUsers'] = $this->getAllUser($doctrine);
         return $this->json($array);
     }
 
@@ -108,6 +111,17 @@ class ApiController extends AbstractController
      */
     public function getAllGymnases(ManagerRegistry $doctrine):JsonResponse{
         $array=$doctrine->getRepository(Matches::class)->getAllGymnases();
+        return $this->json($array);
+    }
+
+    /**
+     * @Route("/allUsers", name="api_allUsers", methods={"GET"})
+     * @param ManagerRegistry $doctrine
+     * @return JsonResponse
+     */
+    public function getAllUser(ManagerRegistry $doctrine): JsonResponse
+    {
+        $array=$doctrine->getRepository(User::class)->findAll();
         return $this->json($array);
     }
 }

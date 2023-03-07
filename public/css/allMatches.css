@@ -97,6 +97,19 @@ article select
     main{
         flex-direction: row;
     }
+}
+
+
+@media screen and (max-width: 725px) {
+    main{
+        flex-direction: column;
+    }
+    .form{
+        width: 100%;
+    }
+
+
+
 
 }
 

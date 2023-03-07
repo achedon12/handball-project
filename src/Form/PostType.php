@@ -16,15 +16,17 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title', null, [
-                "label" => "Titre du post"
+                "label" => "Titre du post",
+                "required" => true
             ])
             ->add('content', TextareaType::class, [
-                "label" => "Contenu du post"
+                "label" => "Contenu du post",
+                "required" => true
             ])
             ->add('url_photo',FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '2048k',

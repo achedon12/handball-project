@@ -12,7 +12,6 @@ use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Choice;
-use Symfony\Config\Security\ProviderConfig\EntityConfig;
 
 class CreateMatchType extends AbstractType
 {

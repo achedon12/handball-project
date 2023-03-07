@@ -15,13 +15,11 @@
     1. Clone the project on your computer.
     2. Open a terminal in the project folder.
     3. Run the command "composer install" to install the dependencies.
-    4. Run the command "cd public" and after, run "npm install" to install the dependencies.
-    5. Run the command "cd .." to go back to the project folder.
-    6. Run the command "symfony console doctrine:database:create" to create the database.
-    7. Run the command "symfony console doctrine:migrations:migrate" to create the tables.
-    8. Run the command "symfony console doctrine:fixtures:load" to load the fixtures.
-    9. Run the command "symfony server:start" to start the server.
-    10. Open your browser and go to the address "http://
+    4. Run the command "symfony doctrine:schema:update" to create the database.
+    5. Import the script.sql file into your database.
+    6. Run the command "symfony console doctrine:fixtures:load" to load the fixtures.
+    7. Run the command "symfony server:start" to start the server.
+    8. Open your browser and go to the address "http://http://127.0.0.1:8000/".
 
 ### 2. Project structure
 

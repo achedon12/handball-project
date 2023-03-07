@@ -5,40 +5,39 @@
     <header>
         <img src="{{ asset('images/banniere_2.png') }}" alt="banner" class="banner">
         <a href="{{ path('app_home') }}" class="logo"><img src="{{ asset('images/logo.png') }}" alt="logo"></a>
-        <section class="sidebar">
-            <div class="tiers">
+
+        <ul class="sidebar menu">
+            <li class="tiers">
                 <a href="{{ path('app_home') }}"><h2>Accueil</h2></a>
-            </div>
-            <div class="tiers">
+            </li>
+            <li class="tiers item">
 
                 {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
                     <h2>Équipes</h2>
                     <ul>
                         <li><a href="{{ path('app_equipe') }}">Afficher les équipes</a></li>
                         <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
-                        <li><a href="{{ path('app_equipe_delete') }}">Supprimer une équipe</a></li>
                     </ul>
                 {% else %}
                     <a href="{{ path('app_equipe') }}"><h2>Équipes</h2></a>
                 {% endif %}
-            </div>
-            <div class="tiers">
+            </li>
+            <li class="tiers item">
                 {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
                     <h2>Matches</h2>
 
                     <ul>
                         <li><a href="{{ path('app_match') }}">Afficher les matchs</a></li>
                         <li><a href="{{ path('app_match_create') }}">Ajouter un match</a></li>
-                        <li><a href="{{ path('app_match_delete') }}">Supprimer un match</a></li>
                     </ul>
                 {% else %}
                     <a href="{{ path('app_match') }}"><h2>Matches</h2></a>
                 {% endif %}
-            </div>
-            <div class="tiers">
+            </li>
+            <li class="tiers item">
                 <a href="{{ path('app_planning') }}"><h2>Planning</h2></a>
-            </div>
-            <div class="tiers connexion">
+            </li>
+            <li class="tiers item connexion">
                 {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
                     <h2>{{ user.pseudo }}</h2>
                     <ul>
@@ -51,7 +50,8 @@
                         <li><a href="{{ path("app_login")}}">Connexion</a></li>
                     </ul>
                 {% endif %}
-            </div>
-        </section>
+            </li>
+            <li class="toggle burger"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
     </header>
 {% endblock %}
