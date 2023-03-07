@@ -1,22 +1,18 @@
-html, body
-{
+html, body {
     height: 100%;
 }
 
-body
-{
+body {
     overflow-y: hidden;
     height: 85vh;
 }
 
-main
-{
+main {
     display: flex;
     height: 85vh;
 }
 
-.select
-{
+.select {
     flex-basis: 25%;
     display: flex;
     flex-direction: column;
@@ -28,23 +24,20 @@ main
     height: 85vh;
 }
 
-.content
-{
+.content {
     margin: 1%;
     background-color: white;
     border-radius: 15px;
     width: 90%;
 }
 
-.content>h2
-{
+.content > h2 {
     margin-left: 5%;
     font-size: 1.5em;
 }
 
-.element
-{
-    margin:auto;
+.element {
+    margin: auto;
     text-decoration: none;
     color: black;
     display: flex;
@@ -55,34 +48,29 @@ main
 
 }
 
-.element:hover, .element:active, .element:focus
-{
+.element:hover, .element:active, .element:focus {
     color: black;
     text-decoration: none;
 }
 
-.element h1
-{
+.element h1 {
     font-size: 1.5em;
     text-align: center;
     margin: 0 0 0 10%;
 }
 
-.element i
-{
+.element i {
     font-size: 1.5em;
     padding: 25%;
     border-radius: 50%;
     color: white;
 }
 
-.element article
-{
+.element article {
     padding: 1%;
 }
 
-.main
-{
+.main {
     flex-basis: 80%;
     background-color: #cccccc;
     overflow-y: scroll;
@@ -90,22 +78,21 @@ main
     padding-bottom: 1%;
 }
 
-.post
-{
+.post {
     display: flex;
     padding: 2%;
     margin: 2%;
 }
 
-#post_content
-{
-    max-height: 100px;
+#post_content {
+    max-height: 200px;
+    min-height: 100px;
     overflow-y: scroll;
     max-width: 300px;
+    min-width: 200px;
 }
 
-.about
-{
+.about {
     flex-basis: 30%;
     background-color: white;
     border-radius: 15px;
@@ -113,8 +100,7 @@ main
     padding: 1%;
 }
 
-.post-create
-{
+.post-create {
     flex-basis: 70%;
     background-color: white;
     border-radius: 15px;
@@ -125,27 +111,23 @@ main
     align-items: center;
 }
 
-.post-create>form
-{
+.post-create > form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.post-create>form>*
-{
+.post-create > form > * {
     margin: 1%;
     display: inline-flex;
 }
 
-form input
-{
+form input {
     margin-left: 5px;
 }
 
-.last-post-content
-{
+.last-post-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -153,8 +135,7 @@ form input
     width: 100%;
 }
 
-.last-post-element
-{
+.last-post-element {
     margin: 1%;
     min-width: 300px;
     width: 20%;
@@ -169,38 +150,36 @@ form input
     transition-duration: 0.5s;
 }
 
-.last-post-element, .last-post-element:hover, .last-post-element:focus, .last-post-element:active
-{
+.last-post-element, .last-post-element:hover, .last-post-element:focus, .last-post-element:active {
     text-decoration: none;
     color: black;
 }
 
-.last-post-element:hover
-{
+.last-post-element:hover {
     background-color: #e6e6e6;
     cursor: pointer;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
-    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     transform: scale(1.1);
 }
 
 
 @media screen and (min-width: 726px) and (max-width: 1024px) {
-    .select{
+    .select {
         flex-basis: 40%;
     }
 
-    .post{
+    .post {
         flex-wrap: wrap;
     }
 
-    .about{
+    .about {
         flex-basis: 85%;
         margin-left: auto;
         margin-right: auto;
     }
 
-    .post-create{
+    .post-create {
         width: 70%;
         margin-left: auto;
         margin-right: auto;

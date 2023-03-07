@@ -22,7 +22,7 @@ function displayMatchtes(){
         .then(response => response.json())
         .then(data => {
             data.forEach(match => {
-                let a = document.createElement('p');
+                let a = document.createElement('section');
                 a.className = 'list-group-item list-group-item-action';
                 let h1 = document.createElement('h1');
                 h1.className = 'list-group-item-heading';
@@ -41,6 +41,36 @@ function displayMatchtes(){
                 divInfo.appendChild(dateText);
                 divInfo.appendChild(lieuText);
                 divInfo.appendChild(heureText);
+
+
+                let role = document.getElementById("role").textContent;
+                if(role.trim() === 'ROLE_ADMIN'){
+                    let aEdit = document.createElement('a');
+                    let iEdit = document.createElement('i');
+                    iEdit.classList.add('bi');
+                    iEdit.classList.add('bi-pencil-square');
+
+                    aEdit.href = "/match/edit/" + match.id;
+                    aEdit.appendChild(iEdit);
+
+                    let aDelete = document.createElement('a');
+                    let iDelete = document.createElement('i');
+                    iDelete.classList.add('bi');
+                    iDelete.classList.add('bi-trash');
+
+                    aDelete.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        let m = prompt("Voulez-vous vraiment supprimer ce match ? (oui/non)");
+                        if (m === "oui") {
+                            window.location.href = "/equipe/delete/" + match.id;
+                        }
+                    });
+                    aDelete.appendChild(iDelete);
+
+                    divInfo.appendChild(aEdit);
+                    divInfo.appendChild(aDelete);
+
+                }
                 a.appendChild(h1);
                 a.appendChild(divInfo);
                 matchContent.appendChild(a);

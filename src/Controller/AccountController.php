@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\User;
 use App\Form\PostType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,16 +16,16 @@ class AccountController extends AbstractController
     #[Route('/account', name: 'app_account')]
     public function index(Request $request, ManagerRegistry $doctrine): Response
     {
-        if(!$this->getUser()) {
+        if (!$this->getUser()) {
             return $this->redirectToRoute('app_home');
         }
 
         $post = new Post();
-        $form = $this->createForm(PostType::class,$post);
+        $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $image = $form->get('url_photo')->getData();
-            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+            $imageName = md5(uniqid()) . '.' . $image->guessExtension();
             $image->move(
                 $this->getParameter('post_directory'),
                 $imageName
@@ -45,4 +46,45 @@ class AccountController extends AbstractController
             'post' => $doctrine->getRepository(Post::class)->getLastPost($this->getUser())
         ]);
     }
+
+    #[Route('/account/manage', name: 'app_account_manage')]
+    public function manage(ManagerRegistry $doctrine): Response
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        $users = $doctrine->getRepository(User::class)->findAll();
+
+        return $this->render('account/manageAccount.html.twig', [
+            "user" => $this->getUser(),
+            'users' => $users
+        ]);
+    }
+
+    #[Route('/account/manage/edit/{id}', name: 'app_account_manage_edit')]
+    public function edit(ManagerRegistry $doctrine): Response
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('account/manageAccountEdit.html.twig', [
+            "user" => $this->getUser(),
+        ]);
+    }
+
+    #[Route('/account/manage/delete/{id}', name: 'app_account_manage_delete')]
+    public function delete(ManagerRegistry $doctrine): Response
+    {
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
+
+        return $this->render('account/manageAccountEdit.html.twig', [
+            "user" => $this->getUser(),
+        ]);
+    }
+
+
 }
