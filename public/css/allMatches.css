@@ -95,5 +95,18 @@ article select
         min-width: 100% !important;
         max-width: 100% !important;
     }
+}
+
+
+@media screen and (max-width: 725px) {
+    main{
+        flex-direction: column;
+    }
+    .form{
+        width: 100%;
+    }
+
+
+
 
 }
