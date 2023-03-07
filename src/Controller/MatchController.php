@@ -20,6 +20,7 @@ class MatchController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
         $matches = $doctrine->getRepository(Matches::class)->findAll();
+
         return $this->render('match/index.html.twig', [
             'controller_name' => 'MatchController',
             'matches' => $matches,

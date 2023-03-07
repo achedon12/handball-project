@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="{{ asset('css/goTopButton.css') }}">
     <link rel="stylesheet" href="{{ asset('css/loader.css') }}">
     {% include 'header.html.twig' %}
+    {% if user %}
     <p id="role" hidden> {{ user.roles[0] }}</p>
+    {% else %}
+        <p id="role" hidden></p>
+    {% endif %}
     <main>
         <aside class="form formGetMatches">
             <article>
