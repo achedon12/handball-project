@@ -75,13 +75,17 @@ class AccountController extends AbstractController
     }
 
     #[Route('/account/manage/delete/{id}', name: 'app_account_manage_delete')]
-    public function delete(ManagerRegistry $doctrine): Response
+    public function delete(int $id, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser()) {
             return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('account/manageAccountEdit.html.twig', [
+        $user = $doctrine->getRepository(User::class)->find($id);
+        $doctrine->getManager()->remove($user);
+        $doctrine->getManager()->flush();
+
+        return $this->render('account/manageAccount.html.twig', [
             "user" => $this->getUser(),
         ]);
     }

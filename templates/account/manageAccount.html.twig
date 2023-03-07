@@ -4,18 +4,7 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
-    {% for user in users %}
-        <div class="card">
-            <div class="card-body">
-                <details>
-                    <summary>{{ user.pseudo }}</summary>
-                    <p>Adresse mail : {{ user.email }}</p>
-                    <p>Role : {{ user.roles.0 }}</p>
-                    <a href="{{ path('app_account_manage_edit', {'id': user.id}) }}" class="btn btn-primary">Modifier</a>
-                    <a href="{{ path('app_account_manage_delete', {'id': user.id}) }}" class="btn btn-danger">Supprimer</a>
-                </details>
-            </div>
-        </div>
-    {% endfor %}
+    <section id="allUsers"></section>
     {% include 'footer.html.twig' %}
+    <script src="{{ asset('js/accountManage.js') }}"></script>
 {% endblock %}
