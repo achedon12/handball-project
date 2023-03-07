@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les comptes{% endblock %}
+
+{% block body %}
+    {% include 'header.html.twig' %}
+    <section id="allUsers"></section>
+    {% include 'footer.html.twig' %}
+    <script src="{{ asset('js/accountManage.js') }}"></script>
+{% endblock %}

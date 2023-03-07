@@ -20,7 +20,8 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
-        $form = $this->createForm(RegistrationFormType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -31,11 +32,14 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setRoles(['ROLE_USER']);
+
+            $user->setEmail($form->get('email')->getData());
+            $user->setPseudo($form->get('pseudo')->getData());
+            $user->setRoles($form->get('roles')->getData());
 
             $entityManager->persist($user);
             $entityManager->flush();
-            return $this->redirectToRoute('app_account',['user' => $this->getUser()]);
+            return $this->redirectToRoute('app_account', ['user' => $this->getUser()]);
             /*return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,

@@ -41,11 +41,53 @@ class EquipeController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($equipe);
             $entityManager->flush();
-            return $this->redirectToRoute('app_equipe_show', ['id' => $equipe->getId()]);
+            return $this->redirectToRoute('app_equipe', ["user" => $this->getUser()]);
         }
         return $this->render('equipe/create.html.twig', [
             'form' => $form->createView(),
             "user" => $this->getUser(),
         ]);
+    }
+
+    #[Route('/equipe/edit/{id}', name: 'app_equipe_edit')]
+    public function edit(int $id, Request $request, ManagerRegistry $dotrine): Response{
+        $equipeManager = $dotrine->getRepository(Equipes::class);
+        $equipe = $equipeManager->find($id);
+
+        $form = $this->createFormBuilder()
+            ->add('libelle', null, ["data" => $equipe->getLibelle()])
+            ->add('entraineur', null, ["data" => $equipe->getEntraineur()])
+            ->add('creneaux', null, ["data" => $equipe->getCreneaux()])
+            ->add('url_photo', null, ["data" => $equipe->getUrlPhoto()])
+            ->add('url_result_calendrier', null, ["data" => $equipe->getUrlResultCalendrier()])
+            ->add('commentaire', null, ["data" => $equipe->getCommentaire()])
+            ->getForm();
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+            $equipe->setLibelle($form->get('libelle')->getData());
+            $equipe->setEntraineur($form->get('entraineur')->getData());
+            $equipe->setCreneaux($form->get('creneaux')->getData());
+            $equipe->setUrlPhoto($form->get('url_photo')->getData());
+            $equipe->setUrlResultCalendrier($form->get('url_result_calendrier')->getData());
+            $equipe->setCommentaire($form->get('commentaire')->getData());
+            $entityManager = $dotrine->getManager();
+            $entityManager->persist($equipe);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_equipe', ["user" => $this->getUser()]);
+        }
+        return $this->render('equipe/edit.html.twig', [
+            'form' => $form->createView(),
+            "user" => $this->getUser(),
+        ]);
+    }
+
+    #[Route('/equipe/delete/{id}', name: 'app_equipe_delete')]
+    public function delete(int $id, ManagerRegistry $doctrine): Response{
+        $equipeManager = $doctrine->getRepository(Equipes::class);
+        $equipe = $equipeManager->find($id);
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($equipe);
+        $entityManager->flush();
+        return $this->redirectToRoute('app_equipe', ["user" => $this->getUser()]);
     }
 }

@@ -25,7 +25,7 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class,[
+            ->add('email', EmailType::class, [
                 'attr' => [
                     'placeholder' => 'Mail utilisateur',
                 ],
@@ -71,8 +71,7 @@ class RegistrationFormType extends AbstractType
                 ],
                 'multiple' => true,
                 'expanded' => false,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
