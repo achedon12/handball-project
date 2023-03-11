@@ -51,7 +51,66 @@
                     </ul>
                 {% endif %}
             </li>
-            <li class="toggle burger"><a href="#"><i class="fas fa-bars"></i></a></li>
         </ul>
+
+        <!--
+        Menu pour le responsive
+        -->
+        <div id="menuToggle">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+
+            <ul class="menu">
+                <li class="tiers">
+                    <a href="{{ path('app_home') }}"><h2>Accueil</h2></a>
+                </li>
+                <li class="tiers item">
+
+                    {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                        <h2>Équipes</h2>
+                        <ul>
+                            <li><a href="{{ path('app_equipe') }}">Afficher les équipes</a></li>
+                            <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="{{ path('app_equipe') }}"><h2>Équipes</h2></a>
+                    {% endif %}
+                </li>
+                <li class="tiers item">
+                    {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                        <h2>Matches</h2>
+
+                        <ul>
+                            <li><a href="{{ path('app_match') }}">Afficher les matchs</a></li>
+                            <li><a href="{{ path('app_match_create') }}">Ajouter un match</a></li>
+                        </ul>
+                    {% else %}
+                        <a href="{{ path('app_match') }}"><h2>Matches</h2></a>
+                    {% endif %}
+                </li>
+                <li class="tiers item">
+                    <a href="{{ path('app_planning') }}"><h2>Planning</h2></a>
+                </li>
+                <li class="tiers item connexion">
+                    {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                        <h2>{{ user.pseudo }}</h2>
+                        <ul>
+                            <li><a href="{{ path('app_account') }}">Mon compte</a></li>
+                            <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
+                        </ul>
+                    {% else %}
+                        <h2>Mon compte</h2>
+                        <ul>
+                            <li><a href="{{ path("app_login")}}">Connexion</a></li>
+                        </ul>
+                    {% endif %}
+                </li>
+
+
+            </ul>
+        </div>
     </header>
 {% endblock %}
+
