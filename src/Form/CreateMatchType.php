@@ -18,27 +18,26 @@ class CreateMatchType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('equipe_locale', EntityType::class,[
-                'class'=>Equipes::class,
-                'choice_label'=>'libelle',
+            ->add('equipe_locale', EntityType::class, [
+                'class' => Equipes::class,
+                'choice_label' => 'libelle',
             ])
-            ->add('domicile_exterieur', ChoiceType::class,[
-                    'choices'=>[
-                        'Extérieur'=>0,
-                        'Domicile'=>1
+            ->add('domicile_exterieur', ChoiceType::class, [
+                    'choices' => [
+                        'Extérieur' => 0,
+                        'Domicile' => 1
                     ],
-                    'expanded'=>true,
-                    'multiple'=>false,
+                    'expanded' => true,
+                    'multiple' => false,
 
-            ]
-        )
+                ]
+            )
             ->add('equipe_adverse')
             ->add('hote')
             ->add('date_heure')
             ->add('num_semaine')
             ->add('num_journee')
-            ->add('gymnase')
-        ;
+            ->add('gymnase');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

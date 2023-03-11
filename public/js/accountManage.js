@@ -1,4 +1,4 @@
-function displayUsers(){
+function displayUsers() {
     fetch('/api/allUsers')
         .then(response => response.json())
         .then(users => {

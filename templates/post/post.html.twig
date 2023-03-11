@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mes posts{% endblock %}
+
+{% block body %}
+    {% include "header.html.twig" %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">Mes posts</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Contenu</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for post in posts %}
+                        <tr>
+                            <td hidden>{{ post.id }}</td>
+                            <td>{{ post.title }}</td>
+                            <td>{{ post.content }}</td>
+                            <td>
+                                <a href="{{ path('app_post_show', {'id': post.id}) }}" class="btn btn-primary">Voir</a>
+                                <a href="#" class="btn btn-warning">Modifier</a>
+                                <a href="{{ path('app_post_delete', {'id': post.id}) }}" class="btn btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        let dangers = document.querySelectorAll('.btn-danger');
+        dangers.forEach(danger => {
+            let parent = danger.parentNode.parentNode;
+            danger.addEventListener('click', function (e) {
+                e.preventDefault();
+                let m = prompt('Voulez-vous vraiment supprimer ce post ? (oui/non)');
+                if (m === "oui") {
+                    let id = parent.firstElementChild.textContent;
+                    fetch('/post/delete/'+id);
+                    parent.remove();
+                }
+            });
+        });
+    </script>
+    {% include 'footer.html.twig' %}
+{% endblock %}
+
+

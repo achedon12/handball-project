@@ -9,7 +9,7 @@
         <aside class="select">
             <section class="content">
                 {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
-                    <a href="#" class="element">
+                    <a href="{{ path('app_post_pseudo',{"pseudo": user.pseudo}) }}" class="element">
                         <article>
                             <i class="bi bi-envelope"></i>
                         </article>
@@ -29,7 +29,7 @@
                     <article class="equipe">
                         <i class="bi bi-person-lines-fill "></i>
                     </article>
-                   <h1>Equipes</h1>
+                    <h1>Equipes</h1>
                 </a>
                 <a class="element" href="{{ path('app_match') }}">
                     <article class="match">
@@ -37,7 +37,7 @@
                     </article>
                     <h1>Matchs</h1>
                 </a>
-                <a class="element" href="{{ path('app_planning')  }}">
+                <a class="element" href="{{ path('app_planning') }}">
                     <article class="planning">
                         <i class="bi bi-calendar-event"></i>
                     </article>
@@ -80,15 +80,17 @@
                         {{ form_end(form) }}
                     </section>
                 </section>
-                <section class="last-post-content">
-                    <h1>Dernier post de {{ post.author}}</h1>
-                    {% set url = path('app_post_show',{'id': post.id}) %}
-                    <a class="last-post-element" id="{{ post.id }}" href="{{ url}}">
-                        <p class="content">{{ post.title }}</p>
-                        {% set src = '/posts/images/' ~ post.urlPhoto %}
-                        <img src="{{ asset(src) }}" alt="news-img" class="last-post-element-img">
-                    </a>
-                </section>
+                {% if post %}
+                    <section class="last-post-content">
+                        <h1>Dernier post de {{ post.author }}</h1>
+                        {% set url = path('app_post_show',{'id': post.id}) %}
+                        <a class="last-post-element" id="{{ post.id }}" href="{{ url }}">
+                            <p class="content">{{ post.title }}</p>
+                            {% set src = '/posts/images/' ~ post.urlPhoto %}
+                            <img src="{{ asset(src) }}" alt="news-img" class="last-post-element-img">
+                        </a>
+                    </section>
+                {% endif %}
                 <section class="nextMatch">
                     <!-- TODO: mettre le prochain    match  -->
                 </section>
