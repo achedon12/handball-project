@@ -27,7 +27,7 @@ class CreateEquipeType extends AbstractType
                         'mimeTypes' => [
                             'image/*',
                         ],
-                        'mimeTypesMessage' => 'Please upload a valid image document',
+                        'mimeTypesMessage' => 'Sélectionnez une image valide',
                     ])
                 ],
             ])
