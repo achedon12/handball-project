@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Equipes;
 use App\Entity\Matches;
 use App\Entity\User;
+use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use PHPUnit\Util\Json;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -75,9 +76,9 @@ class ApiController extends AbstractController
      */
     public function getAllMatches(ManagerRegistry $doctrine): JsonResponse{
 
-        $localTeam = $_GET['equipe_locale'];
-        $gymnase = $_GET['gymnase'];
-        $domicile_exterieur = $_GET['domicile_exterieur'];
+        $localTeam = $_GET['equipe_locale'] ?? 'all';
+        $gymnase = $_GET['gymnase'] ?? 'all';
+        $domicile_exterieur = $_GET['domicile_exterieur'] ?? 'all';
 
         $criteria = [];
         if ($localTeam != 'all') {
@@ -90,7 +91,16 @@ class ApiController extends AbstractController
             $criteria['domicile_exterieur'] = $domicile_exterieur;
         }
 
+
         $array = $doctrine->getRepository(Matches::class)->findBy($criteria);
+        usort($array, function ($a, $b) {
+            return $a->getDateHeure() <=> $b->getDateHeure();
+        });
+
+        $date = new DateTime('now');
+        $array = array_filter($array, function ($a) use ($date) {
+            return $a->getDateHeure() >= $date;
+        });
         return $this->json($array);
     }
 
