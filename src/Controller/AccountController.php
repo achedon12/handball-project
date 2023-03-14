@@ -25,6 +25,7 @@ class AccountController extends AbstractController
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $content = $form->get('content')->getData();
             $image = $form->get('url_photo')->getData();
             $imageName = md5(uniqid()) . '.' . $image->guessExtension();
             $image->move(

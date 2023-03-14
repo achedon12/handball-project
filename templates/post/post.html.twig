@@ -24,7 +24,7 @@
                         <tr>
                             <td hidden>{{ post.id }}</td>
                             <td>{{ post.title }}</td>
-                            <td>{{ post.content }}</td>
+                            <td style="max-width: 300px">{{ post.content | nl2br}}</td>
                             <td>
                                 <a href="{{ path('app_post_show', {'id': post.id}) }}" class="btn btn-primary">Voir</a>
                                 <a href="#" class="btn btn-warning">Modifier</a>
