@@ -47,7 +47,8 @@ class ApiController extends AbstractController
      * @param ManagerRegistry $doctrine
      * @return JsonResponse
      */
-    public function getAllAPI(ManagerRegistry $doctrine): JsonResponse{
+    public function getAllAPI(ManagerRegistry $doctrine): JsonResponse
+    {
         $array = [];
         $array['nextMatch'] = $this->getNextMatch($doctrine);
         $array['lastMatch'] = $this->getLastMatch($doctrine);
@@ -64,8 +65,9 @@ class ApiController extends AbstractController
      * @param ManagerRegistry $doctrine
      * @return JsonResponse
      */
-    public function getAllTeam(ManagerRegistry $doctrine): JsonResponse{
-        $array=$doctrine->getRepository(Equipes::class)->findAll();
+    public function getAllTeam(ManagerRegistry $doctrine): JsonResponse
+    {
+        $array = $doctrine->getRepository(Equipes::class)->findAll();
         return $this->json($array);
     }
 
@@ -74,7 +76,8 @@ class ApiController extends AbstractController
      * @param ManagerRegistry $doctrine
      * @return JsonResponse
      */
-    public function getAllMatches(ManagerRegistry $doctrine): JsonResponse{
+    public function getAllMatches(ManagerRegistry $doctrine): JsonResponse
+    {
 
         $localTeam = $_GET['equipe_locale'] ?? 'all';
         $gymnase = $_GET['gymnase'] ?? 'all';
@@ -91,16 +94,18 @@ class ApiController extends AbstractController
             $criteria['domicile_exterieur'] = $domicile_exterieur;
         }
 
-
         $array = $doctrine->getRepository(Matches::class)->findBy($criteria);
-        usort($array, function ($a, $b) {
-            return $a->getDateHeure() <=> $b->getDateHeure();
-        });
 
         $date = new DateTime('now');
         $array = array_filter($array, function ($a) use ($date) {
             return $a->getDateHeure() >= $date;
         });
+
+        usort($array, function ($a, $b) {
+            return $a->getDateHeure() <=> $b->getDateHeure();
+        });
+
+
         return $this->json($array);
     }
 
@@ -109,8 +114,9 @@ class ApiController extends AbstractController
      * @param ManagerRegistry $doctrine
      * @return JsonResponse
      */
-    public function getAllCategories(ManagerRegistry $doctrine):JsonResponse{
-        $array=$doctrine->getRepository(Matches::class)->getAllCategories();
+    public function getAllCategories(ManagerRegistry $doctrine): JsonResponse
+    {
+        $array = $doctrine->getRepository(Matches::class)->getAllCategories();
         return $this->json($array);
     }
 
@@ -119,8 +125,9 @@ class ApiController extends AbstractController
      * @param ManagerRegistry $doctrine
      * @return JsonResponse
      */
-    public function getAllGymnases(ManagerRegistry $doctrine):JsonResponse{
-        $array=$doctrine->getRepository(Matches::class)->getAllGymnases();
+    public function getAllGymnases(ManagerRegistry $doctrine): JsonResponse
+    {
+        $array = $doctrine->getRepository(Matches::class)->getAllGymnases();
         return $this->json($array);
     }
 
@@ -131,7 +138,7 @@ class ApiController extends AbstractController
      */
     public function getAllUser(ManagerRegistry $doctrine): JsonResponse
     {
-        $array=$doctrine->getRepository(User::class)->findAll();
+        $array = $doctrine->getRepository(User::class)->findAll();
         return $this->json($array);
     }
 }

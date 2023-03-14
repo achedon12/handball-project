@@ -2,17 +2,17 @@ let categoriesSelect = document.getElementById('category');
 let gymnaseSelect = document.getElementById('gymnase');
 let domicileSelect = document.getElementById('domicile');
 let matchContent = document.querySelector('.content');
-let dateSelect = document.getElementById('date');
-
-dateSelect.addEventListener('change', select => {
-    console.log("date changed");
-});
+// let dateSelect = document.getElementById('date');
+//
+// dateSelect.addEventListener('change', select => {
+//     console.log("date changed");
+// });
 
 let selects = [
     categoriesSelect,
     gymnaseSelect,
     domicileSelect,
-    dateSelect
+    // dateSelect
 ];
 
 
