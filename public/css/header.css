@@ -1,4 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,200);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,200);
+
 ul {
     padding-left: 0;
 }
@@ -195,6 +197,7 @@ header>img
     }
     .sidebar{
         flex-basis: 100%;
+
     }
     .tiers ul{
         width: 200% !important;
@@ -207,145 +210,194 @@ header>img
 }
 
 @media screen and (max-width: 726px){
-    .header{
-        display: inherit !important;
+
+    .banner{
+        display: none !important;
     }
 
+    .tiers{
+        display: none;
+    }
 
-
-
-    #menuToggle
-    {
+    .a-header{
         display: block;
-        position: relative;
-        top: 50px;
-        left: 50px;
-
-        z-index: 1;
-
-        -webkit-user-select: none;
-        user-select: none;
     }
 
-    #menuToggle li
-    {
-        text-decoration: none;
-        color: #232323;
+}
 
-        transition: color 0.3s ease;
-    }
+/*--------------------------------------
+ Animation Magic, animations won't occur
+ on IE9 and before and Opera Mini
+--------------------------------------*/
+*,
+*:before,
+*:after {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.a-header{
+    position: absolute;
+}
+
+/*==============================================================================
+ The burger icon with it's animation. Uses the checked property of a checkbox
+ in order to make the animation happen as well as control the next elements
+ I've used classes because of the + css selector, which will only ever animate
+ the next label element. Does not work on IE8 or below and opera mini since
+ they don't support the :checked selector.
+==============================================================================*/
+.burger-check {
+    display: none;
+}
+
+/*--------------------------------------
+ Sets the actionable area for the burger
+ including a label for usability
+--------------------------------------*/
+.burger {
+    position: absolute;
+    float: left;
+    width: 60px;
+    height: 60px;
+
+    cursor: pointer;
+    justify-content : center;
+    align-items:center;
+    text-align:center;
+}
+
+.burger:after {
+    content: 'Où aller';
+    position: absolute;
+    bottom: 7px;
+    left: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+
+}
+
+/*--------------------------------------
+ Creates the look of the burger icon
+ using the inner span and pseudo-elements
+--------------------------------------*/
+.burger span,
+.burger span:before,
+.burger span:after {
+    position: absolute;
+    left: 10px;
+    top: 22px;
+    width: 40px;
+    height: 4px;
+    background: #333;
+    border-radius: 0.2em;
+}
+
+/* Reset the left and create the pseudo-element */
+.burger span:before,
+.burger span:after {
+    content: '';
+    left: 0;
+}
+
+/* Top bar position */
+.burger span:before {
+    top: -8px;
+}
+
+/* Bottom bar position */
+.burger span:after {
+    top: 8px;
+}
+
+/* Get rid of more on action (IE9 or higher) */
+.burger-check:checked + .burger:after {
+    content: '';
+}
+/* Get rid of the middle bar on action (IE9 or higher) */
+
+.burger-check:checked + .burger span {
+    height: 0;
+    width: 0;
+}
+
+/* Moves the top and bottom bars to the middle on action (IE9 or higher) */
+.burger-check:checked + .burger span:before,
+.burger-check:checked + .burger span:after {
+    top: 6px;
+}
+
+/* Rotates the top bar on action with full browser support (IE9 or higher) */
+.burger-check:checked + .burger span:before {
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(225deg);
+}
+
+/* Rotates the bottom bar on action with full browser support (IE9 or higher) */
+.burger-check:checked + .burger span:after {
+    -webkit-transform: rotate(-225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(-225deg);
+}
 
 
-    #menuToggle input
-    {
-        display: block;
-        width: 40px;
-        height: 32px;
-        position: absolute;
-        top: -7px;
-        left: -5px;
-        cursor: pointer;
-
-        opacity: 0; /* hide this */
-        z-index: 2; /* and place it over the hamburger */
-
-        -webkit-touch-callout: none;
-    }
-
-    #menuToggle span
-    {
-        display: block;
-        width: 33px;
-        height: 4px;
-        margin-bottom: 5px;
-        position: relative;
-
-        background: #cdcdcd;
-        border-radius: 3px;
-
-        z-index: 1;
-
-        transform-origin: 4px 0px;
-
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-        background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
-        opacity 0.55s ease;
-    }
-
-    #menuToggle span:first-child
-    {
-        transform-origin: 0% 0%;
-    }
-
-    #menuToggle span:nth-last-child(2)
-    {
-        transform-origin: 0% 100%;
-    }
-
-    /*
-     * Transform all the slices of hamburger
-     * into a crossmark.
-     */
-    #menuToggle input:checked ~ span
-    {
-        opacity: 1;
-        transform: rotate(45deg) translate(-2px, -1px);
-        background: #232323;
-    }
-
-    /*
-     * But let's hide the middle one.
-     */
-    #menuToggle input:checked ~ span:nth-last-child(3)
-    {
-        opacity: 0;
-        transform: rotate(0deg) scale(0.2, 0.2);
-    }
-
-    /*
-     * Ohyeah and the last one should go the other direction
-     */
-    #menuToggle input:checked ~ span:nth-last-child(2)
-    {
-        transform: rotate(-45deg) translate(0, -1px);
-    }
-
-    /*
-     * Make this absolute positioned
-     * at the top left of the screen
-     */
-    #menu
-    {
-        position: absolute;
-        width: 300px;
-        margin: -100px 0 0 -50px;
-        padding: 50px;
-        padding-top: 125px;
-
-        background: #ededed;
-        list-style-type: none;
-        -webkit-font-smoothing: antialiased;
-        /* to stop flickering of text in safari */
-
-        transform-origin: 0% 0%;
-        transform: translate(-100%, 0);
-
-        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-    }
-
-    #menu li
-    {
-        padding: 10px 0;
-        font-size: 22px;
-    }
-
-    /*
-     * And let's slide it in from the left
-     */
-    #menuToggle input:checked ~ ul
-    {
-        transform: none;
-    }
 
 
+/*==============================================================================
+ Simple mobile menu opening and closing (IE9 or higher)
+==============================================================================*/
+.a-header {
+    position: absolute;
+    float: left;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -25px;
+}
+
+
+.a-header ul {
+    position: absolute;
+    z-index: 25;
+    float: left;
+    width: 75%;
+    list-style: none;
+    margin: 57px;
+    background-color: rgba(0,0,0,0.9);
+    border-radius: 25px;
+
+}
+
+.a-header ul a {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 0;
+    text-decoration: none;
+    overflow: hidden;
+    color: #333;
+    text-align: center;
+    align-items: center;
+
+}
+
+
+#main-nav{
+    width: 70px;
+}
+
+.a-header h3{
+    margin-top: 0;
+}
+
+
+/* Animate height of 'a' element in order to reveal the menu on check (IE9 or higher) */
+#main-nav:checked ~ ul a {
+    height: 50px;
+    color: #FFFFFF;
+    padding: 10px;
 }

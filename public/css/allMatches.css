@@ -90,38 +90,18 @@ article select
     align-items: center;
 }
 
-@media screen and (min-width: 726px) and (max-width: 1024px) {
+@media screen and (min-width: 0px) and (max-width: 1024px) {
     .formGetMatches select{
         width: 100%;
     }
     main{
         flex-direction: row;
     }
-}
-
-
-@media screen and (max-width: 725px) {
-    main{
-        flex-direction: column;
-    }
-    .form{
-        width: 100%;
-    }
-
 
 
 
 }
 
-@media screen and (max-width: 725px) and (min-width: 0px){
-    main{
-        flex-direction: column !important;
-        background-color: red;
-    }
 
-    .form{
-        position: fixed;
-        width: 100%;
 
-    }
-}
+

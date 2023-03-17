@@ -1,5 +1,20 @@
 <head>
     <link rel="stylesheet" href="{{ asset("css/header.css") }}">
+    <script src="{{ asset('js/navbar.js') }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!-- Essential JS 2 Scheduler's dependent material theme -->
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-base/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-buttons/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-calendars/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-dropdowns/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-inputs/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-splitbuttons/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-lists/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-popups/styles/material.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-navigations/styles/material.css" rel="stylesheet" type="text/css"/>
+        <!-- Essential JS 2 Scheduler's material theme -->
+        <link href="https://cdn.syncfusion.com/ej2/19.4.48/ej2-schedule/styles/material.css" rel="stylesheet" type="text/css"/>
+
 </head>
 {% block header %}
     <header>
@@ -54,61 +69,64 @@
         <!--
         Menu pour le responsive
         -->
-        <div id="menuToggle">
-            <input type="checkbox" />
-            <span></span>
-            <span></span>
-            <span></span>
 
-            <ul class="menu">
-                <li class="tiers">
-                    <a href="{{ path('app_home') }}"><h2>Accueil</h2></a>
-                </li>
-                <li class="tiers item">
 
-                    {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
-                        <h2>Équipes</h2>
-                        <ul>
-                            <li><a href="{{ path('app_equipe') }}">Afficher les équipes</a></li>
-                            <li><a href="{{ path('app_equipe_add') }}">Ajouter une équipe</a></li>
-                        </ul>
-                    {% else %}
-                        <a href="{{ path('app_equipe') }}"><h2>Équipes</h2></a>
-                    {% endif %}
-                </li>
-                <li class="tiers item">
-                    {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
-                        <h2>Matches</h2>
 
-                        <ul>
-                            <li><a href="{{ path('app_match') }}">Afficher les matchs</a></li>
-                            <li><a href="{{ path('app_match_create') }}">Ajouter un match</a></li>
-                        </ul>
-                    {% else %}
-                        <a href="{{ path('app_match') }}"><h2>Matches</h2></a>
-                    {% endif %}
-                </li>
-                <li class="tiers item">
-                    <a href="{{ path('app_planning') }}"><h2>Planning</h2></a>
-                </li>
-                <li class="tiers item connexion">
-                    {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
-                        <h2>{{ user.pseudo }}</h2>
-                        <ul>
-                            <li><a href="{{ path('app_account') }}">Mon compte</a></li>
-                            <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>
-                        </ul>
-                    {% else %}
-                        <h2>Mon compte</h2>
-                        <ul>
-                            <li><a href="{{ path("app_login")}}">Connexion</a></li>
-                        </ul>
-                    {% endif %}
-                </li>
+
+{#                <li class="tiers item connexion">#}
+{#                    {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}#}
+{#                        <h2>{{ user.pseudo }}</h2>#}
+{#                        <ul>#}
+{#                            <li><a href="{{ path('app_account') }}">Mon compte</a></li>#}
+{#                            <li><a href="{{ path('app_logout') }}">Se deconnecter</a></li>#}
+{#                        </ul>#}
+{#                    {% else %}#}
+{#                        <h2>Mon compte</h2>#}
+{#                        <ul>#}
+{#                            <li><a href="{{ path("app_login")}}">Connexion</a></li>#}
+{#                        </ul>#}
+{#                    {% endif %}#}
+{#                </li>#}
+
+
+{#            </ul>#}
+{#        </div>#}
+
+        <div class="a-header">
+            <input type="checkbox" name="main-nav" id="main-nav" class="burger-check">
+            <label for="main-nav" class="burger menu"><span></span></label>
+            <ul>
+                <li><a href="{{ path('app_home') }}"><h2>Accueil</h2></a></li>
+                <li><a href="{{ path('app_equipe') }}"><h2>Les Equipes</h2></a></li>
+                {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('app_equipe') }}"><h3>Afficher les équipes</h3></a></li>
+                    <li><a href="{{ path('app_equipe_add') }}"><h3>Ajouter une équipe</h3></a></li>
+                {% else %}
+                    <li><a href="{{ path('app_equipe') }}"><h3>Équipes</h3></a></li>
+                {% endif %}
+                    <li><a href="{{ path('app_match') }}"><h2>Les matchs</h2></a></li>
+                {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                    <li><a href="{{ path('app_match') }}"><h3>Afficher les matchs</h3></a></li>
+                    <li><a href="{{ path('app_match_create') }}"><h3>Ajouter un match</h3></a></li>
+                {% else %}
+                    <li><a href="{{ path('app_match') }}"><h3>Matches</h3></a></li>
+                {% endif %}
+                    <li><a href="{{ path('app_planning') }}"><h2>Le planning</h2></a></li>
+
+                {% if is_granted('ROLE_USER') or is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+
+                    <li><a href="{{ path('app_account') }}"><h2>{{ user.pseudo }}</h2></a></li>
+                    <li><a href="{{ path('app_logout') }}"><h3>Se deconnecter</h3></a></li>
+                {% else %}
+                    <li><a href="{{ path("app_login")}}"><h2>Mon compte</h2></a></li>
+                {% endif %}
+
 
 
             </ul>
         </div>
+
+
     </header>
 {% endblock %}
 
