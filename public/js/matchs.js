@@ -2,26 +2,33 @@ let categoriesSelect = document.getElementById('category');
 let gymnaseSelect = document.getElementById('gymnase');
 let domicileSelect = document.getElementById('domicile');
 let matchContent = document.querySelector('.content');
+// let dateSelect = document.getElementById('date');
+//
+// dateSelect.addEventListener('change', select => {
+//     console.log("date changed");
+// });
 
 let selects = [
     categoriesSelect,
     gymnaseSelect,
-    domicileSelect
+    domicileSelect,
+    // dateSelect
 ];
 
 
-function displayMatchtes(){
+function displayMatchtes() {
     let caterogyValue = getSelectValue('category');
     let gymnaseValue = getSelectValue('gymnase');
     let divLoader = document.createElement('div');
-    divLoader.className="loader"
+    divLoader.className = "loader"
     let domicileValue = domicileSelect.checked;
     domicileValue = domicileValue ? 1 : 0;
 
-    fetch('/api/allMatches?equipe_locale=' + caterogyValue + '&gymnase=' + gymnaseValue +  '&domicile_exterieur=' + domicileValue)
+    fetch('/api/allMatches?equipe_locale=' + caterogyValue + '&gymnase=' + gymnaseValue + '&domicile_exterieur=' + domicileValue)
         .then(response => response.json())
         .then(data => {
-            data.forEach(match => {
+            for (let match in data) {
+                match = data[match];
                 let a = document.createElement('section');
                 a.className = 'list-group-item list-group-item-action';
                 let h1 = document.createElement('h1');
@@ -33,9 +40,9 @@ function displayMatchtes(){
                 let lieuText = document.createElement('p');
                 let heureText = document.createElement('p');
 
-                dateText.innerHTML=new Date(match.dateHeure).toLocaleDateString();
-                lieuText.innerHTML=match.gymnase;
-                heureText.innerHTML=date.toLocaleTimeString();
+                dateText.innerHTML = new Date(match.dateHeure).toLocaleDateString();
+                lieuText.innerHTML = match.gymnase;
+                heureText.innerHTML = date.toLocaleTimeString();
 
                 divInfo.className = 'list-group-item-text';
                 divInfo.appendChild(dateText);
@@ -44,7 +51,7 @@ function displayMatchtes(){
 
 
                 let role = document.getElementById("role").textContent;
-                if(role.trim() === 'ROLE_ADMIN'){
+                if (role.trim() === 'ROLE_ADMIN') {
                     let aEdit = document.createElement('a');
                     let iEdit = document.createElement('i');
                     iEdit.classList.add('bi');
@@ -74,8 +81,7 @@ function displayMatchtes(){
                 a.appendChild(h1);
                 a.appendChild(divInfo);
                 matchContent.appendChild(a);
-
-            });
+            }
             let load = document.getElementById("loader");
             load.remove();
         })
@@ -95,7 +101,7 @@ fetch('/api/allCategories')
         });
     })
     .catch(error => console.error(error)
-);
+    );
 
 fetch('/api/allGymnases')
     .then(response => response.json())
@@ -108,7 +114,7 @@ fetch('/api/allGymnases')
         });
     })
     .catch(error => console.error(error)
-);
+    );
 
 function getSelectValue(selectId) {
     let selectElmt = document.getElementById(selectId);
@@ -116,9 +122,9 @@ function getSelectValue(selectId) {
 }
 
 selects.forEach(select => {
-   select.addEventListener('change', () => {
-         matchContent.innerHTML = '';
-       displayMatchtes();
-   });
+    select.addEventListener('change', select => {
+        matchContent.innerHTML = '';
+        displayMatchtes();
+    });
 });
 displayMatchtes();

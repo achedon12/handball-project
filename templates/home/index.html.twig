@@ -3,27 +3,33 @@
 {% block title %}Accueil{% endblock %}
 {% block body %}
     {% include 'header.html.twig' %}
-      <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
     <main>
         <section class="match reveal_bottom">
             <fieldset class="nextMatch matchSection">
                 <legend><h2>Prochain match</h2></legend>
                 <table>
                     <tbody class="matchContent">
-                        <tr><td class="next-match-date" colspan="3"></td></tr>
-                        <tr>
-                            <td class="next-match-team1"></td>
-                            <td class="next-match-time"></td>
-                            <td class="next-match-team2"></td>
-                        </tr>
-                        <tr><td class="next-match-location" colspan="3"></td></tr>
-                        <tr><td class="next-match-remaining-time"colspan="3"></td></tr>
+                    <tr>
+                        <td class="next-match-date" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td class="next-match-team1"></td>
+                        <td class="next-match-time"></td>
+                        <td class="next-match-team2"></td>
+                    </tr>
+                    <tr>
+                        <td class="next-match-location" colspan="3"></td>
+                    </tr>
+                    <tr>
+                        <td class="next-match-remaining-time" colspan="3"></td>
+                    </tr>
                     </tbody>
                 </table>
             </fieldset>
 
             <section class="lastMatch matchSection">
-            <h2>Match précédent</h2>
+                <h2>Match précédent</h2>
                 <article>
                     <p class="last-match-date"></p>
                     <p class="last-match-team1"></p>
@@ -36,39 +42,51 @@
         </section>
         <section class="pic-ctn reveal_bottom">
             <section class="aboutOur">
-                <h1>A propos de nous</h1>
-                <p>Uxor mortalis acerbitati quaedam regni nihil
-                    qui nocendum turgida germanitate per quaedam
-                    acerbitati conpertis avida Constantinus nocendum
-                    male nihil maritus falsa regi eruditiores nihil
-                    grave suetos addere germanitate quaedam male
-                    calumnias adsidua quam artium regi inflammatrix
-                    fratris male nefandarum et nocendum calumnias
-                    mortalis turgida mitius turgida nihil Augusti
-                    temporis versutosque eruditiores quaedam paulatim
-                    modum humani sibi germanitate sibi cruoris placentia
-                    quaedam saevientis cruoris conpertis avida fratris
-                    clandestinos fratris quaedam temporis nihil versutosque et
-                    versutosque acerbitati turgida cruoris regni discentes nefandarum
-                    nocendum maritus saevientis male grave falsa supra ad conpertis regni
-                    grave Constantinus paulatim quaedam Hannibaliano Hannibaliano
-                    avida eruditiores regni turgida.</p>
+                <h1>Qui sommes-nous ?</h1>
+                <div class="section-desc"><div style="text-align: justify">
+                        Depuis la saison 2011-2012, suite à entente avec le club voisin HBGG, le GGAHB Handball gère le pôle handball féminin de Guilherand-Granges.
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6  wow slideInUp">
+                        <h3><a href="{{ path('app_about_infos') }}">Le Guilherand-Granges Ardèche Handball</a>
+                        </h3>
+                        <p>Avec plus de 180 adhérents, le Guilherand-Granges Ardèche Handball (GGAHB) privilégie la
+                            formation des jeunes depuis le minihand (école de hand labellisée) jusqu’aux moins de 18
+                            ans. Depuis la saison …</p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6  wow slideInUp"
+                         style="visibility: visible; animation-name: slideInUp;">
+                        <h3><a href="{{ path('app_about_history') }}">Historique</a></h3>
+                        <p>Fondée en 1968 par une poignée de passionnés, la section Handball de l’Amicale Laïque
+                            Guilherand-Granges occupe une place privilégiée dans le paysage du Handball régional. Club
+                            formateur par excellence, l’AL …</p>
+                    </div>
+                    <div class="col-lg-4 col-sm-6  wow slideInUp"
+                         style="visibility: visible; animation-name: slideInUp;">
+                        <h3><a href="{{ path('app_about_equipe') }}">Equipe Dirigeante</a></h3>
+                        <p>Le bureau du club est composé de 13 bénévoles et d’un salarié. Le club est présidé depuis
+                            2018 par Émilien Dorne. Vous trouverez ci-dessous l’organigramme administratif et
+                            l’organigramme sportif.</p>
+                    </div>
+                </div>
+
             </section>
             <img src="{{ asset('images/Loisirs.jpg') }}" alt="img" class="img">
         </section>
 
         <section class="news reveal_bottom">
-           <section class="news-content">
-               {% for post in posts %}
-                   {% set url = path('app_post_show',{'id': post.id}) %}
-                   <a class="news-element" id="{{ post.id }}" href="{{ url}}">
-                       <h3 class="name">{{ post.author }}</h3>
-                       <p class="content">{{ post.title }}</p>
-                       {% set src = '/posts/images/' ~ post.urlPhoto %}
-                       <img src="{{ asset(src) }}" alt="news-img" class="news-element-img">
-                   </a>
-               {% endfor %}
-           </section>
+            <section class="news-content">
+                {% for post in posts %}
+                    {% set url = path('app_post_show',{'id': post.id}) %}
+                    <a class="news-element" id="{{ post.id }}" href="{{ url }}">
+                        <h3 class="name">{{ post.author }}</h3>
+                        <p class="content">{{ post.title }}</p>
+                        {% set src = '/posts/images/' ~ post.urlPhoto %}
+                        <img src="{{ asset(src) }}" alt="news-img" class="news-element-img">
+                    </a>
+                {% endfor %}
+            </section>
             <ul class="page">
                 <li class="page-link-li"><a href="#" class="page-link-a"><</a></li>
                 <li class="page-link-li"><a href="#" class="page-link-a">1</a></li>
