@@ -325,7 +325,6 @@ header>img
     float: left;
     width: 60px;
     height: 60px;
-
     cursor: pointer;
     justify-content : center;
     align-items:center;
@@ -381,9 +380,14 @@ header>img
 #main-nav:checked ~ ul a {
     height: 50px;
     color: #FFFFFF;
-    padding: 10px;
 }
 
 .burger-check {
     display: none;
+}
+
+#main-nav h3,h2 {
+    margin-top: 0;
+    color: #FFFFFF !important;
+
 }

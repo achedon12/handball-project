@@ -4,16 +4,70 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
+    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/planning.css") }}">
 
-    <div class="e-schedule"></div>
+    <div id="Schedule"></div>
+
+
 
     <!-- Essential JS 2 all script -->
     <script src="https://cdn.syncfusion.com/ej2/19.4.48/dist/ej2.min.js" type="text/javascript"></script>
     <!-- Essential JS 2 Scheduler script -->
-    <script src="https://cdn.syncfusion.com/ej2/19.4.48/ej2-schedule/dist/ej2-schedule.min.js"></script>
-    <script src="https://cdn.syncfusion.com/ej2/19.4.48/ej2-schedule/dist/ej2-schedule.min.js"></script>
+    <script src="https://cdn.syncfusion.com/ej2/20.4.48/dist/ej2.min.js" type="text/javascript"></script>
+    <script src="{{asset('js/planning.js')}}"></script>
+    <script>
+        ej.schedule.Schedule.Inject(ej.schedule.Week, ej.schedule.WorkWeek, ej.schedule.Month);
+        let donnee =[];
+        let  compteur = 0;
+        fetch("/api/allMatches").then(response => response.json())
+            .then(data =>
+                data.forEach((element) => {
+                    compteur++;
+                    let aMatch = {};
+                    aMatch["id"]=element["id"];
+                    aMatch["eventName"]=element["equipeLocale"]+" VS "+element["equipeAdverse"];
+                    aMatch['StartTime'] = new Date((element['dateHeure'].split('T'))[0].split('-')[0],
+                        (element['dateHeure'].split('T'))[0].split('-')[1],
+                        (element['dateHeure'].split('T'))[0].split('-')[2],
+                        (element['dateHeure'].split('T'))[1].split(':')[0],
+                        (element['dateHeure'].split('T'))[1].split(':')[1]);
+
+                    aMatch['EndTime'] = new Date((element['dateHeure'].split('T'))[0].split('-')[0],
+                        (element['dateHeure'].split('T'))[0].split('-')[1],
+                        (element['dateHeure'].split('T'))[0].split('-')[2],
+                        parseInt((element['dateHeure'].split('T'))[1].split(':')[0]) + 1,
+                        (element['dateHeure'].split('T'))[1].split(':')[1]);
+                    aMatch["IsAllDay"]=false;
+                    donnee.push(aMatch);
+                    if (compteur===data.length) {
+
+                        console.log(donnee);
+                        let scheduleObj = new ej.schedule.Schedule({
+                            width: '80%',
+                            height: '70%',
+                            locale: "fr-CH",
+                            readonly: true,
+                            views: ['Day', 'Week', 'Month'],
+                            selectedDate: new Date(),
+                            minDate: new Date(new Date().getTime() - (21 * 24 * 60 * 60 * 1000)), // 3 weeks
+                            maxDate: new Date(new Date().getTime() + (56 * 24 * 60 * 60 * 1000)), // 8 weeks
+                            eventSettings: {
+                                dataSource: donnee,
+                                fields:{
+                                    id:'id',
+                                    subject:{name:'eventName'},
+                                    startTime:{name: "StartTime"},
+                                    EndTime:{name:"EndTime"},
+                                }
+                            }
+                        })
+                        scheduleObj.appendTo('#Schedule');
+                    }
+                }))
 
 
 
+    </script>
     {% include 'footer.html.twig' %}
 {% endblock %}
