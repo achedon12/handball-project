@@ -1,0 +1,131 @@
+/*----------------Matches sections-----------------*/
+
+.match{
+    display: flex;
+    justify-content: space-around;
+    height: 400px;
+    align-items: center;
+    background-color: #f2f2f2;
+    flex-wrap: wrap;
+    color: #EAEAEA;
+}
+
+
+.matchSection > table{
+    background-color: #333333;
+    min-width: 500px;
+    width: 40vw;
+    border-radius: 12px;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.25);
+}
+
+.matchSection > legend{
+    border: none;
+    margin: 0;
+    width: fit-content;
+}
+
+legend>h2{
+    background-color: #333333;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: 1px solid #333333;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    color: #98f609;
+    text-transform: uppercase;
+}
+
+.matchSection table, .matchSection tbody {
+    width: 100%;
+}
+
+.matchSection td {
+    text-align: center;
+}
+
+.next-match-team1, .next-match-team2 {
+    font-size: 1.2em;
+    width: 35%;
+    padding: 0.2em;
+}
+
+.matchContent > tr:nth-child(2) > td:nth-child(2n+1) {
+    border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
+}
+
+.next-match-time {
+    border: 1px solid #000000;
+    background-color: #DDDDDD;
+    font-size: 3em;
+    color: #1b1b1b;
+    box-shadow: inset 0 7px 15px 1px #1b1b1b;
+}
+
+.matchContent > tr {
+    height: 4em;
+}
+
+.next-match-date, .next-match-location, .next-match-remaining-time {
+    font-size: 1.5em;
+}
+
+.next-match-location > i{
+    background-color: #333333;
+    color: #98f609;
+}
+.next-match-remaining-time > p{
+    display: flex;
+    font-size: 1.1em;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.next-match-remaining-time > p > dt{
+    margin-right: 0.5em;
+    margin-left: 0.1em;
+    color: #98f609;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.last-match-team1, .last-match-team2 {
+    font-size: 1.2em;
+    width: 35%;
+    padding: 0.2em;
+}
+
+.last-match-time {
+    border: 1px solid #000000;
+    background-color: #DDDDDD;
+    font-size: 3em;
+    color: #1b1b1b;
+    box-shadow: inset 0 7px 15px 1px #1b1b1b;
+}
+
+.matchContent > tr {
+    height: 4em;
+}
+
+.last-match-date, .last-match-location, .last-match-remaining-time {
+    font-size: 1.5em;
+}
+
+.last-match-location > i{
+    background-color: #333333;
+    color: #98f609;
+}
+.last-match-remaining-time > p{
+    display: flex;
+    font-size: 1.1em;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.last-match-remaining-time > p > dt{
+    margin-right: 0.5em;
+    margin-left: 0.1em;
+    color: #98f609;
+    font-style: italic;
+    font-size: 0.9em;
+}

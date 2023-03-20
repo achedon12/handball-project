@@ -32,6 +32,9 @@ class PostController extends AbstractController
     #[Route('/post/edit/{id}', name: 'app_post_edit')]
     public function edit(int $id, Request $request, ManagerRegistry $managerRegistry): Response
     {
+        if (!$this->isGranted('ROLE_COACH') && !$this->isGranted('ROLE_ADMIN') && !$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
         $post = $managerRegistry->getRepository(Post::class)->find($id);
         $form = $this->createFormBuilder()
             ->add('title', null, [
@@ -96,6 +99,9 @@ class PostController extends AbstractController
     #[Route('/post/delete/{id}', name: 'app_post_delete')]
     public function delete(int $id, ManagerRegistry $managerRegistry): Response
     {
+        if (!$this->isGranted('ROLE_COACH') && !$this->isGranted('ROLE_ADMIN') && !$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
         $post = $managerRegistry->getRepository(Post::class)->find($id);
         if (!$post) {
             return $this->render('post/error.html.twig');
@@ -110,6 +116,9 @@ class PostController extends AbstractController
     #[Route('/post/pseudo/{pseudo}', name: 'app_post_pseudo')]
     public function post(string $pseudo, ManagerRegistry $managerRegistry): Response
     {
+        if (!$this->isGranted('ROLE_COACH') && !$this->isGranted('ROLE_ADMIN') && !$this->getUser()) {
+            return $this->redirectToRoute('app_home');
+        }
         $postManager = $managerRegistry->getRepository(Post::class);
         $posts = $postManager->findBy(["author" => $pseudo]);
 

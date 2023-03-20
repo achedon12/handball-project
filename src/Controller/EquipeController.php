@@ -25,13 +25,16 @@ class EquipeController extends AbstractController
     #[Route('/equipe/create', name: 'app_equipe_add')]
     public function add(Request $request, ManagerRegistry $doctrine): Response
     {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $equipe = new Equipes();
         $form = $this->createForm(CreateEquipeType::class, $equipe);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $equipe = $form->getData();
             $image = $form->get('url_photo')->getData();
-            $imageName = md5(uniqid()).'.'.$image->guessExtension();
+            $imageName = md5(uniqid()) . '.' . $image->guessExtension();
             $image->move(
                 $this->getParameter('image_directory'),
                 $imageName
@@ -50,7 +53,11 @@ class EquipeController extends AbstractController
     }
 
     #[Route('/equipe/edit/{id}', name: 'app_equipe_edit')]
-    public function edit(int $id, Request $request, ManagerRegistry $dotrine): Response{
+    public function edit(int $id, Request $request, ManagerRegistry $dotrine): Response
+    {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $equipeManager = $dotrine->getRepository(Equipes::class);
         $equipe = $equipeManager->find($id);
 
@@ -63,7 +70,7 @@ class EquipeController extends AbstractController
             ->add('commentaire', null, ["data" => $equipe->getCommentaire()])
             ->getForm();
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $equipe->setLibelle($form->get('libelle')->getData());
             $equipe->setEntraineur($form->get('entraineur')->getData());
             $equipe->setCreneaux($form->get('creneaux')->getData());
@@ -82,7 +89,11 @@ class EquipeController extends AbstractController
     }
 
     #[Route('/equipe/delete/{id}', name: 'app_equipe_delete')]
-    public function delete(int $id, ManagerRegistry $doctrine): Response{
+    public function delete(int $id, ManagerRegistry $doctrine): Response
+    {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $equipeManager = $doctrine->getRepository(Equipes::class);
         $equipe = $equipeManager->find($id);
         $entityManager = $doctrine->getManager();

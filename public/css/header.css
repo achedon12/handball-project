@@ -384,7 +384,7 @@ header>img
     display: none;
 }
 
-#main-nav h3,h2 {
+#main-nav h3, #main-nav h2 {
     margin-top: 0;
     color: #FFFFFF !important;
 
