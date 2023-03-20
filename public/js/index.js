@@ -133,7 +133,7 @@ function getLastMatch(){
                 us.innerHTML = data.equipeAdverse;
                 opponentElement.innerHTML = "US";
             }
-            locationElement.innerHTML = data.gymnase;
+            locationElement.appendChild(document.createTextNode(data.gymnase));
         });
 }
 
