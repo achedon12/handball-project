@@ -27,7 +27,7 @@
                             <td style="max-width: 300px">{{ post.content | nl2br}}</td>
                             <td>
                                 <a href="{{ path('app_post_show', {'id': post.id}) }}" class="btn btn-primary">Voir</a>
-                                <a href="#" class="btn btn-warning">Modifier</a>
+                                <a href="{{ path('app_post_edit',{ 'id': post.id }) }}" class="btn btn-warning">Modifier</a>
                                 <a href="{{ path('app_post_delete', {'id': post.id}) }}" class="btn btn-danger">Supprimer</a>
                             </td>
                         </tr>

@@ -17,7 +17,7 @@ class AboutController extends AbstractController
         ]);
     }
 
-    #[Route('/history', name: 'app_about_history')]
+    #[Route('/historique', name: 'app_about_history')]
     public function history(): Response
     {
         return $this->render('about/history.html.twig', [
