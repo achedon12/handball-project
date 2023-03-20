@@ -73,10 +73,11 @@ function displayMatchtes() {
                         }
                     });
                     aDelete.appendChild(iDelete);
-
-                    divInfo.appendChild(aEdit);
-                    divInfo.appendChild(aDelete);
-
+                    let section = document.createElement('section');
+                    section.className = 'icons';
+                    section.appendChild(aEdit);
+                    section.appendChild(aDelete);
+                    divInfo.appendChild(section);
                 }
                 a.appendChild(h1);
                 a.appendChild(divInfo);
