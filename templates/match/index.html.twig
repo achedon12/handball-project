@@ -1,10 +1,7 @@
 {% extends 'base.html.twig' %}
-
-
 {% block title %}Voir une équipe{% endblock %}
 
 {% block body %}
-
     <link rel="stylesheet" href="{{ asset('css/allMatches.css') }}">
     <link rel="stylesheet" href="{{ asset('css/backgroundIcons.css') }}">
     <link rel="stylesheet" href="{{ asset('css/goTopButton.css') }}">
@@ -33,13 +30,8 @@
             <article>
                 <label for="domicile">Domicile</label>
                 <input type="checkbox" id="domicile" name="domicile">
-            </article>{#
-            <article>
-                <label for="date">Date</label>
-                <input type="date" id="date" name="date">
-            </article>#}
+            </article>
         </aside>
-
         <section class="content">
             <section id="loader" style="margin-left: auto;margin-right: auto"></section>
         </section>

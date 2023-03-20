@@ -6,9 +6,11 @@ use App\Entity\Equipes;
 use App\Form\CreateEquipeType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\File;
 
 class EquipeController extends AbstractController
 {
@@ -26,7 +28,7 @@ class EquipeController extends AbstractController
     public function add(Request $request, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
         $equipe = new Equipes();
         $form = $this->createForm(CreateEquipeType::class, $equipe);
@@ -56,18 +58,46 @@ class EquipeController extends AbstractController
     public function edit(int $id, Request $request, ManagerRegistry $dotrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
         $equipeManager = $dotrine->getRepository(Equipes::class);
         $equipe = $equipeManager->find($id);
 
         $form = $this->createFormBuilder()
-            ->add('libelle', null, ["data" => $equipe->getLibelle()])
-            ->add('entraineur', null, ["data" => $equipe->getEntraineur()])
-            ->add('creneaux', null, ["data" => $equipe->getCreneaux()])
-            ->add('url_photo', null, ["data" => $equipe->getUrlPhoto()])
-            ->add('url_result_calendrier', null, ["data" => $equipe->getUrlResultCalendrier()])
-            ->add('commentaire', null, ["data" => $equipe->getCommentaire()])
+            ->add('libelle', null, [
+                "data" => $equipe->getLibelle(),
+                "required" => false,
+            ])
+            ->add('entraineur', null, [
+                "data" => $equipe->getEntraineur(),
+                "required" => false,
+            ])
+            ->add('creneaux', null, [
+                "data" => $equipe->getCreneaux(),
+                "required" => false,
+            ])
+            ->add('url_photo', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/*',
+                        ],
+                        'mimeTypesMessage' => 'Sélectionnez une image valide',
+                    ])
+                ],
+            ])
+            ->add('url_result_calendrier', null, [
+                "data" => $equipe->getUrlResultCalendrier(),
+                "required" => false,
+            ])
+            ->add('commentaire', null, [
+                "data" => $equipe->getCommentaire(),
+                "required" => false,
+            ])
             ->getForm();
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -85,6 +115,7 @@ class EquipeController extends AbstractController
         return $this->render('equipe/edit.html.twig', [
             'form' => $form->createView(),
             "user" => $this->getUser(),
+            "image" => $equipe->getUrlPhoto(),
         ]);
     }
 
@@ -92,7 +123,7 @@ class EquipeController extends AbstractController
     public function delete(int $id, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
         $equipeManager = $doctrine->getRepository(Equipes::class);
         $equipe = $equipeManager->find($id);

@@ -4,14 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Equipes;
 use App\Entity\Matches;
-use App\Form\CreateMatchType;
 use DateTime;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -32,25 +30,11 @@ class MatchController extends AbstractController
         ]);
     }
 
-    #[Route('/match/show/{id}', name: 'app_match_show')]
-    public function show(int $id, ManagerRegistry $doctrine): Response
-    {
-
-        $match = $doctrine->getRepository(Equipes::class)->find($id);
-        if ($match) {
-            return $this->render('match/show.html.twig', [
-                'match' => $match,
-                "user" => $this->getUser(),
-            ]);
-        }
-        return $this->redirectToRoute('app_match');
-    }
-
     #[Route('/match/create', name: 'app_match_create')]
     public function create(Request $request, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
         $form = $this->createFormBuilder()
             ->add('equipe_locale', EntityType::class, [
@@ -108,9 +92,8 @@ class MatchController extends AbstractController
             $match->setGymnase($form->get('gymnase')->getData());
             $doctrine->getManager()->persist($match);
             $doctrine->getManager()->flush();
-            return $this->redirectToRoute('app_match_show', [
-                'id' => $match->getId(),
-                "user" => $this->getUser(),
+            return $this->render('home/index.html.twig', [
+                'user' => $this->getUser(),
             ]);
         }
         return $this->render('match/create.html.twig', [
@@ -123,10 +106,16 @@ class MatchController extends AbstractController
     public function delete(int $id, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
+
         $matchManager = $doctrine->getRepository(Matches::class);
         $match = $matchManager->find($id);
+
+        if (!$match) {
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
+
         $entityManager = $doctrine->getManager();
         $entityManager->remove($match);
         $entityManager->flush();
@@ -137,10 +126,13 @@ class MatchController extends AbstractController
     public function edit(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
         $matchManager = $doctrine->getRepository(Matches::class);
         $match = $matchManager->find($id);
+        if (!$match) {
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
         $form = $this->createFormBuilder()
             ->add('equipe_locale', null, [
                 'data' => $match->getEquipeLocale()
