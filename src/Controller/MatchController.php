@@ -35,6 +35,7 @@ class MatchController extends AbstractController
     #[Route('/match/show/{id}', name: 'app_match_show')]
     public function show(int $id, ManagerRegistry $doctrine): Response
     {
+
         $match = $doctrine->getRepository(Equipes::class)->find($id);
         if ($match) {
             return $this->render('match/show.html.twig', [
@@ -48,6 +49,9 @@ class MatchController extends AbstractController
     #[Route('/match/create', name: 'app_match_create')]
     public function create(Request $request, ManagerRegistry $doctrine): Response
     {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $form = $this->createFormBuilder()
             ->add('equipe_locale', EntityType::class, [
                 'class' => Equipes::class,
@@ -79,7 +83,7 @@ class MatchController extends AbstractController
                     'invalid_message' => 'Le numéro de la semaine doit être compris entre 1 et 52',
 
                 ])
-            ->add('num_journee', IntegerType::class,[
+            ->add('num_journee', IntegerType::class, [
                 'attr' => [
                     'min' => 1,
                     'max' => 52,
@@ -87,7 +91,7 @@ class MatchController extends AbstractController
                 'label' => 'Numéro de la journée',
                 'invalid_message' => 'Le numéro de la journée doit être compris entre 1 et 52',
             ])
-            ->add('gymnase', TextType::class,[
+            ->add('gymnase', TextType::class, [
                 'label' => 'Gymnase'
             ])
             ->getForm();
@@ -109,27 +113,6 @@ class MatchController extends AbstractController
                 "user" => $this->getUser(),
             ]);
         }
-        /*$form = $this->createForm(CreateMatchType::class, $match);
-        $form->handleRequest($request);
-        if($form->isSubmitted()){
-            dd($form,$match);
-        }
-        if ($form->isSubmitted() && $form->isValid()) {
-            $match->setHote($form->get('hote')->getData());
-            $match->setEquipeLocale($form->get('equipe_locale')->getData()->getLibelle());
-            $match->setEquipeAdverse($form->get('equipe_adverse')->getData());
-            $match->setDomicileExterieur($form->get('domicile_exterieur')->getData());
-            $match->setDateHeure(new DateTime($form->get('date_heure')->getData()));
-            $match->setNumSemaine($form->get('num_semaine')->getData());
-            $match->setNumJournee($form->get('num_journee')->getData());
-            $match->setGymnase($form->get('gymnase')->getData());
-            $doctrine->getManager()->persist($match);
-            $doctrine->getManager()->flush();
-            return $this->redirectToRoute('app_match_show', [
-                'id' => $match->getId(),
-                "user" => $this->getUser(),
-            ]);
-        }*/
         return $this->render('match/create.html.twig', [
             'form' => $form->createView(),
             "user" => $this->getUser(),
@@ -139,6 +122,9 @@ class MatchController extends AbstractController
     #[Route('/match/delete/{id}', name: 'app_match_delete')]
     public function delete(int $id, ManagerRegistry $doctrine): Response
     {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $matchManager = $doctrine->getRepository(Matches::class);
         $match = $matchManager->find($id);
         $entityManager = $doctrine->getManager();
@@ -150,6 +136,9 @@ class MatchController extends AbstractController
     #[Route('/match/edit/{id}', name: 'app_match_edit')]
     public function edit(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('app_home');
+        }
         $matchManager = $doctrine->getRepository(Matches::class);
         $match = $matchManager->find($id);
         $form = $this->createFormBuilder()
