@@ -4,8 +4,11 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
-    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/planning.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/header.css") }}"/>
+    <link rel="stylesheet" href="{{ asset("css/planning.css") }}"/>
+    <style>
+
+    </style>
 
     <div id="Schedule"></div>
 
@@ -13,20 +16,25 @@
 
     <!-- Essential JS 2 all script -->
     <script src="https://cdn.syncfusion.com/ej2/19.4.48/dist/ej2.min.js" type="text/javascript"></script>
-    <!-- Essential JS 2 Scheduler script -->
-    <script src="https://cdn.syncfusion.com/ej2/20.4.48/dist/ej2.min.js" type="text/javascript"></script>
-    <script src="{{asset('js/planning.js')}}"></script>
+{#    <!-- Essential JS 2 Scheduler script -->#}
+{#    <script src="https://cdn.syncfusion.com/ej2/20.4.48/dist/ej2.min.js" type="text/javascript"></script>#}
+    <script src="{{ asset('js/planning.js') }}"></script>
     <script>
         ej.schedule.Schedule.Inject(ej.schedule.Week, ej.schedule.WorkWeek, ej.schedule.Month);
-        let donnee =[];
-        let  compteur = 0;
+        let donnee = [];
+        let date = new Date();
+        let days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+        let jours = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+
+        let compteur = 0;
         fetch("/api/allMatches").then(response => response.json())
             .then(data =>
                 data.forEach((element) => {
+                    console.log(element);
                     compteur++;
                     let aMatch = {};
-                    aMatch["id"]=element["id"];
-                    aMatch["eventName"]=element["equipeLocale"]+" VS "+element["equipeAdverse"];
+                    aMatch["id"] = element["id"];
+                    aMatch["eventName"] = element["equipeLocale"] + " VS " + element["equipeAdverse"];
                     aMatch['StartTime'] = new Date((element['dateHeure'].split('T'))[0].split('-')[0],
                         (element['dateHeure'].split('T'))[0].split('-')[1],
                         (element['dateHeure'].split('T'))[0].split('-')[2],
@@ -38,34 +46,67 @@
                         (element['dateHeure'].split('T'))[0].split('-')[2],
                         parseInt((element['dateHeure'].split('T'))[1].split(':')[0]) + 1,
                         (element['dateHeure'].split('T'))[1].split(':')[1]);
-                    aMatch["IsAllDay"]=false;
+                    aMatch["IsAllDay"] = false;
                     donnee.push(aMatch);
-                    if (compteur===data.length) {
+                    // console.log(aMatch)
+                    if (compteur === data.length) {
+                        fetch("/api/allTeam").then(response => response.json())
+                            .then(entrainement =>
+                                entrainement.forEach((element)=>{
+                                    console.log(element);
+                                    for (let i = -3; i < 8; i++) {
+                                        let aTeam = {};
+                                        if (element["creneaux"]!=="") {
+                                            aTeam["id"] = element["id"];
+                                            aTeam["eventName"] = "entrainement des " + element["libelle"];
+                                            let numJour = days.indexOf((date.getDate()).toString().split(' ')[0]);
+                                            let jourEntrainement = jours.indexOf(element["creneaux"].split(" ")[0]);
+                                            let jourDefDebut = new Date(date.getFullYear(),date.getMonth(),date.getDate()-numJour+jourEntrainement,((element["creneaux"].split(" ")[1]).split("-")[0]).slice(0,2),0,0);
+                                            let jourDefFin = new Date(date.getFullYear(),date.getMonth(),date.getDate()-numJour+jourEntrainement,((element["creneaux"].split(" ")[1]).split("-")[1]).slice(0,2),0,0)
+
+                                            jourDefDebut.setFullYear(jourDefDebut.getFullYear(),jourDefDebut.getMonth(),jourDefDebut.getDate()+i*7);
+
+                                            jourDefFin.setFullYear(jourDefFin.getFullYear(),jourDefFin.getMonth(),jourDefFin.getDate()+i*7);
+                                            aTeam["StartTime"]=jourDefDebut;
+                                            aTeam["EndTime"]=jourDefFin;
+                                            aTeam["IsAllDay"]=false;
+                                            aTeam["cssClass"]="entrainement";
+                                            console.log(aTeam);
+                                            donnee.push(aTeam);
+                                        }
+                                    }
+
+
+
+                                })
+
+                            )
+
+
 
                         console.log(donnee);
                         let scheduleObj = new ej.schedule.Schedule({
-                            width: '80%',
-                            height: '70%',
+                            width: '100%',
+                            height: '80%',
                             locale: "fr-CH",
                             readonly: true,
-                            views: ['Day', 'Week', 'Month'],
+                            views: [{option: 'Day', startHour: '10:00', endHour: '22:00'},{option: 'Week', startHour: '10:00', endHour: '22:00'},'Month'],
                             selectedDate: new Date(),
                             minDate: new Date(new Date().getTime() - (21 * 24 * 60 * 60 * 1000)), // 3 weeks
                             maxDate: new Date(new Date().getTime() + (56 * 24 * 60 * 60 * 1000)), // 8 weeks
                             eventSettings: {
                                 dataSource: donnee,
-                                fields:{
-                                    id:'id',
-                                    subject:{name:'eventName'},
-                                    startTime:{name: "StartTime"},
-                                    EndTime:{name:"EndTime"},
+                                fields: {
+                                    id: 'id',
+                                    subject: {name: 'eventName'},
+                                    startTime: {name: "StartTime"},
+                                    EndTime: {name: "EndTime"},
                                 }
                             }
                         })
                         scheduleObj.appendTo('#Schedule');
                     }
                 }))
-
 
 
     </script>
