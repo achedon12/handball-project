@@ -48,15 +48,16 @@ newElement.forEach((element) => {
 
 let date;
 
-let remainingTime = document.querySelector(".next-match-remaining-time");
+let remainingTime = document.querySelector(".next-match-remaining-time").querySelector('p');
 setInterval(() => {
-
     let remaining = getRemainingTime(date);
-    console.log(remaining)
+    // console.log(remaining)
     remainingTime.hidden = isNaN(remaining[0]);
     if(remaining !== [0, 0, 0, 0]){
-        remainingTime.innerHTML = remaining[0]+"j "+remaining[1]+"h "+remaining[2]+"m "+remaining[3]+"s";
-
+        remainingTime.innerHTML = remaining[0] + "<dt>j</dt>"
+            + remaining[1] + "<dt>h</dt>"
+            + remaining[2] + "<dt>m</dt>"
+            + remaining[3] + "<dt>s</dt>";
     }
 },1000);
 
@@ -101,7 +102,7 @@ function getNextMatch(){
                 us.innerHTML = data.equipeAdverse;
                 opponentElement.innerHTML = data.equipeLocale;
             }
-            locationElement.innerHTML = data.gymnase;
+            locationElement.appendChild(document.createTextNode(data.gymnase));
         });
 }
 
