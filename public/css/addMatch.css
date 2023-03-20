@@ -156,13 +156,62 @@
 @media screen and (min-width: 726px) and (max-width: 1024px) {
 
 
-
-
     .formCreateMatch{
         width: 100%;
         margin: 0;
     }
 
+
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 726px){
+    .formCreateMatch{
+        width: 100%;
+        height: 80vh;
+        margin: 0;
+        font-size: 1.5em;
+    }
+    .formCreateMatch form{
+        height: 60%;
+    }
+
+    .img{
+        display: none;
+    }
+
+    .equipeAccueil{
+        width: 85%;
+    }
+
+    .infoSpace{
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .infoSpace *{
+        margin: 0;
+        padding: 0;
+    }
+    .img{
+        display: none;
+    }
+
+    .infoSpace>section{
+        height: 50%;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+
+        gap: 25px;
+    }
+
+    .localisation>div{
+        margin: 0;
+    }
+    .infoSpace input{
+        width: 50%;
+    }
 
 
 }
