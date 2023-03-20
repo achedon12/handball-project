@@ -52,7 +52,7 @@ class AccountController extends AbstractController
     #[Route('/account/manage', name: 'app_account_manage')]
     public function manage(ManagerRegistry $doctrine): Response
     {
-        if (!$this->getUser()) {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('app_home');
         }
 
@@ -67,7 +67,7 @@ class AccountController extends AbstractController
     #[Route('/account/manage/edit/{id}', name: 'app_account_manage_edit')]
     public function edit(int $id, Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
-        if (!$this->getUser()) {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('app_home');
         }
 
@@ -92,7 +92,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPseudo($form->get('pseudo')->getData());
             $user->setEmail($form->get('email')->getData());
-            if($form->get('password')->getData() != null) {
+            if ($form->get('password')->getData() != null) {
                 $hash = $passwordHasher->hashPassword($user, $form->get('password')->getData());
                 $user->setPassword($hash);
             }
@@ -114,7 +114,7 @@ class AccountController extends AbstractController
     #[Route('/account/manage/delete/{id}', name: 'app_account_manage_delete')]
     public function delete(int $id, ManagerRegistry $doctrine): Response
     {
-        if (!$this->getUser()) {
+        if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             return $this->redirectToRoute('app_home');
         }
 
