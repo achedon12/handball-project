@@ -11,7 +11,6 @@
     padding-bottom: 2%;
     text-transform: uppercase;
     border-radius: 25px;
-
 }
 
 h2{
@@ -23,6 +22,12 @@ h2{
     background-color: rgba(255,255,255,0.8);
 }
 
+.buttonSection
+{
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
+}
 
 .teamArticle{
     width: 45%;

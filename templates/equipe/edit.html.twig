@@ -1,10 +1,20 @@
 {% extends 'base.html.twig' %}
 {% block title %}Modifier une équipe{% endblock %}
 {% block body %}
+    {% include'header.html.twig' %}
     <h1>Modifier une équipe</h1>
     {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.libelle) }}
+    {{ form_row(form.entraineur) }}
+    {{ form_row(form.creneaux) }}
+    {% set img = '/images/'~ image %}
+    <label for="actualPicture">Photo actuelle</label>
+    <img src="{{ asset(img) }}" alt="actual_picture" id="actualPicture">
+    {{ form_row(form.url_photo) }}
+    {{ form_row(form.url_result_calendrier) }}
+    {{ form_row(form.commentaire) }}
     <button type="submit" class="btn btn-primary">Modifier</button>
     {{ form_end(form) }}
+    {% include 'footer.html.twig' %}
 {% endblock %}
 

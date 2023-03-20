@@ -3,15 +3,10 @@
 {% block title %}Créer une équipe{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
     <link rel="stylesheet" href="{{ asset("css/addTeam.css") }}">
     <link rel="stylesheet" href="{{ asset("css/backgroundIcons.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/footer.css") }}">
     {% include 'header.html.twig' %}
     <main>
-
-
     <section class="main">
         <section class="formCreateTeam reveal_bottom">
             <section class="logAndTitle">
@@ -21,15 +16,11 @@
             {{ form_start(form) }}
             <section class="fullForm">
                 <section class="labelForm">
-
-
                     <label>Nom d'équipe</label>
                     {{ form_label(form.entraineur)}}
                     {{ form_label(form.creneaux)}}
                     {{ form_label(form.url_photo)}}
-
                     <label> lien Résultats</label>
-
                     {{ form_label(form.commentaire)}}
                 </section>
                 <section class="inputForm">
@@ -46,28 +37,6 @@
         </section>
     </section>
     </main>
-    <section class="contact reveal_bottom">
-        <section class="contact-container">
-            <h1>NOUS CONTACTER</h1>
-            <article class="infos">
-                <h2>Guilherand-Granges Ardèche Handball</h2>
-                <a href="#" class="contact-element">
-                    <i class="bi bi-geo-alt"></i>
-                    <p> Espace Rémy Roure - 07500 Guilherand-Granges</p>
-                </a>
-                <a href="#" class="contact-element">
-                    <i class="bi bi-facebook"></i>
-                    <p> @GGAhandball</p>
-                </a>
-                <a href="mailto:5107009@ffhandball.net" class="contact-element">
-                    <i class="bi bi-envelope-check"></i>
-                    <p> 5107009@ffhandball.net</p>
-                </a>
-
-            </article>
-        </section>
-    </section>
-
-    <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
+    {% include 'footer.html.twig' %}
 {% endblock %}
 

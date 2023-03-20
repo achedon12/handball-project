@@ -9,14 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/about')]
 class AboutController extends AbstractController
 {
-    #[Route('/', name: 'app_about')]
-    public function index(): Response
-    {
-        return $this->render('about/index.html.twig', [
-            'user' => $this->getUser(),
-        ]);
-    }
-
     #[Route('/historique', name: 'app_about_history')]
     public function history(): Response
     {

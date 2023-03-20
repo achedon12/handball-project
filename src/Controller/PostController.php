@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\User;
 use App\Form\PostType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +21,7 @@ class PostController extends AbstractController
     {
         $post = $doctrine->getRepository(Post::class)->find($id);
         if (!$post) {
-            return $this->render('post/error.html.twig');
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
         }
         return $this->render('post/show.html.twig', [
             'controller_name' => 'PostController',
@@ -33,9 +34,15 @@ class PostController extends AbstractController
     public function edit(int $id, Request $request, ManagerRegistry $managerRegistry): Response
     {
         if (!$this->isGranted('ROLE_COACH') && !$this->isGranted('ROLE_ADMIN') && !$this->getUser()) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
+
         $post = $managerRegistry->getRepository(Post::class)->find($id);
+
+        if (!$post) {
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
+
         $form = $this->createFormBuilder()
             ->add('title', null, [
                 "label" => "Titre du post",
@@ -100,12 +107,15 @@ class PostController extends AbstractController
     public function delete(int $id, ManagerRegistry $managerRegistry): Response
     {
         if (!$this->isGranted('ROLE_COACH') && !$this->isGranted('ROLE_ADMIN') && !$this->getUser()) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
+
         $post = $managerRegistry->getRepository(Post::class)->find($id);
+
         if (!$post) {
-            return $this->render('post/error.html.twig');
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
         }
+
         unlink($this->getParameter('post_directory') . "/" . $post->getUrlPhoto());
         $manager = $managerRegistry->getManager();
         $manager->remove($post);
@@ -117,9 +127,16 @@ class PostController extends AbstractController
     public function post(string $pseudo, ManagerRegistry $managerRegistry): Response
     {
         if (!$this->isGranted('ROLE_COACH') && !$this->isGranted('ROLE_ADMIN') && !$this->getUser()) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
+
         $postManager = $managerRegistry->getRepository(Post::class);
+
+        $user = $managerRegistry->getRepository(User::class)->findOneBy(["pseudo" => $pseudo]);
+        if(!$user) {
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
+
         $posts = $postManager->findBy(["author" => $pseudo]);
 
         return $this->render('post/post.html.twig', [

@@ -53,7 +53,7 @@ class AccountController extends AbstractController
     public function manage(ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
 
         $users = $doctrine->getRepository(User::class)->findAll();
@@ -68,7 +68,7 @@ class AccountController extends AbstractController
     public function edit(int $id, Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
 
         $userManager = $doctrine->getManager();
@@ -115,7 +115,7 @@ class AccountController extends AbstractController
     public function delete(int $id, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
-            return $this->redirectToRoute('app_home');
+            return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
 
         $user = $doctrine->getRepository(User::class)->find($id);

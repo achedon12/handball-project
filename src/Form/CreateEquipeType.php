@@ -20,7 +20,7 @@ class CreateEquipeType extends AbstractType
             ->add('url_photo', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',

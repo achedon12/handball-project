@@ -60,9 +60,12 @@ function getAllTeam() {
                     }
                 });
                 aDelete.appendChild(iDelete);
+                let section = document.createElement('section');
+                section.classList.add('buttonSection');
 
-                infoSection.appendChild(aEdit);
-                infoSection.appendChild(aDelete);
+                section.appendChild(aEdit);
+                section.appendChild(aDelete);
+                infoSection.appendChild(section);
             }
 
             teamSection.appendChild(infoSection)
