@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Post;
+use App\Entity\User;
 use App\Form\PostType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -130,11 +131,13 @@ class PostController extends AbstractController
         }
 
         $postManager = $managerRegistry->getRepository(Post::class);
-        $posts = $postManager->findBy(["author" => $pseudo]);
 
-        if (!$posts) {
+        $user = $managerRegistry->getRepository(User::class)->findOneBy(["pseudo" => $pseudo]);
+        if(!$user) {
             return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
         }
+
+        $posts = $postManager->findBy(["author" => $pseudo]);
 
         return $this->render('post/post.html.twig', [
             'controller_name' => 'PostController',

@@ -4,6 +4,7 @@
 
 {% block body %}
     <link rel="stylesheet" href="{{ asset('css/account.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/matchSection.css') }}">
     {% include 'header.html.twig' %}
     <main>
         <aside class="select">
@@ -26,13 +27,13 @@
             <section class="content">
                 <h2>Notre club</h2>
                 <a class="element" href="{{ path('app_equipe') }}">
-                    <article class="equipe">
+                    <article>
                         <i class="bi bi-person-lines-fill "></i>
                     </article>
                     <h1>Equipes</h1>
                 </a>
                 <a class="element" href="{{ path('app_match') }}">
-                    <article class="match">
+                    <article>
                         <i class="bi bi-list-task"></i>
                     </article>
                     <h1>Matchs</h1>
@@ -92,10 +93,11 @@
                     </section>
                 {% endif %}
                 <section class="nextMatch">
-                    <!-- TODO: mettre le prochain    match  -->
+                    {% include 'match/preview.html.twig' %}
                 </section>
             {% endif %}
         </section>
     </main>
     <script src="{{ asset('js/account.js') }}"></script>
+    <script src="{{ asset('js/matches.js') }}"></script>
 {% endblock %}
