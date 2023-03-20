@@ -3,11 +3,8 @@
 {% block title %}Créer un match{% endblock %}
 
 {% block body %}
-    <link rel="stylesheet" href="{{ asset("css/header.css") }}">
     <link rel="stylesheet" href="{{ asset("css/addMatch.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
     <link rel="stylesheet" href="{{ asset("css/backgroundIcons.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/footer.css") }}">
     {% include 'header.html.twig' %}
 
     <section class="main">
@@ -16,11 +13,8 @@
             {{ form_start(form) }}
             <section class="equipeAccueil">
                 <section class="equipe">
-                    <label>Equipe GGHB</label>
-                    {{ form_widget(form.equipe_locale, {'attr': {'placeholder': 'équipe local'}}) }}
-                    <!--
-                    faire un datalist input avec les meme id que symfony aurais fait
-                    -->
+                    {{ form_label(form.equipe_locale) }}
+                    {{ form_widget(form.equipe_locale) }}
                 </section>
                 <h2 class="contre">Contre</h2>
                 <section class="equipe">
@@ -30,12 +24,9 @@
             </section>
             <section class="infoSpace">
                 <section class="localisation">
-
                     {{ form_row(form.hote) }}
-
                     {{ form_row(form.gymnase) }}
                     {{ form_row(form.domicile_exterieur) }}
-
                 </section>
                 <section class="img"><img src="{{ asset('images/logo.png') }}" alt=""></section>
                 <section class="date">
@@ -50,29 +41,8 @@
             {{ form_end(form) }}
         </section>
     </section>
-    <section class="contact reveal_bottom">
-        <section class="contact-container">
-            <h1>NOUS CONTACTER</h1>
-            <article class="infos">
-                <h2>Guilherand-Granges Ardèche Handball</h2>
-                <a href="#" class="contact-element">
-                    <i class="bi bi-geo-alt"></i>
-                    <p> Espace Rémy Roure - 07500 Guilherand-Granges</p>
-                </a>
-                <a href="#" class="contact-element">
-                    <i class="bi bi-facebook"></i>
-                    <p> @GGAhandball</p>
-                </a>
-                <a href="mailto:5107009@ffhandball.net" class="contact-element">
-                    <i class="bi bi-envelope-check"></i>
-                    <p> 5107009@ffhandball.net</p>
-                </a>
-
-            </article>
-        </section>
-    </section>
+    {% include 'footer.html.twig' %}
 
     <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
 {% endblock %}
-
 
