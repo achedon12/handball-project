@@ -3,6 +3,130 @@
 {% block title %}Histoire du club{% endblock %}
 
 {% block body %}
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
     {% include 'header.html.twig' %}
+    <header class="header-about">
+        <h1>Historique</h1>
+    </header>
+    <main>
+        <section class="section-content">
+            <p>Fondée en 1968 par une poignée de passionnés, la section Handball de l’Amicale Laïque Guilherand-Granges
+                occupe une place privilégiée dans le paysage du Handball régional.</p>
+
+            <p>Club formateur par excellence, l’AL Handball assure l’apprentissage des fondamentaux de ce sport complet
+                et contribue à la détection de jeunes talents, dont certains poursuivent une carrière sportive dans les
+                clubs de division nationale.</p>
+            <p>Quelques dates importantes dans l’histoire du club :</p>
+            <article class="timeline">
+                <ul>
+                    <li>
+                        <div>
+                            <h2>1933</h2><br>L’équipe Benjamines est Championne de Ligue Dauphiné-Savoie
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1934</h2><br>L’équipe seniors filles est Championne Drôme-Ardèche
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1936</h2><br>L’équipe Poussins est Championne Drôme-Ardèche
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1937</h2><br>Virginie COTTEZ (formée au Club) est Championne du Monde avec l’équipe de
+                            France Universitaire
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1938</h2><br>L’équipe seniors filles Championne Drôme-Ardèche
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1939</h2><br>L’équipe moins de 14 ans filles remporte la Coupe Drôme-Ardèche
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1940</h2><br>L’équipe moins de 16 ans filles remporte la Coupe Drôme-Ardèche
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1941</h2><br>Maxime ARVIN-BEROD intègre le pôle Espoirs du Montpellier Handball
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1942</h2><br>L’équipe moins de 18 ans garçons est Championne Drôme-Ardèche<br>Alizée
+                            MARTIN intègre le pôle Espoirs de Chambéry
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1943</h2><br>L’équipe moins de 18 ans filles Championne Isère-Drôme-Ardèche
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1944</h2><br>L’équipe moins de 19 ans filles réalise le doublé Coupe-Championnat
+                            Drôme-Ardèche<br>L’équipe seniors filles Championne Drôme-Ardèche pré-régional<br>Ces deux
+                            équipes accèdent au niveau régional
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1945</h2><br>Entente avec le club de l’HBGG. Les filles jouent sous les couleurs de
+                            l’ALGG et les garçons sous les couleurs de l’HBGG
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1946</h2><br>L’équipe seniors régionale monte en pré-nationale
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1947</h2><br>Sortie de l’ALGG, création du club GGAHB
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1948</h2><br>L’équipe seniors régionale accède en demi-finale de la coupe de France
+                            régionale
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1949</h2><br>Les 2 équipes seniors évoluent en Régional (Prénational et Honneur Régional)
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1950</h2><br>Les collectifs -13 &amp; -15 évoluent en Championnat Ligue AuRA
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1951</h2><br>Convention avec Etoile-Beauvallon pour une équipe -17 Championnat de France<br>L’équipe
+                            fanion fini 1ère du championnat &amp; accède à la Nationale 3
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h2>1952</h2><br>Les collectifs -15 &amp; -18 évoluent en Championnat Ligue AuRA<br>Convention
+                            avec Le Pouzin pour deux équipes -16 AuRA &amp; -17 Championnat de France<br>1ère année dans
+                            l’histoire du club en Nationale 3
+                        </div>
+                    </li>
+                </ul>
+            </article>
+        </section>
+    </main>
+    <script src="{{ asset('js/about.js') }}"></script>
     {% include 'footer.html.twig' %}
 {% endblock %}

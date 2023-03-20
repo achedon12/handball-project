@@ -10,7 +10,7 @@
                 <h1>Post n° {{ post.id }} - {{ post.author }} - {{ post.date|split('/').0 }}</h1>
                 {{ form_start(form) }}
                 {{ form_row(form.title) }}
-                {{ form_row(form.content|nl2br) }}
+                {{ form_row(form.content) }}
                 {% set src = '/posts/images/' ~ post.urlPhoto %}
                 <label for="actualImage">Image actuelle</label>
                 <img src="{{ asset(src) }}" id="actualImage">

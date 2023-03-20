@@ -4,5 +4,49 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <header class="header-about">
+        <h1>Le guilherand-granges ardèche handball</h1>
+    </header>
+    <main>
+        <section class="section-content">
+            <p>Avec plus de 180 adhérents, le Guilherand-Granges Ardèche Handball (GGAHB) privilégie la formation des jeunes depuis le minihand (école de hand labellisée) jusqu’aux moins de 18 ans.</p>
+            <p>Depuis la saison 2011-2012, suite à entente avec le club voisin HBGG, le GGAHB Handball gère le pôle handball féminin de Guilherand-Granges.</p>
+            <p>Le club participe aux championnats féminins et dispose d’un fort contingent de pratiquants « loisirs » mixtes (joueurs en « limite d’âge », parents de jeunes joueurs, découverte tardive du handball, adultes désireux d’entretenir leur forme, …).</p>
+            <p>Les équipes du GGAHB sont engagées en Championnat Drôme-Ardèche et en Championnat Ligue Rhône-Alpes Auvergne.</p>
+            <p>Le GGAHB c’est aussi :</p>
+            <article class="timeline">
+                <ul>
+                    <li>
+                        <div>
+                            Une équipe dirigeante efficace et soudée, avec pour devise « gérer et jouer en se faisant plaisir tout en respectant les règles »
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            Des installations adaptées (complexe omnisports de Guilherand-Granges)
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            Des entraîneurs motivés et formés
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            Des arbitres performants de niveau départemental ou régional
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            Une ambiance conviviale
+                        </div>
+                    </li>
+
+                </ul>
+            </article>
+        </section>
+    </main>
+    <script src="{{ asset('js/about.js') }}"></script>
     {% include 'footer.html.twig' %}
 {% endblock %}

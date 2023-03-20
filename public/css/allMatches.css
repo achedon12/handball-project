@@ -8,8 +8,6 @@ main
     margin: 10px 0 10px 0;
 }
 
-
-
 .formGetMatches
 {
     flex-basis: 20%;
@@ -90,6 +88,13 @@ article select
     align-items: center;
 }
 
+.icons
+{
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+}
+
 @media screen and (min-width: 0px) and (max-width: 1024px) {
     .formGetMatches select{
         width: 100%;
@@ -97,9 +102,6 @@ article select
     main{
         flex-direction: row;
     }
-
-
-
 }
 
 
