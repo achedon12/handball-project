@@ -1,13 +1,4 @@
-.reveal_bottom{
-    opacity: 0;
-    transform: translateY(+30px);
-}
 
-.reveal_bottom_visible{
-    opacity: 1;
-    transform: translateY(0);
-    transition: 1s;
-}
 
 .contact
 {
@@ -15,6 +6,8 @@
     display: flex;
     align-self: center;
     justify-content: center;
+    bottom: 0;
+    width: 100%;
 }
 
 .contact-container

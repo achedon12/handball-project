@@ -82,6 +82,7 @@ class ApiController extends AbstractController
         $localTeam = $_GET['equipe_locale'] ?? 'all';
         $gymnase = $_GET['gymnase'] ?? 'all';
         $domicile_exterieur = $_GET['domicile_exterieur'] ?? 'all';
+        $date = isset($_GET["date"]) ?? 'all';
 
         $criteria = [];
         if ($localTeam != 'all') {
@@ -96,15 +97,16 @@ class ApiController extends AbstractController
 
         $array = $doctrine->getRepository(Matches::class)->findBy($criteria);
 
-        $date = new DateTime('now');
-        $array = array_filter($array, function ($a) use ($date) {
-            return $a->getDateHeure() >= $date;
-        });
+        if ($date === 'all') {
+            $date = new DateTime('now');
+            $array = array_filter($array, function ($a) use ($date) {
+                return $a->getDateHeure() >= $date;
+            });
+        }
 
         usort($array, function ($a, $b) {
             return $a->getDateHeure() <=> $b->getDateHeure();
         });
-
 
         return $this->json($array);
     }

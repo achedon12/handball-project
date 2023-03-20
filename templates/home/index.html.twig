@@ -4,45 +4,8 @@
 {% block body %}
     {% include 'header.html.twig' %}
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/matchSection.css") }}">
     <main>
-        <section class="match reveal_bottom">
-            <fieldset class="nextMatch matchSection">
-                <legend><h2>Prochain match</h2></legend>
-                <table>
-                    <tbody class="matchContent">
-                    <tr>
-                        <td class="next-match-date" colspan="3"></td>
-                    </tr>
-                    <tr>
-                        <td class="next-match-team1"></td>
-                        <td class="next-match-time"></td>
-                        <td class="next-match-team2"></td>
-                    </tr>
-                    <tr>
-                        <td class="next-match-location" colspan="3">
-                            <i class="bi bi-geo-alt"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="next-match-remaining-time" colspan="3"><p></p></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-
-            <section class="lastMatch matchSection">
-                <h2>Match précédent</h2>
-                <article>
-                    <p class="last-match-date"></p>
-                    <p class="last-match-team1"></p>
-                    <p class="last-match-time"></p>
-                    <p class="last-match-team2"></p>
-                    <p class="last-match-location"></p>
-                </article>
-            </section>
-
-        </section>
+        {% include 'match/preview.html.twig' %}
         <section class="pic-ctn reveal_bottom">
             <section class="aboutOur">
                 <h1>Qui sommes-nous ?</h1>
