@@ -4,54 +4,8 @@
 {% block body %}
     {% include 'header.html.twig' %}
     <link rel="stylesheet" href="{{ asset("css/homePage.css") }}">
-    <link rel="stylesheet" href="{{ asset("css/matchSection.css") }}">
     <main>
-        <section class="match reveal_bottom">
-            <fieldset class="nextMatch matchSection">
-                <legend><h2>Prochain match</h2></legend>
-                <table>
-                    <tbody class="matchContent">
-                    <tr>
-                        <td class="next-match-date" colspan="3"></td>
-                    </tr>
-                    <tr>
-                        <td class="next-match-team1"></td>
-                        <td class="next-match-time"></td>
-                        <td class="next-match-team2"></td>
-                    </tr>
-                    <tr>
-                        <td class="next-match-location" colspan="3">
-                            <i class="bi bi-geo-alt"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="next-match-remaining-time" colspan="3"><p></p></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-
-            <fieldset class="lastMatch matchSection">
-                <legend><h2>Match précédent</h2></legend>
-                <table>
-                    <tbody class="matchContent">
-                    <tr>
-                        <td class="last-match-date" colspan="3"></td>
-                    </tr>
-                    <tr>
-                        <td class="last-match-team1"></td>
-                        <td class="last-match-time"></td>
-                        <td class="last-match-team2"></td>
-                    </tr>
-                    <tr>
-                        <td class="last-match-location" colspan="3">
-                            <i class="bi bi-geo-alt"></i>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-        </section>
+        {% include 'match/preview.html.twig' %}
         <section class="pic-ctn reveal_bottom">
             <section class="aboutOur">
                 <h1>Qui sommes-nous ?</h1>
@@ -120,6 +74,5 @@
         {% include 'footer.html.twig' %}
     </main>
     <script src="{{ asset('js/index.js') }}"></script>
-    <script src="{{ asset('js/matches.js') }}"></script>
     <script src="{{ asset('js/transitionBottomTop.js') }}"></script>
 {% endblock %}
