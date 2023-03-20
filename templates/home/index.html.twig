@@ -43,8 +43,10 @@
         <section class="pic-ctn reveal_bottom">
             <section class="aboutOur">
                 <h1>Qui sommes-nous ?</h1>
-                <div class="section-desc"><div style="text-align: justify">
-                        Depuis la saison 2011-2012, suite à entente avec le club voisin HBGG, le GGAHB Handball gère le pôle handball féminin de Guilherand-Granges.
+                <div class="section-desc">
+                    <div style="text-align: justify">
+                        Depuis la saison 2011-2012, suite à entente avec le club voisin HBGG, le GGAHB Handball gère le
+                        pôle handball féminin de Guilherand-Granges.
                     </div>
                 </div>
                 <div class="row">
@@ -70,38 +72,39 @@
                             l’organigramme sportif.</p>
                     </div>
                 </div>
-
             </section>
             <img src="{{ asset('images/Loisirs.jpg') }}" alt="img" class="img">
         </section>
 
-        <section class="news reveal_bottom">
-            <section class="news-content">
-                {% for post in posts %}
-                    {% set url = path('app_post_show',{'id': post.id}) %}
-                    <a class="news-element" id="{{ post.id }}" href="{{ url }}">
-                        <h3 class="name">{{ post.author }}</h3>
-                        <p class="content">{{ post.title }}</p>
-                        {% set src = '/posts/images/' ~ post.urlPhoto %}
-                        <img src="{{ asset(src) }}" alt="news-img" class="news-element-img">
-                    </a>
-                {% endfor %}
+        {% if posts|length > 0 %}
+            <section class="news reveal_bottom">
+                <section class="news-content">
+                    {% for post in posts %}
+                        {% set url = path('app_post_show',{'id': post.id}) %}
+                        <a class="news-element" id="{{ post.id }}" href="{{ url }}">
+                            <h3 class="name">{{ post.author }}</h3>
+                            <p class="content">{{ post.title }}</p>
+                            {% set src = '/posts/images/' ~ post.urlPhoto %}
+                            <img src="{{ asset(src) }}" alt="news-img" class="news-element-img">
+                        </a>
+                    {% endfor %}
+                </section>
+                <ul class="page">
+                    <li class="page-link-li"><a href="#" class="page-link-a"><</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">1</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">2</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">3</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">4</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">5</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">6</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">7</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">8</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">9</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">10</a></li>
+                    <li class="page-link-li"><a href="#" class="page-link-a">></a></li>
+                </ul>
             </section>
-            <ul class="page">
-                <li class="page-link-li"><a href="#" class="page-link-a"><</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">1</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">2</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">3</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">4</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">5</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">6</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">7</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">8</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">9</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">10</a></li>
-                <li class="page-link-li"><a href="#" class="page-link-a">></a></li>
-            </ul>
-        </section>
+        {% endif %}
         {% include 'footer.html.twig' %}
     </main>
     <script src="{{ asset('js/index.js') }}"></script>

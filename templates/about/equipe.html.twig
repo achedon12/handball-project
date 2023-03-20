@@ -4,5 +4,16 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
+    <link rel="stylesheet" href="{{ asset('css/about.css') }}">
+    <header class="header-about">
+        <h1>Equipe dirigeante</h1>
+    </header>
+    <main>
+        <section class="section-content">
+            <p>Le bureau du club est composé de 13 bénévoles et d’un salarié. Le club est présidé depuis 2018 par Émilien Dorne. Vous trouverez ci-dessous l’organigramme administratif et l’organigramme sportif.</p>
+            <img src="{{ asset('images/organigramme-admin-2019.2020-1024x651.jpg') }}" alt="">
+            <img src="{{ asset('images/organigramme-sportif-2019.2020-1024x733.jpg') }}" alt="">
+        </section>
+    </main>
     {% include 'footer.html.twig' %}
 {% endblock %}
