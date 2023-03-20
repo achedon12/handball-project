@@ -187,3 +187,19 @@ form input {
 
 
 }
+
+
+@media screen and (min-width: 0px) and (max-width: 726px){
+    main{
+        flex-direction: column;
+    }
+    .select{
+        flex-direction: row;
+        flex-basis: 35%;
+    }
+
+    .element h1{
+        overflow: auto;
+    }
+
+}
