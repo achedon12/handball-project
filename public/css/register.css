@@ -74,3 +74,36 @@ main{
         height: 100% !important;
     }
 }
+
+@media screen and (min-width: 0px ) and (max-width: 726px){
+    .registrateForm{
+        margin: 0;
+        width: 100%;
+        height: 100% !important;
+        padding: 0;
+    }
+    .left{
+        margin-left: auto;
+        width: 40%;
+    }
+
+    .rigth{
+        width: 40%;
+        margin-right: auto;
+    }
+
+    .left form {
+        margin-top: 0 !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 90%;
+    }
+
+    .left div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+}
