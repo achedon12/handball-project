@@ -26,7 +26,7 @@ main {
     flex-direction: column;
 }
 
-.section-content>p {
+.section-content > p {
     align-self: start;
     font-size: 1.5em;
     color: black !important;
@@ -240,4 +240,10 @@ main {
 .page-footer a {
     display: flex;
     margin-left: 4px;
+}
+
+#charte {
+    margin-left: auto;
+    margin-right: auto;
+    color: forestgreen;
 }
