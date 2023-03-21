@@ -15,16 +15,18 @@ p {
 
 .pic-ctn{
     width: 100%;
-    height: 400px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 25px;
     margin-bottom: 25px;
+    background-color: #DDDDDD;
 }
 
 .pic-ctn img{
-    width: auto;
+    width: 40%;
+    height: fit-content;
+    padding: 1em;
 }
 
 .pic-ctn h1{
@@ -192,4 +194,19 @@ p {
 
 .aboutOur .row > div {
     margin-top: 30px;
+}
+
+@media screen and (min-width: 726px) and (max-width: 1024px) {
+    .aboutOur{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 726px){
+    .img {
+        display: none;
+    }
+    .aboutOur {
+        width: 95%;
+    }
 }
