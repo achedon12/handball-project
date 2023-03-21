@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head >
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}" />
         <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap-icons.css')}}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        {% block externalCSS %}{% endblock %}
         <link rel="icon" href="{{ asset('images/logo.png') }}">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
