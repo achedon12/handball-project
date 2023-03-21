@@ -45,6 +45,7 @@
                     <h1>Planning</h1>
                 </a>
             </section>
+
             {% if is_granted('ROLE_ADMIN') %}
                 <section class="content">
                     <h2>Comptes</h2>
@@ -64,6 +65,65 @@
             {% endif %}
         </aside>
         <section class="main">
+            <aside class="selectresponsive">
+                <section class="content">
+                    {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_post_pseudo',{"pseudo": user.pseudo}) }}" class="element">
+                            <article>
+                                <i class="bi bi-envelope"></i>
+                            </article>
+                            <h1>Mes posts</h1>
+                        </a>
+                    {% endif %}
+                    <a href="{{ path('app_logout') }}" class="element">
+                        <article>
+                            <i class="bi bi-box-arrow-right"></i>
+                        </article>
+                        <h1>Déconnexion</h1>
+                    </a>
+                </section>
+                <section class="content">
+                    <h2>Notre club</h2>
+                    <a class="element" href="{{ path('app_equipe') }}">
+                        <article>
+                            <i class="bi bi-person-lines-fill "></i>
+                        </article>
+                        <h1>Equipes</h1>
+                    </a>
+                    <a class="element" href="{{ path('app_match') }}">
+                        <article>
+                            <i class="bi bi-list-task"></i>
+                        </article>
+                        <h1>Matchs</h1>
+                    </a>
+                    <a class="element" href="{{ path('app_planning') }}">
+                        <article class="planning">
+                            <i class="bi bi-calendar-event"></i>
+                        </article>
+                        <h1>Planning</h1>
+                    </a>
+                </section>
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <section class="content">
+                        <h2>Comptes</h2>
+                        <a href="{{ path('app_register') }}" class="element">
+                            <article>
+                                <i class="bi bi-person-plus"></i>
+                            </article>
+                            <h1>Créer un compte</h1>
+                        </a>
+                        <a href="{{ path('app_account_manage') }}" class="element">
+                            <article>
+                                <i class="bi bi-person-check"></i>
+                            </article>
+                            <h1>Gérer les comptes</h1>
+                        </a>
+                    </section>
+                {% endif %}
+            </aside>
+
+
             {% if is_granted('ROLE_COACH') or is_granted('ROLE_ADMIN') %}
                 <section class="post">
                     <aside class="about">

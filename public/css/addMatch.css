@@ -168,7 +168,7 @@
 @media screen and (min-width: 0px) and (max-width: 726px){
     .formCreateMatch{
         width: 100%;
-        height: 80vh;
+        height: 700px;
         margin: 0;
         font-size: 1.5em;
     }

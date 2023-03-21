@@ -67,4 +67,9 @@ i {
     {
         display: none;
     }
+
+    .infos{
+        width: 100%;
+    }
+
 }
