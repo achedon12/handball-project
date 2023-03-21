@@ -69,7 +69,7 @@ function displayMatchtes() {
                         e.preventDefault();
                         let m = prompt("Voulez-vous vraiment supprimer ce match ? (oui/non)");
                         if (m === "oui") {
-                            window.location.href = "/equipe/delete/" + match.id;
+                            window.location.href = "/match/delete/" + match.id;
                         }
                     });
                     aDelete.appendChild(iDelete);
