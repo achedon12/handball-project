@@ -3,13 +3,15 @@
 
 {% block body %}
     {% include 'header.html.twig' %}
+    <link rel="stylesheet" href="{{ asset('css/backgroundIcons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/manageAccount.css') }}">
     <div class="container">
         {{ form_start(form) }}
         {{ form_row(form.pseudo) }}
         {{ form_row(form.email) }}
         {{ form_row(form.password) }}
         {{ form_row(form.roles) }}
-        {{ form_row(form) }}
+
         <button type="submit" class="btn btn-primary">Modifier</button>
         {{ form_end(form) }}
     </div>

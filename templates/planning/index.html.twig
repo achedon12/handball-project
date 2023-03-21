@@ -50,40 +50,27 @@
                     donnee.push(aMatch);
                     // console.log(aMatch)
                     if (compteur === data.length) {
-                        fetch("/api/allTeam").then(response => response.json())
-                            .then(entrainement =>
-                                entrainement.forEach((element)=>{
-                                    console.log(element);
-                                    for (let i = -3; i < 8; i++) {
-                                        let aTeam = {};
-                                        if (element["creneaux"]!=="") {
-                                            aTeam["id"] = element["id"];
-                                            aTeam["eventName"] = "entrainement des " + element["libelle"];
-                                            let numJour = days.indexOf((date.getDate()).toString().split(' ')[0]);
-                                            let jourEntrainement = jours.indexOf(element["creneaux"].split(" ")[0]);
-                                            let jourDefDebut = new Date(date.getFullYear(),date.getMonth(),date.getDate()-numJour+jourEntrainement,((element["creneaux"].split(" ")[1]).split("-")[0]).slice(0,2),0,0);
-                                            let jourDefFin = new Date(date.getFullYear(),date.getMonth(),date.getDate()-numJour+jourEntrainement,((element["creneaux"].split(" ")[1]).split("-")[1]).slice(0,2),0,0)
-
-                                            jourDefDebut.setFullYear(jourDefDebut.getFullYear(),jourDefDebut.getMonth(),jourDefDebut.getDate()+i*7);
-
-                                            jourDefFin.setFullYear(jourDefFin.getFullYear(),jourDefFin.getMonth(),jourDefFin.getDate()+i*7);
-                                            aTeam["StartTime"]=jourDefDebut;
-                                            aTeam["EndTime"]=jourDefFin;
-                                            aTeam["IsAllDay"]=false;
-                                            aTeam["cssClass"]="entrainement";
-                                            console.log(aTeam);
-                                            donnee.push(aTeam);
-                                        }
-                                    }
-
-
-
-                                })
-
+                        fetch("/api/allTeam").then(response => response.json()).then(entrainement =>entrainement.forEach((element)=>{
+                            console.log(element);
+                            for (let i = -3; i < 8; i++) {
+                                let aTeam = {};
+                                if (element["creneaux"]!=="") {
+                                    aTeam["id"] = element["id"];
+                                    aTeam["eventName"] = "entrainement des " + element["libelle"];
+                                    let numJour = days.indexOf((date.getDate()).toString().split(' ')[0]);
+                                    let jourEntrainement = jours.indexOf(element["creneaux"].split(" ")[0]);
+                                    let jourDefDebut = new Date(date.getFullYear(),date.getMonth(),date.getDate()-numJour+jourEntrainement-2,((element["creneaux"].split(" ")[1]).split("-")[0]).slice(0,2),0,0);
+                                    let jourDefFin = new Date(date.getFullYear(),date.getMonth(),date.getDate()-numJour+jourEntrainement-2,((element["creneaux"].split(" ")[1]).split("-")[1]).slice(0,2),0,0)
+                                    jourDefDebut.setFullYear(jourDefDebut.getFullYear(),jourDefDebut.getMonth(),jourDefDebut.getDate()+i*7);
+                                    jourDefFin.setFullYear(jourDefFin.getFullYear(),jourDefFin.getMonth(),jourDefFin.getDate()+i*7);
+                                    aTeam["StartTime"]=jourDefDebut;
+                                    aTeam["EndTime"]=jourDefFin;
+                                    aTeam["IsAllDay"]=false;
+                                    aTeam["cssClass"]="entrainement";
+                                    console.log(aTeam);
+                                    donnee.push(aTeam);
+                                }}})
                             )
-
-
-
                         console.log(donnee);
                         let scheduleObj = new ej.schedule.Schedule({
                             width: '100%',

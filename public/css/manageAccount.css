@@ -1,0 +1,47 @@
+.container{
+    /* height: 40vh; */
+    margin-top: 10%;
+    width: 40%;
+    background-color: rgba(255,255,255,0.3);
+    color: black;
+    padding: 10px;
+    margin-bottom: 10vh;
+    border-radius: 12px;
+}
+
+.container>form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+
+}
+
+.container>form>div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container>form>div>input{
+    width: 70%;
+    margin-top: 10px;
+}
+
+.container>form>div>label{
+    margin-top: 12px;
+}
+
+
+
+@media screen and (min-width: 726px) and (max-width: 1026px) {
+    .container{
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 0px) and (max-width: 726px) {
+    .container{
+        width: 80%;
+    }
+}
+

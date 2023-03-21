@@ -163,6 +163,10 @@ form input {
     transform: scale(1.1);
 }
 
+.selectresponsive{
+    display: none;
+}
+
 .last-post-element-img
 {
     width: 50%;

@@ -95,6 +95,10 @@ article select
     justify-content: space-around;
 }
 
+.list-group-item{
+    height: auto;
+}
+
 @media screen and (min-width: 0px) and (max-width: 1024px) {
     .formGetMatches select{
         width: 100%;
@@ -104,6 +108,26 @@ article select
     }
 }
 
+@media screen and (min-width: 0px) and (max-width: 726px) {
+    main{
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .formGetMatches{
+        width: 50%;
+        height: 50%;
+        margin-top: 0;
+    }
+
+    .formGetMatches select{
+        height: 50px;
+    }
+
+
+
+}
 
 
 
