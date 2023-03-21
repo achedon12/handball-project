@@ -1,3 +1,4 @@
 parameters:
   image_directory: '%kernel.project_dir%/public/uploads/images'
+  public_directory: '%kernel.project_dir%/public'
   post_directory: '%kernel.project_dir%/public/posts/images'

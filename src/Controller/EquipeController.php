@@ -127,6 +127,14 @@ class EquipeController extends AbstractController
         }
         $equipeManager = $doctrine->getRepository(Equipes::class);
         $equipe = $equipeManager->find($id);
+        if (!$equipe) {
+            return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+        }
+        if (strlen($equipe->getUrlPhoto()) === 36) {
+            unlink($this->getParameter('image_directory') . '/' . $equipe->getUrlPhoto());
+        } else {
+            unlink($this->getParameter('public_directory') . '/images/' . $equipe->getUrlPhoto());
+        }
         $entityManager = $doctrine->getManager();
         $entityManager->remove($equipe);
         $entityManager->flush();
