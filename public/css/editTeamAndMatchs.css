@@ -1,0 +1,64 @@
+#actualPicture
+{
+    width: 50%;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+
+form>div
+{
+    margin-top: 10px;
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.container>h1
+{
+    width: 100%;
+    text-align: center;
+}
+
+form>button
+{
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+label, h1
+{
+    color: white;
+}
+
+textarea
+{
+    max-width: 400px;
+    max-height: 400px;
+    min-width: 200px;
+    min-height: 200px;
+}
+
+input
+{
+    max-width: 400px;
+    min-width: 200px;
+    width: 70%;
+}
+
+input[type="radio"]
+{
+    width: 20px;
+    min-width: 20px;
+    max-width: 20px;
+}

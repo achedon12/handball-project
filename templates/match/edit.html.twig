@@ -1,10 +1,25 @@
 {% extends 'base.html.twig' %}
 {% block title %}Modifier un match{% endblock %}
 {% block body %}
-    <h1>Modifier une match</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit" class="btn btn-primary">Modifier</button>
-    {{ form_end(form) }}
+    <link rel="stylesheet" href="{{ asset('css/backgroundIcons.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/editTeamAndMatchs.css') }}">
+    {% include 'header.html.twig' %}
+    <main>
+        <div class="container">
+            <h1>Modifier une match</h1>
+            {{ form_start(form) }}
+            {{ form_row(form.equipe_locale) }}
+            {{ form_row(form.domicile_exterieur) }}
+            {{ form_row(form.equipe_adverse) }}
+            {{ form_row(form.hote) }}
+            {{ form_row(form.date_heure) }}
+            {{ form_row(form.num_semaine) }}
+            {{ form_row(form.num_journee) }}
+            {{ form_row(form.gymnase) }}
+            <button type="submit" class="btn btn-primary">Modifier</button>
+            {{ form_end(form) }}
+        </div>
+    </main>
+    {% include 'footer.html.twig' %}
 {% endblock %}
 

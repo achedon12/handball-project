@@ -7,6 +7,8 @@ use App\Form\CreateEquipeType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -68,11 +70,11 @@ class EquipeController extends AbstractController
                 "data" => $equipe->getLibelle(),
                 "required" => false,
             ])
-            ->add('entraineur', null, [
+            ->add('entraineur', TextType::class, [
                 "data" => $equipe->getEntraineur(),
                 "required" => false,
             ])
-            ->add('creneaux', null, [
+            ->add('creneaux', TextType::class, [
                 "data" => $equipe->getCreneaux(),
                 "required" => false,
             ])
@@ -90,11 +92,11 @@ class EquipeController extends AbstractController
                     ])
                 ],
             ])
-            ->add('url_result_calendrier', null, [
+            ->add('url_result_calendrier', TextType::class, [
                 "data" => $equipe->getUrlResultCalendrier(),
                 "required" => false,
             ])
-            ->add('commentaire', null, [
+            ->add('commentaire', TextareaType::class, [
                 "data" => $equipe->getCommentaire(),
                 "required" => false,
             ])
