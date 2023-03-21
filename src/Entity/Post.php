@@ -93,4 +93,15 @@ class Post
         $this->date = $date;
         return $this;
     }
+
+    public function toArray(): array{
+        return [
+            "id" => $this->getId(),
+            "title" => $this->getTitle(),
+            "content" => $this->getContent(),
+            "author" => $this->getAuthor(),
+            "url_photo" => $this->getUrlPhoto(),
+            "date" => $this->getDate(),
+        ];
+    }
 }

@@ -13,8 +13,9 @@ main {
 }
 
 .post-image {
-    max-width: 50%;
-    max-height: 500px;
+    max-width: 400px;
+    width: 50%;
+    max-height: 400px;
     object-fit: cover;
     flex-basis: 50%;
     padding: 1%;

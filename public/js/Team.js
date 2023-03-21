@@ -12,8 +12,11 @@ function getAllTeam() {
             slotSection.classList.add('slotSection');
             infoSection.classList.add("infoSection");
             let teamImg = document.createElement('img');
-            teamImg.src = "/images/" + element.urlPhoto;
-
+            let src = "/images/" + element.urlPhoto;
+            if (isCripted(element.urlPhoto)) {
+                src = "/uploads/images/" + element.urlPhoto;
+            }
+            teamImg.src = src;
             let teamName = document.createElement('h2');
             teamName.innerText = element.libelle;
             let teamSchedules = document.createElement("p");
@@ -79,3 +82,10 @@ function getAllTeam() {
 }
 
 getAllTeam();
+
+function isCripted(urlPhoto) {
+    if (urlPhoto.length === 36) {
+        return true;
+    }
+    return false;
+}

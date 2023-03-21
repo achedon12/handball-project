@@ -92,9 +92,7 @@ class MatchController extends AbstractController
             $match->setGymnase($form->get('gymnase')->getData());
             $doctrine->getManager()->persist($match);
             $doctrine->getManager()->flush();
-            return $this->render('home/index.html.twig', [
-                'user' => $this->getUser(),
-            ]);
+            return $this->redirectToRoute('app_home');
         }
         return $this->render('match/create.html.twig', [
             'form' => $form->createView(),

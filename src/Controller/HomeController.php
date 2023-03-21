@@ -14,15 +14,17 @@ class HomeController extends AbstractController
     public function index(ManagerRegistry $doctrine): Response
     {
         $posts = $doctrine->getRepository(Post::class)->findAll();
-        if($this->getUser()) {
-            return $this->render('home/index.html.twig', [
-                'user' => $this->getUser(),
-                'posts' => $posts
-            ]);
+
+        $array = [];
+        $page = 0;
+        for($i = 0; $i < count($posts); $i++) {
+            if($i % 4 == 0 && $i != 0) $page++;
+            $array[$page][] = $posts[$i]->toArray();
         }
         return $this->render('home/index.html.twig', [
-            'posts' => $posts,
-            "user" => $this->getUser(),
+            'user' => $this->getUser(),
+            'posts' => $array,
+            "page" => $page,
         ]);
     }
 }

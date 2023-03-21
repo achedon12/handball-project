@@ -167,6 +167,12 @@ form input {
     display: none;
 }
 
+.last-post-element-img
+{
+    width: 50%;
+    max-height: 400px;
+    max-width: 400px;
+}
 
 @media screen and (min-width: 726px) and (max-width: 1024px) {
     .select {
@@ -189,47 +195,21 @@ form input {
         margin-right: auto;
     }
 
-    .match{
-        height: auto !important;
-    }
-
-    .selectresponsive{
-        display: none;
-    }
 
 }
 
 
 @media screen and (min-width: 0px) and (max-width: 726px){
-    .post{
-        flex-direction: column;
-    }
-
     main{
         flex-direction: column;
-        height: 100vh;
     }
-
-    .match{
-        height: auto !important;
-    }
-
     .select{
-        display: none;
+        flex-direction: row;
+        flex-basis: 35%;
     }
 
     .element h1{
         overflow: auto;
     }
-
-    .selectresponsive{
-        display: flex;
-        flex-direction: row;
-
-    }
-
-
-
-
 
 }
