@@ -124,6 +124,12 @@ main {
     color: #DDDDDD;
 }
 
+#post_content, #post_title {
+    color: black;
+    width: 50%;
+    margin-left: 2em;
+}
+
 .post-create > form {
     width: 100%;
     display: flex;
@@ -139,6 +145,11 @@ main {
 form input {
     margin-left: 5px;
 }
+form > div {
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
 
 .last-post-content {
     display: flex;
@@ -146,6 +157,7 @@ form input {
     justify-content: center;
     align-items: center;
     width: 100%;
+    background-color: rgba(255,255,255,0.15);
 }
 
 .last-post-element {
@@ -161,6 +173,7 @@ form input {
     border: 1px solid #cccccc;
     padding: 1%;
     transition-duration: 0.5s;
+    background-color: rgba(255,255,255,0.15);
 }
 
 .last-post-element, .last-post-element:hover, .last-post-element:focus, .last-post-element:active {

@@ -146,7 +146,7 @@
                         <h1>Dernier post de {{ post.author }}</h1>
                         {% set url = path('app_post_show',{'id': post.id}) %}
                         <a class="last-post-element" id="{{ post.id }}" href="{{ url }}">
-                            <p class="content">{{ post.title }}</p>
+                            <p class="content-post">{{ post.title }}</p>
                             {% set src = '/posts/images/' ~ post.urlPhoto %}
                             <img src="{{ asset(src) }}" alt="news-img" class="last-post-element-img">
                         </a>
