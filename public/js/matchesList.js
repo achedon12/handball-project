@@ -31,10 +31,10 @@ function displayMatchtes() {
                 match = data[match];
                 let a = document.createElement('section');
                 a.className = 'list-group-item list-group-item-action';
-                let h1 = document.createElement('h1');
-                h1.className = 'list-group-item-heading';
+                let h3 = document.createElement('h3');
+                h3.className = 'list-group-item-heading';
                 let date = new Date(match.dateHeure);
-                h1.innerHTML = match.equipeLocale + ' contre ' + match.equipeAdverse;
+                h3.innerHTML = match.equipeLocale + ' contre ' + match.equipeAdverse;
                 let divInfo = document.createElement('section');
                 let dateText = document.createElement('p');
                 let lieuText = document.createElement('p');
@@ -79,7 +79,7 @@ function displayMatchtes() {
                     section.appendChild(aDelete);
                     divInfo.appendChild(section);
                 }
-                a.appendChild(h1);
+                a.appendChild(h3);
                 a.appendChild(divInfo);
                 matchContent.appendChild(a);
             }

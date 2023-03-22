@@ -5,7 +5,8 @@ body{
     url('../images/trophee.png');
     background-size: 30%, 18%, 15%, 14%;
     background-repeat: no-repeat;
-    background-position: -10% -20%, 85% 15%, 20% 100%, 70% 110%,100% 0%;
+    background-blend-mode: normal, multiply, normal, normal;
+    background-position: -10% -20%, 85% 15%, 20% 100%, 70% 110%,100% 0;
     background-color: rgb(60,60,60) !important;
 
     color: grey;

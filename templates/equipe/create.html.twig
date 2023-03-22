@@ -20,13 +20,13 @@
                     {{ form_label(form.entraineur)}}
                     {{ form_label(form.creneaux)}}
                     {{ form_label(form.url_photo)}}
-                    <label> lien Résultats</label>
+                    <label>Suivi des poules</label>
                     {{ form_label(form.commentaire)}}
                 </section>
                 <section class="inputForm">
                     {{ form_widget(form.libelle, {'attr' : {'class':'inputCreateTeam'}}) }}
                     {{ form_widget(form.entraineur, {'attr' : {'class':'inputCreateTeam'}}) }}
-                    {{ form_widget(form.creneaux, {'attr' : {'class':'inputCreateTeam', 'placeholder':'Jour 00h-00h'}}) }}
+                    {{ form_widget(form.creneaux, {'attr' : {'class':'inputCreateTeam', 'placeholder':'Format : Jour 00h-00h'}}) }}
                     {{ form_widget(form.url_photo, {'attr' : {'class':'inputCreateTeam'}}) }}
                     {{ form_widget(form.url_result_calendrier, {'attr' : {'class':'inputCreateTeam'}}) }}
                     {{ form_widget(form.commentaire, {'attr' : {'class':'inputCreateTeam'}}) }}

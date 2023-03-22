@@ -1,9 +1,12 @@
 let colors = [
-    '#FF0000',
-    '#FF7F00',
-    '#00FF00',
-    '#0000FF',
-    '#8B00FF',
+    '#7F0000',
+    '#B25600',
+    '#007F00',
+    '#1F1F7F',
+    '#43007F',
+    '#7F007D',
+    '#00597F',
+    '#007F4E',
 ];
 
 document.querySelectorAll('.element i').forEach(function (element) {

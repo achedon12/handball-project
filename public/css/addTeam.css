@@ -1,15 +1,12 @@
-
+/* Relevant usage : /equipe/create */
 .inputCreateTeam{
     width: 400px;
     height: 35px;
     border-radius: 8px;
 }
 
-
-
 .formCreateTeam{
-
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.9);
     border: solid 1px black;
     width: 87%;
     height: 450px;
@@ -17,7 +14,7 @@
     border-radius: 25px;
     margin: 10px auto;
     display: flex;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    box-shadow: rgba(0, 0, 0, 0.75) 0 3px 5px;
 }
 
 .formCreateTeam h1{
@@ -52,7 +49,7 @@
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 90%;
     width: 35%;
     /* background: blue; */
     justify-content: space-around;
@@ -63,29 +60,28 @@
     color: black;
     font-size: 25px;
     height: 40px;
+    line-height: 1;
 }
 
 .inputForm{
     margin-top: 10px;
     display: flex;
     flex-direction: column;
-    height: 80%;
+    height: 90%;
     width: auto;
     /* background: blue; */
-
     justify-content: space-around;
 }
 
-.inputForm input,textarea{
+.inputForm input, .inputForm textarea{
     display: flex;
     justify-content: center;
     border: none;
     border-bottom: 3px solid black;
-    font-size: 25px;
+    font-size: 20px;
     width: 100%;
+    height: 2em;
 }
-
-
 
 .formCreateTeam button{
     width: 25%;
@@ -95,7 +91,7 @@
 .main{
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin: 10px;
 }
 
 /*.formCreateTeam div{*/
@@ -131,7 +127,7 @@
 @media screen and (min-width: 726px) and (max-width: 1024px) {
 
     .main{
-        height: 90vh;
+        /*height: 90vh;*/
     }
 
     .formCreateTeam{

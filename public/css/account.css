@@ -26,9 +26,11 @@ main {
 
 .content {
     margin: 1%;
-    background-color: white;
+    background-color: #333333;
     border-radius: 15px;
     width: 90%;
+    color: #98f609;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.50);
 }
 
 .content > h2 {
@@ -39,17 +41,17 @@ main {
 .element {
     margin: auto;
     text-decoration: none;
-    color: black;
+    color: #cccccc;
     display: flex;
     justify-content: left;
     align-items: center;
-    width: 70%;
-    padding: 3%;
+    width: 85%;
+    padding: 2%;
 
 }
 
 .element:hover, .element:active, .element:focus {
-    color: black;
+    color: #98f609;
     text-decoration: none;
 }
 
@@ -60,8 +62,8 @@ main {
 }
 
 .element i {
-    font-size: 1.5em;
-    padding: 25%;
+    font-size: 1.75em;
+    padding: 35%;
     border-radius: 50%;
     color: white;
 }
@@ -94,21 +96,32 @@ main {
 
 .about {
     flex-basis: 30%;
-    background-color: white;
+    background-color: #333333;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.50);
     border-radius: 15px;
     margin: 1%;
     padding: 1%;
 }
 
+.about h2, .post-create h2 {
+    color: #98F609FF;
+}
+
+.about p {
+    color: #DDDDDD;
+}
+
 .post-create {
     flex-basis: 70%;
-    background-color: white;
+    background-color: #333333;
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.50);
     border-radius: 15px;
     margin: 1%;
     padding: 1%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: #DDDDDD;
 }
 
 .post-create > form {

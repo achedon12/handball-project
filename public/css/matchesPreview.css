@@ -1,6 +1,5 @@
-/*----------------Matches sections-----------------*/
-
-.match{
+/* Relevant usage : /match/preview */
+.match {
     display: flex;
     justify-content: space-around;
     min-height: 350px;
@@ -9,29 +8,28 @@
     color: #EAEAEA;
 }
 
-.matchSection{
+.matchSection {
     padding-left: 1.5em;
     padding-right: 1.5em;
 }
 
-
-.matchSection > table{
+.matchSection > table {
     background-color: #333333;
     min-width: 500px;
     width: 40vw;
     border-radius: 12px;
-    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.50);
 }
 
-.matchSection > legend{
+.matchSection > legend {
     border: none;
     margin: 0;
     width: fit-content;
 }
 
-legend>h2{
+legend > h2 {
     background-color: #333333;
-    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.50);
     border-radius: 10px;
     border: 1px solid #333333;
     padding: 0.2em 0.5em 0.2em 0.5em;
@@ -76,18 +74,19 @@ legend>h2{
     padding-right: 1em;
 }
 
-.next-match-location > i{
+.next-match-location > i {
     background-color: #333333;
     color: #98f609;
 }
-.next-match-remaining-time > p{
+
+.next-match-remaining-time > p {
     display: flex;
     font-size: 1.1em;
     justify-content: center;
     align-items: baseline;
 }
 
-.next-match-remaining-time > p > dt{
+.next-match-remaining-time > p > dt {
     margin-right: 0.5em;
     margin-left: 0.1em;
     color: #98f609;
@@ -109,28 +108,25 @@ legend>h2{
     box-shadow: inset 0 7px 15px 1px #1b1b1b;
 }
 
-.matchContent > tr {
-    height: 4em;
-}
-
 .last-match-date, .last-match-location, .last-match-remaining-time {
     font-size: 1.5em;
     padding-left: 1em;
     padding-right: 1em;
 }
 
-.last-match-location > i{
+.last-match-location > i {
     background-color: #333333;
     color: #98f609;
 }
-.last-match-remaining-time > p{
+
+.last-match-remaining-time > p {
     display: flex;
     font-size: 1.1em;
     justify-content: center;
     align-items: baseline;
 }
 
-.last-match-remaining-time > p > dt{
+.last-match-remaining-time > p > dt {
     margin-right: 0.5em;
     margin-left: 0.1em;
     color: #98f609;

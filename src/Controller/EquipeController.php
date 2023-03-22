@@ -57,12 +57,12 @@ class EquipeController extends AbstractController
     }
 
     #[Route('/equipe/edit/{id}', name: 'app_equipe_edit')]
-    public function edit(int $id, Request $request, ManagerRegistry $dotrine): Response
+    public function edit(int $id, Request $request, ManagerRegistry $doctrine): Response
     {
         if (!$this->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
         }
-        $equipeManager = $dotrine->getRepository(Equipes::class);
+        $equipeManager = $doctrine->getRepository(Equipes::class);
         $equipe = $equipeManager->find($id);
 
         $form = $this->createFormBuilder()
@@ -109,7 +109,7 @@ class EquipeController extends AbstractController
             $equipe->setUrlPhoto($form->get('url_photo')->getData());
             $equipe->setUrlResultCalendrier($form->get('url_result_calendrier')->getData());
             $equipe->setCommentaire($form->get('commentaire')->getData());
-            $entityManager = $dotrine->getManager();
+            $entityManager = $doctrine->getManager();
             $entityManager->persist($equipe);
             $entityManager->flush();
             return $this->redirectToRoute('app_equipe', ["user" => $this->getUser()]);

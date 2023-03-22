@@ -13,6 +13,10 @@
     border-radius: 25px;
 }
 
+.allTeam h1 {
+    color: #98f609;
+}
+
 span, span:before, span:after{
     background: black !important;
 }
@@ -24,9 +28,14 @@ span, span:before, span:after{
 
 .buttonSection
 {
-    width: 10%;
+    width: 50%;
     display: flex;
     justify-content: space-around;
+}
+
+.buttonSection i {
+    font-size: 3em;
+    color: black;
 }
 
 .teamArticle{
@@ -54,8 +63,8 @@ span, span:before, span:after{
 .infoSection{
     display: flex;
     flex-direction: column;
-    height: 60%;
-    justify-content: space-around;
+    height: 80%;
+    justify-content: space-evenly;
     width: 100%;
     text-align: left;
     margin-left: 25px;

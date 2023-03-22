@@ -51,7 +51,7 @@ class CreateEquipeType extends AbstractType
             ->add('url_result_calendrier', TextType::class, [
                 'label' => 'Url du calendrier',
                 'attr' => [
-                    'placeholder' => 'Url du calendrier',
+                    'placeholder' => 'Url ffhandball de la poule',
                 ],
             ])
             ->add('commentaire', TextareaType::class, [
