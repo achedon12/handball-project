@@ -24,9 +24,10 @@ function displayMatchtes() {
     let domicileValue = domicileSelect.checked;
     domicileValue = domicileValue ? 1 : 0;
 
-    fetch('/api/allMatches?equipe_locale=' + caterogyValue + '&gymnase=' + gymnaseValue + '&domicile_exterieur=' + domicileValue)
+    fetch('/api/allMatches?equipe_locale=' + caterogyValue + '&gymnase=' + gymnaseValue + '&domicile_exterieur=' + domicileValue+"&date=all")
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             for (let match in data) {
                 match = data[match];
                 let a = document.createElement('section');
