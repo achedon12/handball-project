@@ -78,12 +78,10 @@ class ApiController extends AbstractController
      */
     public function getAllMatches(ManagerRegistry $doctrine): JsonResponse
     {
-
         $localTeam = $_GET['equipe_locale'] ?? 'all';
         $gymnase = $_GET['gymnase'] ?? 'all';
         $domicile_exterieur = $_GET['domicile_exterieur'] ?? 'all';
-        $date = isset($_GET["date"]) ?? 'all';
-
+        $date = $_GET["date"] ?? 'all';
         $criteria = [];
         if ($localTeam != 'all') {
             $criteria['equipe_locale'] = $localTeam;
@@ -94,20 +92,16 @@ class ApiController extends AbstractController
         if ($domicile_exterieur != 'all') {
             $criteria['domicile_exterieur'] = $domicile_exterieur;
         }
-
         $array = $doctrine->getRepository(Matches::class)->findBy($criteria);
-
         if ($date === 'all') {
             $date = new DateTime('now');
             $array = array_filter($array, function ($a) use ($date) {
                 return $a->getDateHeure() >= $date;
             });
         }
-
         usort($array, function ($a, $b) {
             return $a->getDateHeure() <=> $b->getDateHeure();
         });
-
         return $this->json($array);
     }
 
