@@ -68,8 +68,8 @@
                                         aTeam["eventName"] = "entrainement des " + element["libelle"];
                                         let numJour = days.indexOf((date.getDate()).toString().split(' ')[0]);
                                         let jourEntrainement = jours.indexOf(element["creneaux"].split(" ")[0]);
-                                        let jourDefDebut = new Date(date.getFullYear(), date.getMonth(), date.getDate() - numJour + jourEntrainement - 2, ((element["creneaux"].split(" ")[1]).split("-")[0]).slice(0, 2), 0, 0);
-                                        let jourDefFin = new Date(date.getFullYear(), date.getMonth(), date.getDate() - numJour + jourEntrainement - 2, ((element["creneaux"].split(" ")[1]).split("-")[1]).slice(0, 2), 0, 0)
+                                        let jourDefDebut = new Date(date.getFullYear(), date.getMonth(), date.getDate() - numJour + jourEntrainement - 5, ((element["creneaux"].split(" ")[1]).split("-")[0]).slice(0, 2), 0, 0);
+                                        let jourDefFin = new Date(date.getFullYear(), date.getMonth(), date.getDate() - numJour + jourEntrainement - 5, ((element["creneaux"].split(" ")[1]).split("-")[1]).slice(0, 2), 0, 0)
                                         jourDefDebut.setFullYear(jourDefDebut.getFullYear(), jourDefDebut.getMonth(), jourDefDebut.getDate() + i * 7);
                                         jourDefFin.setFullYear(jourDefFin.getFullYear(), jourDefFin.getMonth(), jourDefFin.getDate() + i * 7);
                                         aTeam["StartTime"] = jourDefDebut;
